@@ -1,0 +1,64 @@
+.auth {
+	// .auth__content
+
+	&__content {
+	}
+
+	// .auth__body
+
+	&__body {
+		padding-top: 45px;
+		padding-bottom: 45px;
+	}
+
+	// .auth__cols
+
+	&__cols {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+
+	// .auth__left
+
+	&__left {
+	}
+
+	// .auth__right
+
+	&__right {
+	}
+}
+
+.left-auth {
+	&__router {
+		margin-bottom: 110px;
+	}
+	// .left-auth__footer
+
+	&__footer {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		a {
+			color: #718096;
+
+			font-size: 16px;
+			font-weight: 500;
+			line-height: 150%;
+			letter-spacing: 0.2px;
+		}
+	}
+
+	// .left-auth__privacy
+
+	&__privacy {
+	}
+
+	// .left-auth__copyright
+
+	&__copyright {
+	}
+}
+.right-auth {
+}

@@ -1,0 +1,96 @@
+@font-face {
+	font-family: "icons";
+	font-display: swap;
+	src: url("../assets/fonts/icomoon.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+	font-display: block;
+}
+
+%ic {
+	font-family: "icons";
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+[class^="_icon-"],
+[class*=" _icon-"] {
+	&:before {
+		@extend %ic;
+		display: block;
+	}
+}
+._icon-apple:before {
+	content: "\e900";
+}
+._icon-arrow-right:before {
+	content: "\e901";
+}
+._icon-bookmark:before {
+	content: "\e902";
+}
+._icon-email:before {
+	content: "\e903";
+}
+._icon-eye:before {
+	content: "\e904";
+}
+._icon-facebook:before {
+	content: "\e905";
+}
+._icon-filled-email:before {
+	content: "\e906";
+}
+._icon-filled-lock:before {
+	content: "\e907";
+}
+._icon-filled-phone:before {
+	content: "\e908";
+}
+._icon-filled-user:before {
+	content: "\e909";
+}
+._icon-google:before {
+	content: "\e90a";
+}
+._icon-heart:before {
+	content: "\e90b";
+}
+._icon-insta:before {
+	content: "\e90c";
+}
+._icon-linkedin:before {
+	content: "\e90d";
+}
+._icon-lock:before {
+	content: "\e90e";
+}
+._icon-phone:before {
+	content: "\e90f";
+}
+._icon-regular-star:before {
+	content: "\e910";
+}
+._icon-spiral-arrow:before {
+	content: "\e911";
+}
+._icon-star:before {
+	content: "\e912";
+}
+._icon-twitter:before {
+	content: "\e913";
+}
+._icon-user:before {
+	content: "\e914";
+}
+._icon-waves1:before {
+	content: "\e915";
+}
+._icon-waves2:before {
+	content: "\e916";
+}

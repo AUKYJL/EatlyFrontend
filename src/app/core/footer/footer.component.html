@@ -1,1 +1,29 @@
-<p>footer works!</p>
+<footer class="footer">
+	<div class="container">
+		<div class="footer__content">
+			<div class="footer__body">
+				<div class="footer__top top-footer">
+					<app-logo />
+					<nav class="top-footer__nav nav-footer">
+						<ul class="nav-footer__list">
+							<li class="nav-footer__item" *ngFor="let nav of navList">
+								<a href="" class="nav-footer__link">{{ nav.title }}</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+				<div class="footer__bottom bottom-footer">
+					<div class="bottom-footer__copyright">
+						<p>© 2023 EATLY All Rights Reserved.</p>
+					</div>
+					<div class="bottom-footer__socials socials-bottom-footer">
+						<a href="#" class="socials-bottom-footer__item _icon-insta"> </a>
+						<a href="#" class="socials-bottom-footer__item _icon-linkedin"> </a>
+						<a href="#" class="socials-bottom-footer__item _icon-facebook"> </a>
+						<a href="#" class="socials-bottom-footer__item _icon-twitter"> </a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>

@@ -1,22 +1,54 @@
 <header class="header">
 	<div class="container">
-		<div class="header__content">
+		<div class="header__content line">
 			<div class="header__body">
-				<a href="" class="header__logo"><img src="" alt=""></a>
-
+				<app-logo />
 				<div class="header__menu menu">
-					<button type="button" class="menu__icon icon-menu"><span></span></button>
+					<button type="button" class="menu__icon icon-menu">
+						<span></span>
+					</button>
 					<nav class="menu__body">
-						<ul class="menu__list" *ngFor="let nav of navList">
-							<li class="menu__item"><a href="" class="menu__link">{{nav.title}}</a></li>
+						<ul class="menu__list">
+							<li class="menu__item" *ngFor="let nav of navList">
+								<a
+									[routerLink]="nav.route"
+									routerLinkActive="_active"
+									[routerLinkActiveOptions]="{ exact: true }"
+									class="menu__link"
+									>{{ nav.title }}</a
+								>
+							</li>
 						</ul>
 					</nav>
 				</div>
 
-				<div class="header__btns btns-header">
-					<a href="" class="btns-header__item"></a>
-					<a href="" class="btns-header__item"></a>
-				</div>
+				<ng-container *ngIf="!authService.checkAuth(); else auth">
+					<div class="header__btns btns-header">
+						<a routerLink="auth/login" class="btns-header__item btn btn_trans"
+							>Login</a
+						>
+						<a routerLink="auth/register" class="btns-header__item btn"
+							>Sign up</a
+						>
+					</div>
+				</ng-container>
+
+				<ng-template #auth>
+					<div class="auth">
+						<div class="auth__cart cart-auth">cart-auth</div>
+						<div class="auth__user user-auth">
+							<a href="#" class="user-auth__name _icon-filled-user">{{
+								authService.user?.name
+							}}</a>
+						</div>
+						<a
+							routerLink="/"
+							class="btns-header__item btn"
+							(click)="authService.logout()"
+							>Log out</a
+						>
+					</div>
+				</ng-template>
 			</div>
 		</div>
 	</div>

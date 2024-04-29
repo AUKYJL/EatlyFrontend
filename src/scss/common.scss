@@ -1,0 +1,70 @@
+.container {
+	max-width: 1250px;
+	margin: 0 auto;
+}
+.page {
+	flex: 1 1 auto;
+}
+.wrapper {
+	width: 100%;
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	font-family: Inter;
+	font-size: 17px;
+	font-weight: 700;
+	height: 62px;
+	text-transform: capitalize;
+	padding: 17px 26px;
+	background-color: #6c5fbc;
+	border-radius: 17px;
+	transition: all 0.3s ease 0s;
+	border: 1px solid transparent;
+	&:disabled {
+		opacity: 0.6;
+		cursor: not-allowed;
+	}
+	&:not(:disabled):hover {
+		background-color: transparent;
+		border: 1px solid #6c5fbc;
+		color: #6c5fbc;
+	}
+	&_trans {
+		background-color: transparent;
+		color: #606060;
+		&:hover {
+			background-color: transparent;
+			border: 1px solid #6c5fbc;
+			color: #6c5fbc;
+		}
+	}
+	&_border {
+		background-color: transparent;
+		border: 1px solid #6c5fbc;
+		color: #6c5fbc;
+		&:hover {
+			background-color: #6c5fbc;
+			color: white;
+		}
+	}
+}
+.title {
+	font-size: 58px;
+	font-weight: 600;
+	line-height: 120%;
+	letter-spacing: -3px;
+	span {
+		color: #5c4eae;
+	}
+}
+.line {
+	border-bottom: #cbcbcb 1px solid;
+}
