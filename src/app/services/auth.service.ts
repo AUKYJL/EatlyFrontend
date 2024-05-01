@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { IUser, IUserLog, IUserReg } from '../types/types';
@@ -18,31 +18,17 @@ export class AuthService {
 		return this.user;
 	}
 
-	public httpOptions = {
-		headers: new HttpHeaders({
-			'Content-Type': 'application/json',
-			Authorization: 'my-auth-token',
-		}),
-	};
-
 	public registration(user: IUserReg) {
-		return this.http.post<IUserReg>(
-			this.API_URL + 'user',
-			user,
-			this.httpOptions
-		);
+		return this.http.post<IUserReg>(this.API_URL + 'user', user);
 	}
 
 	public login(user: IUserLog) {
-		return this.http.post<IUserReg>(
-			this.API_URL + 'auth/login',
-			user,
-			this.httpOptions
-		);
+		return this.http.post<IUserReg>(this.API_URL + 'auth/login', user);
 	}
 
 	public logout() {
 		localStorage.removeItem(environment.loggedInUser);
 		this.user = undefined;
+		window.location.reload();
 	}
 }

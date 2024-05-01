@@ -1,0 +1,142 @@
+@use "src/scss/variables" as v;
+
+.restaurant-card {
+	cursor: pointer;
+	transition: all 0.3s ease 0s;
+	&:hover {
+		transform: translate(0px, -5px);
+	}
+	// .restaurant-card__content
+
+	&__content {
+		border-radius: 15px;
+		overflow: hidden;
+		box-shadow: 5px 20px 20px rgba(0, 0, 0, 0.1);
+	}
+
+	// .restaurant-card__body
+
+	&__body {
+	}
+
+	// .restaurant-card__img
+
+	&__img {
+		position: relative;
+		padding-bottom: 176px;
+		img {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			object-fit: cover;
+			object-position: center;
+		}
+	}
+}
+.block-card {
+	padding: 10px 34px;
+	// .block-card__tag
+
+	&__tag {
+		display: inline-block;
+		padding: 3px 8px;
+
+		border-radius: 5px;
+
+		font-size: 12px;
+		font-weight: 400;
+		line-height: 19px;
+		letter-spacing: 0px;
+		&._tag-yellow {
+			color: #daa31a;
+			background-color: #f7edd0;
+		}
+		&._tag-green {
+			color: #309d5b;
+			background-color: rgba(51, 172, 100, 0.2);
+		}
+		&._tag-red {
+			color: #fb471d;
+			background-color: #f7c5ba;
+		}
+	}
+
+	// .block-card__title
+
+	&__title {
+		color: v.$bg-color-secondary;
+		font-size: 26px;
+		font-weight: 600;
+		line-height: 41.9px;
+		letter-spacing: 0px;
+	}
+}
+.info-block-card {
+	display: flex;
+	align-items: center;
+
+	// .info-block-card__time
+
+	&__time {
+		position: relative;
+		color: v.$color-text-tertiary;
+		font-family: Manrope;
+		font-size: 19px;
+		font-weight: 400;
+		line-height: 25.79px;
+		letter-spacing: 0px;
+		padding-right: 10px;
+		margin: 0 10px 0 0;
+		&::after {
+			content: "";
+			position: absolute;
+			width: 5px;
+			height: 5px;
+			top: 50%;
+			right: 0;
+			transform: translate(0, -50%);
+			background-color: v.$color-text-tertiary;
+			border-radius: 50%;
+		}
+	}
+
+	// .info-block-card__rating
+
+	&__rating {
+		display: flex;
+		align-items: center;
+		color: v.$color-text-tertiary;
+		font-family: Manrope;
+		font-size: 19px;
+		font-weight: 400;
+		line-height: 25.79px;
+		letter-spacing: 0px;
+
+		&::before {
+			color: v.$color-main;
+		}
+	}
+
+	// .info-block-card__bookmark
+
+	&__bookmark {
+		color: v.$color-main;
+		padding: 10px;
+		font-size: 20px;
+		background-color: v.$hilite-color-main;
+		border-radius: 50%;
+		width: 40px;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-left: auto;
+		transition: all 0.3s ease 0s;
+		&:hover {
+			background-color: v.$hilite-color-secondary;
+			color: v.$dim-color-main;
+		}
+	}
+}

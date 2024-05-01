@@ -1,5 +1,7 @@
+@use "src/scss/variables" as v;
+
 .footer {
-	background-color: #eaeaea;
+	background-color: v.$bg-color-main;
 	padding: 96px 0px 81px 0px;
 	// .footer__content
 
@@ -55,7 +57,7 @@
 	// .nav-footer__link
 
 	&__link {
-		color: #999999;
+		color: v.$color-text-secondary;
 
 		font-family: Inter;
 		font-size: 18px;
@@ -67,7 +69,7 @@
 
 		transition: all 0.3s ease 0s;
 		&:hover {
-			color: #6c5fbc;
+			color: v.$color-main;
 		}
 	}
 }
@@ -79,7 +81,7 @@
 	// .bottom-footer__copyright
 
 	&__copyright {
-		color: #999999;
+		color: v.$color-text-secondary;
 		font-family: Inter;
 		font-size: 17px;
 		font-weight: 500;
@@ -99,11 +101,11 @@
 	// .socials-bottom-footer__item
 
 	&__item {
-		color: #081420;
+		color: v.$bg-color-secondary;
 		font-size: 20px;
 		transition: all 0.3s ease 0s;
 		&:hover {
-			color: #6c5fbc;
+			color: v.$color-main;
 			transform: scale(1.2);
 		}
 	}

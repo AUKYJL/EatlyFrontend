@@ -10,11 +10,18 @@ import { AuthModule } from './pages/auth/auth.module';
 import { HomeComponent } from './pages/home/home.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { AngularToastifyModule, ToastService } from 'angular-toastify';
+import { httpInterceptorProviders } from './pages/auth/auth.interceptor';
 import { AuthService } from './services/auth.service';
-import { LoginComponent } from './shared/login/login.component';
-import { LogoModule } from './shared/logo/logo.module';
-import { RegisterComponent } from './shared/register/register.component';
-import { ForgetPasswordComponent } from './shared/forget-password/forget-password.component';
+import { RestaurantService } from './services/restaurant.service';
+import { ForgetPasswordComponent } from './shared/components/forget-password/forget-password.component';
+import { LoginComponent } from './shared/components/login/login.component';
+import { LogoModule } from './shared/components/logo/logo.module';
+import { PopupComponent } from './shared/components/popup/popup.component';
+import { RegisterComponent } from './shared/components/register/register.component';
+import { RestarauntCardsSectionComponent } from './shared/components/restaraunt-cards-section/restaraunt-cards-section.component';
+import { RestaurantCardComponent } from './shared/components/restaurant-card/restaurant-card.component';
+import { ItemsWithPaginationComponent } from './shared/components/items-with-pagination/items-with-pagination.component';
 
 @NgModule({
 	declarations: [
@@ -24,7 +31,11 @@ import { ForgetPasswordComponent } from './shared/forget-password/forget-passwor
 		FooterComponent,
 		HeaderComponent,
 		HomeComponent,
-  ForgetPasswordComponent,
+		ForgetPasswordComponent,
+		RestaurantCardComponent,
+		RestarauntCardsSectionComponent,
+		PopupComponent,
+  ItemsWithPaginationComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -33,8 +44,14 @@ import { ForgetPasswordComponent } from './shared/forget-password/forget-passwor
 		CommonModule,
 		LogoModule,
 		ReactiveFormsModule,
+		AngularToastifyModule,
 	],
-	providers: [AuthService],
+	providers: [
+		AuthService,
+		RestaurantService,
+		httpInterceptorProviders,
+		ToastService,
+	],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}

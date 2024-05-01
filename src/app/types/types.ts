@@ -23,3 +23,20 @@ export interface IUser {
 	name: string;
 	token: string;
 }
+
+export interface IRestaurant {
+	id: number;
+	title: string;
+	desc: string;
+	tag: string;
+	rating: number;
+	adress: string;
+	time: string;
+	urlToImg: string;
+	bookmarkedUsers?: [{ id: number }];
+}
+export enum RestaurantTags {
+	mega = 'mega',
+	medium = 'medium',
+	bad = 'bad',
+}

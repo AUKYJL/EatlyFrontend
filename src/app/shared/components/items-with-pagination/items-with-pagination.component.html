@@ -1,0 +1,54 @@
+<div class="items">
+	<div class="container">
+		<div class="items__content">
+			<div class="items__body">
+				<div class="items__cards cards">
+					<ng-container *ngFor="let restaurant of restaurants$ | async"
+						><app-restaurant-card [restaurant]="restaurant"
+					/></ng-container>
+				</div>
+				<div class="items__pagination pagination">
+					<div
+						class="pagination__prev pagination__btn _icon-arrow-right"
+						(click)="prevPage()"
+						[class.lock]="page <= 1"
+					>
+						Prev
+					</div>
+					<ng-container *ngIf="page < 3; else morePage">
+						<ng-container *ngFor="let i of [1, 2, 3, 4, 5]">
+							<div
+								class="pagination__item"
+								[class._active]="page == i"
+								*ngIf="i <= countPages"
+								(click)="openThisPage(i)"
+							>
+								{{ i }}
+							</div>
+						</ng-container>
+					</ng-container>
+					<div
+						class="pagination__next pagination__btn _icon-arrow-right"
+						(click)="nextPage()"
+						[class.lock]="page >= countPages"
+					>
+						Next
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<ng-template #morePage>
+	<ng-container *ngFor="let i of [1, 2, 3, 4, 5]">
+		<div
+			class="pagination__item"
+			[class._active]="i == 3"
+			*ngIf="page - 3 + i <= countPages"
+			(click)="openThisPage(page - 3 + i)"
+		>
+			{{ page - 3 + i }}
+		</div>
+	</ng-container>
+</ng-template>

@@ -1,3 +1,5 @@
+@use "src/scss/variables" as v;
+
 .auth {
 	// .auth__content
 
@@ -41,7 +43,7 @@
 		align-items: center;
 
 		a {
-			color: #718096;
+			color: v.$bg-color-secondary;
 
 			font-size: 16px;
 			font-weight: 500;

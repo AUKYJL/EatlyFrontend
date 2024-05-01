@@ -1,0 +1,84 @@
+@use "src/scss/variables" as v;
+
+.items {
+	// .items__content
+
+	&__content {
+	}
+
+	// .items__body
+
+	&__body {
+	}
+
+	// .items__cards
+
+	&__cards {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 30px;
+		height: 700px;
+	}
+
+	// .items__pagination
+
+	&__pagination {
+	}
+}
+
+.pagination {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	// .pagination__next
+
+	&__next {
+		flex-direction: row-reverse;
+	}
+	&__prev {
+		&::before {
+			transform: rotate(-180deg);
+		}
+	}
+
+	&__btn {
+		width: 60px;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		gap: 5px;
+		font-size: 16px;
+		font-weight: 500;
+		color: v.$color-text-main;
+		transition: all 0.3s ease 0s;
+		&:hover {
+			color: v.$color-main;
+		}
+		&.lock {
+			cursor: not-allowed;
+		}
+	}
+
+	// .pagination__item
+
+	&__item {
+		cursor: pointer;
+		position: relative;
+		display: inline-flex;
+		width: 50px;
+		height: 50px;
+		align-items: center;
+		justify-content: center;
+
+		padding: 5px;
+		background-color: v.$hilite-color-main;
+		color: #fff;
+		transition: all 0.3s ease 0s;
+		&._active {
+			background-color: v.$color-main;
+		}
+		&:hover {
+			background-color: v.$dim-color-main;
+		}
+	}
+}

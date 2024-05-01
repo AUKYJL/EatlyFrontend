@@ -1,0 +1,28 @@
+<div class="restaurant-card">
+	<div class="restaurant-card__content">
+		<div class="restaurant-card__body">
+			<div class="restaurant-card__img">
+				<img [src]="restaurant?.urlToImg" alt="restaurant img" />
+			</div>
+			<div class="restaurant-card__block block-card">
+				<span
+					class="block-card__tag"
+					[ngClass]="setTagStyle(restaurant?.tag || '')"
+					>{{ restaurant?.tag }}</span
+				>
+				<h3 class="block-card__title">{{ restaurant?.title }}</h3>
+				<div class="block-card__info info-block-card">
+					<p class="info-block-card__time">{{ restaurant?.time }}</p>
+					<p class="info-block-card__rating _icon-star">
+						{{ restaurant?.rating }}
+					</p>
+					<div
+						(click)="changeBookmark()"
+						class="info-block-card__bookmark"
+						[ngClass]="bookmarked ? '_icon-filled-bookmark' : '_icon-bookmark'"
+					></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

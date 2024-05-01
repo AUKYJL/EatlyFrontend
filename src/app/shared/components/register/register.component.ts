@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { IUserReg } from 'src/app/types/types';
 import { environment } from 'src/environments/environment';
-import { PhoneValidator } from '../validators/phone-validator';
+import { PhoneValidator } from '../../validators/phone-validator';
 
 @Component({
 	selector: 'app-register',

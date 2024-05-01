@@ -1,3 +1,5 @@
+@use "src/scss/variables" as v;
+
 .header {
 	// .header__content
 
@@ -55,7 +57,7 @@
 	// .menu__link
 
 	&__link {
-		color: #606060;
+		color: v.$color-text-main;
 		font-family: Inter;
 		font-size: 17px;
 		font-weight: 500;
@@ -72,20 +74,20 @@
 			bottom: 0;
 			left: 50%;
 			transform: translate(-50%, 0);
-			background-color: #6c5fbc;
+			background-color: v.$color-main;
 			transition: all 0.3s ease 0s;
 		}
 		&._active {
-			color: #6c5fbc;
+			color: v.$color-main;
 			&::before {
 				width: 100%;
 			}
 			&:hover {
-				color: #443b81;
+				color: v.$dim-color-main;
 			}
 		}
 		&:hover {
-			color: #6c5fbc;
+			color: v.$color-main;
 			&::before {
 				width: 100%;
 			}
@@ -118,7 +120,7 @@
 		display: flex;
 		align-items: center;
 		gap: 5px;
-		color: #6c5fbc;
+		color: v.$color-main;
 		font-size: 16px;
 		font-weight: 500;
 		&::before {
@@ -132,6 +134,4 @@
 
 	&__item {
 	}
-}
-.btn {
 }
