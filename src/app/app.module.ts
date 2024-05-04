@@ -13,15 +13,22 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AngularToastifyModule, ToastService } from 'angular-toastify';
 import { httpInterceptorProviders } from './pages/auth/auth.interceptor';
 import { AuthService } from './services/auth.service';
+import { DishService } from './services/dish.service';
+import { ItemsService } from './services/items.service';
 import { RestaurantService } from './services/restaurant.service';
+import { CreateNewRestaurantComponent } from './shared/components/create-new-restaurant/create-new-restaurant.component';
+import { DishCardSectionComponent } from './shared/components/dish-card-section/dish-card-section.component';
+import { DishCardComponent } from './shared/components/dish-card/dish-card.component';
 import { ForgetPasswordComponent } from './shared/components/forget-password/forget-password.component';
+import { ItemsWithPaginationComponent } from './shared/components/items-with-pagination/items-with-pagination.component';
 import { LoginComponent } from './shared/components/login/login.component';
 import { LogoModule } from './shared/components/logo/logo.module';
 import { PopupComponent } from './shared/components/popup/popup.component';
 import { RegisterComponent } from './shared/components/register/register.component';
 import { RestarauntCardsSectionComponent } from './shared/components/restaraunt-cards-section/restaraunt-cards-section.component';
 import { RestaurantCardComponent } from './shared/components/restaurant-card/restaurant-card.component';
-import { ItemsWithPaginationComponent } from './shared/components/items-with-pagination/items-with-pagination.component';
+import { UserAuthFieldComponent } from './shared/components/user-auth-field/user-auth-field.component';
+import { PricePipe } from './shared/pipes/price.pipe';
 
 @NgModule({
 	declarations: [
@@ -35,7 +42,12 @@ import { ItemsWithPaginationComponent } from './shared/components/items-with-pag
 		RestaurantCardComponent,
 		RestarauntCardsSectionComponent,
 		PopupComponent,
-  ItemsWithPaginationComponent,
+		ItemsWithPaginationComponent,
+		DishCardComponent,
+		DishCardSectionComponent,
+		PricePipe,
+		UserAuthFieldComponent,
+		CreateNewRestaurantComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -45,12 +57,15 @@ import { ItemsWithPaginationComponent } from './shared/components/items-with-pag
 		LogoModule,
 		ReactiveFormsModule,
 		AngularToastifyModule,
+		CommonModule,
 	],
 	providers: [
 		AuthService,
 		RestaurantService,
 		httpInterceptorProviders,
 		ToastService,
+		DishService,
+		ItemsService,
 	],
 	bootstrap: [AppComponent],
 })

@@ -14,7 +14,7 @@ const routes: Routes = [
 			import('./pages/auth/auth.module').then((m) => m.AuthModule),
 	},
 	{
-		path: 'restaurants',
+		path: 'items/:contentType',
 		component: ItemsWithPaginationComponent,
 	},
 	{

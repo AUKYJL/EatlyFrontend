@@ -30,6 +30,7 @@ export class RestaurantCardComponent implements OnInit {
 			if (!restaurants) return false;
 			for (let i = 0; i < restaurants.length; i++) {
 				const { id } = restaurants[i];
+
 				if (id === userId) return true;
 			}
 		}
@@ -41,8 +42,7 @@ export class RestaurantCardComponent implements OnInit {
 			this.bookmarked = !this.bookmarked;
 			this.restaurantService.changeBookmark(this.restaurant!.id);
 		} else {
-			this.toastService.error('U should be authorized');
-			//TODO:POPUP u need to reg
+			this.toastService.error('U must be authorized');
 		}
 	}
 

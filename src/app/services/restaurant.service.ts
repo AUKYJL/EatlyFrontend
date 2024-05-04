@@ -17,23 +17,17 @@ export class RestaurantService {
 		);
 	}
 	public changeBookmark(restaurantId: number) {
-		//TODO:все работает, если взять токен из локала и поставить в инсомнию, но конкретно тут скорее всего токен не прокидывается просто и из-за этого аноторайзед
-		console.log(this.authService.user?.token);
-
 		if (this.authService.user) {
 			const headers = new HttpHeaders({
 				'Content-Type': 'application/json',
 			});
-			console.log(restaurantId);
 
 			this.http
 				.patch<number>(
 					environment.apiUrl + `restaurants/change-bookmark/${restaurantId}`,
 					{ headers: headers }
 				)
-				.subscribe((response) => {
-					console.log('Response:', response);
-				});
+				.subscribe();
 		}
 	}
 }

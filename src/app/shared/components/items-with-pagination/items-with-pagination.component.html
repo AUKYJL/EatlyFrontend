@@ -2,11 +2,6 @@
 	<div class="container">
 		<div class="items__content">
 			<div class="items__body">
-				<div class="items__cards cards">
-					<ng-container *ngFor="let restaurant of restaurants$ | async"
-						><app-restaurant-card [restaurant]="restaurant"
-					/></ng-container>
-				</div>
 				<div class="items__pagination pagination">
 					<div
 						class="pagination__prev pagination__btn _icon-arrow-right"
@@ -34,6 +29,23 @@
 					>
 						Next
 					</div>
+				</div>
+				<div
+					class="items__cards cards"
+					[style.grid-template-columns]="'repeat(' + cols + ', 1fr)'"
+				>
+					<ng-container [ngSwitch]="type">
+						<ng-container *ngSwitchCase="types.restaurants">
+							<ng-container *ngFor="let item of restaurants$ | async">
+								<app-restaurant-card [restaurant]="item" />
+							</ng-container>
+						</ng-container>
+						<ng-container *ngSwitchCase="types.dishes">
+							<ng-container *ngFor="let item of dishes$ | async">
+								<app-dish-card [dish]="item" />
+							</ng-container>
+						</ng-container>
+					</ng-container>
 				</div>
 			</div>
 		</div>

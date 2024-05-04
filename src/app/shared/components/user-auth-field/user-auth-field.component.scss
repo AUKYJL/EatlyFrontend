@@ -1,0 +1,105 @@
+@use "src/scss/variables" as v;
+.user {
+	position: relative;
+	// .user-auth__name
+
+	&__name {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+		color: v.$color-main;
+		font-size: 16px;
+		font-weight: 500;
+		position: relative;
+		padding-right: 20px;
+		&::before {
+			font-size: 25px;
+		}
+		span {
+			&::before,
+			&::after {
+				content: "";
+				position: absolute;
+				width: 10px;
+				height: 3px;
+				top: 45%;
+				right: 0;
+				background-color: v.$color-main;
+				transition: all 0.3s ease 0s;
+			}
+			&::after {
+				transform: translate(-3px, 0px) rotate(45deg);
+			}
+			&::before {
+				transform: translate(3px, 0px) rotate(-45deg);
+			}
+			._active & {
+				&::after {
+					transform: translate(-3px, 0px) rotate(-45deg);
+				}
+				&::before {
+					transform: translate(3px, 0px) rotate(45deg);
+				}
+			}
+		}
+	}
+}
+.dropdown {
+	position: absolute;
+	width: auto;
+	top: 30px;
+	height: 0px;
+	overflow: hidden;
+	right: 0;
+	transition: all 0.3s ease 0s;
+	box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
+	._active & {
+		height: 200px;
+	}
+	// .dropdown__body
+
+	&__body {
+		padding: 20px;
+		background-color: #fff;
+	}
+
+	// .dropdown__list
+
+	&__list {
+		text-align: right;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	// .dropdown__item
+
+	&__item {
+	}
+
+	// .dropdown__link
+
+	&__link {
+		font-size: 16px;
+		color: v.$color-text-main;
+		transition: all 0.3s ease 0s;
+		font-weight: 500;
+		&:hover {
+			color: v.$color-main;
+		}
+	}
+}
+.logout {
+	color: red;
+	border: 1px solid transparent;
+	transition: all 0.3s ease 0s;
+	padding: 5px;
+	margin: 0px -5px 0 0;
+	border-radius: 10px;
+	font-weight: 600;
+	&:hover {
+		border: 1px solid red;
+		background-color: rgb(255, 223, 223);
+		color: red;
+	}
+}
