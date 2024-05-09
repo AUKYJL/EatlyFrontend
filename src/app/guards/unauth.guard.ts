@@ -7,14 +7,14 @@ import {
 } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
-export const authGuard: CanActivateFn = (
+export const unauthGuard: CanActivateFn = (
 	route: ActivatedRouteSnapshot,
 	state: RouterStateSnapshot
 ) => {
-	if (inject(AuthService).checkAuth()) {
+	if (!inject(AuthService).checkAuth()) {
 		return true;
 	} else {
-		inject(Router).navigate(['/auth/login']);
+		inject(Router).navigate(['/']);
 		return false;
 	}
 };

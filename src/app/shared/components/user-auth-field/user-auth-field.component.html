@@ -1,15 +1,18 @@
 <div class="user" [class._active]="isDropdownActive">
-	<a href="#" class="user__name _icon-filled-user" (click)="toggleDropdown()"
-		>{{ authService.user?.name }} <span></span
-	></a>
+	<div class="user__name _icon-filled-user" (click)="toggleDropdown()">
+		{{ authService.user?.name }} <span></span>
+	</div>
 	<div class="user__dropdown dropdown">
 		<div class="dropdown__body">
 			<ul class="dropdown__list">
 				<ng-container *ngFor="let dropdown of dropDownList">
 					<li class="dropdown__item">
-						<a [routerLink]="dropdown.route" class="dropdown__link">{{
-							dropdown.title
-						}}</a>
+						<a
+							[routerLink]="dropdown.route"
+							class="dropdown__link"
+							(click)="toggleDropdown()"
+							>{{ dropdown.title }}</a
+						>
 					</li></ng-container
 				>
 

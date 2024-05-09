@@ -1,14 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DishService } from 'src/app/services/dish.service';
 import { ItemsService } from 'src/app/services/items.service';
 import { RestaurantService } from 'src/app/services/restaurant.service';
-import {
-	IDish,
-	IRestaurant,
-	ItemsWithPaginationTypes,
-} from 'src/app/types/types';
+import { ItemsWithPaginationTypes } from 'src/app/types/types';
 
 @Component({
 	selector: 'app-items-with-pagination',
@@ -19,48 +14,33 @@ export class ItemsWithPaginationComponent implements OnInit {
 	constructor(
 		private restaurantService: RestaurantService,
 		private dishService: DishService,
-		public itemsService: ItemsService,
-		private route: ActivatedRoute
+		public itemsService: ItemsService
 	) {}
 
-	type!: ItemsWithPaginationTypes;
+	@Input({ required: true }) type!: ItemsWithPaginationTypes;
+	@Input() title?: string;
+
 	cols: number = 3;
 
 	public types = ItemsWithPaginationTypes;
 	public page: number = 1;
 	public countPages = 1;
 	private limit: number = 6;
-	public restaurants$ = new Observable<IRestaurant[]>();
-	public dishes$ = new Observable<IDish[]>();
+	public items$ = new Observable();
 
 	ngOnInit(): void {
-		if (this.isCorrectRoute()) {
+		this.getItems();
+		this.restaurantService.deletedRestaurant.subscribe(() => {
 			this.getItems();
-		}
-	}
-	private isCorrectRoute(): boolean {
-		let isCorrect = false;
-		this.route.paramMap.subscribe((params) => {
-			let type = params.get('contentType');
-			if (type) {
-				if (
-					Object.values(ItemsWithPaginationTypes).includes(
-						type as ItemsWithPaginationTypes
-					)
-				) {
-					this.type = type as ItemsWithPaginationTypes;
-					isCorrect = true;
-				}
-			}
 		});
-		return isCorrect;
 	}
+
 	private getItems() {
 		switch (this.type) {
 			case ItemsWithPaginationTypes.dishes:
 				this.cols = 5;
 				this.limit = this.cols * 2;
-				this.dishes$ = this.dishService.getDishesWithPaginations(
+				this.items$ = this.dishService.getDishesWithPaginations(
 					this.page,
 					this.limit
 				);
@@ -69,36 +49,49 @@ export class ItemsWithPaginationComponent implements OnInit {
 				});
 				break;
 			case ItemsWithPaginationTypes.restaurants:
-				this.restaurants$ = this.restaurantService.getRestaurantsWithPagination(
+				this.cols = 3;
+				this.limit = this.cols * 2;
+				this.items$ = this.restaurantService.getRestaurantsWithPagination(
 					this.page,
 					this.limit
 				);
-				this.cols = 3;
-				this.limit = this.cols * 2;
 				this.restaurantService.getAllRestaurants().subscribe((r) => {
 					this.countPages = Math.ceil(r.length / this.limit);
 				});
 				break;
+			case ItemsWithPaginationTypes.bookmarkedRestaurants:
+				this.cols = 3;
+				this.limit = this.cols * 2;
+				this.items$ =
+					this.restaurantService.getAllBookmarkedRestaurantsWithPagination(
+						this.page,
+						this.limit
+					);
 
+				this.restaurantService.getAllBookmarkedRestaurants().subscribe((r) => {
+					this.countPages = Math.ceil(r.length / this.limit);
+				});
+
+				break;
+			case ItemsWithPaginationTypes.ownRestaurants:
+				this.cols = 3;
+				this.limit = this.cols * 2;
+				this.items$ = this.restaurantService.getAllOwnRestaurantsWithPagination(
+					this.page,
+					this.limit
+				);
+				this.restaurantService.getAllOwnRestaurants().subscribe((r) => {
+					this.countPages = Math.ceil(r.length / this.limit);
+				});
+
+				break;
 			default:
 				break;
 		}
 	}
 
-	public nextPage() {
-		if (this.page < this.countPages) {
-			this.page++;
-			this.getItems();
-		}
-	}
-	public prevPage() {
-		if (this.page > 1) {
-			this.page--;
-			this.getItems();
-		}
-	}
-	public openThisPage(id: number) {
-		this.page = id;
+	public handleOnChangePage(page: number) {
+		this.page = page;
 		this.getItems();
 	}
 }

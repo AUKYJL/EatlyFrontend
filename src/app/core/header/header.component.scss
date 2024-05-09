@@ -1,6 +1,7 @@
 @use "src/scss/variables" as v;
 
 .header {
+	z-index: 100;
 	// .header__content
 
 	&__content {

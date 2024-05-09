@@ -2,65 +2,17 @@
 	<div class="container">
 		<div class="items__content">
 			<div class="items__body">
-				<div class="items__pagination pagination">
-					<div
-						class="pagination__prev pagination__btn _icon-arrow-right"
-						(click)="prevPage()"
-						[class.lock]="page <= 1"
-					>
-						Prev
-					</div>
-					<ng-container *ngIf="page < 3; else morePage">
-						<ng-container *ngFor="let i of [1, 2, 3, 4, 5]">
-							<div
-								class="pagination__item"
-								[class._active]="page == i"
-								*ngIf="i <= countPages"
-								(click)="openThisPage(i)"
-							>
-								{{ i }}
-							</div>
-						</ng-container>
-					</ng-container>
-					<div
-						class="pagination__next pagination__btn _icon-arrow-right"
-						(click)="nextPage()"
-						[class.lock]="page >= countPages"
-					>
-						Next
-					</div>
+				<div class="items__top">
+					<h3 class="title-h3" [innerHTML]="title"></h3>
+					<app-pagination
+						[countPages]="countPages"
+						[page]="page"
+						(onChangePage)="handleOnChangePage($event)"
+					/>
 				</div>
-				<div
-					class="items__cards cards"
-					[style.grid-template-columns]="'repeat(' + cols + ', 1fr)'"
-				>
-					<ng-container [ngSwitch]="type">
-						<ng-container *ngSwitchCase="types.restaurants">
-							<ng-container *ngFor="let item of restaurants$ | async">
-								<app-restaurant-card [restaurant]="item" />
-							</ng-container>
-						</ng-container>
-						<ng-container *ngSwitchCase="types.dishes">
-							<ng-container *ngFor="let item of dishes$ | async">
-								<app-dish-card [dish]="item" />
-							</ng-container>
-						</ng-container>
-					</ng-container>
-				</div>
+
+				<app-items [cols]="cols" [items]="items$ | async" [type]="type" />
 			</div>
 		</div>
 	</div>
 </div>
-
-<ng-template #morePage>
-	<ng-container *ngFor="let i of [1, 2, 3, 4, 5]">
-		<div
-			class="pagination__item"
-			[class._active]="i == 3"
-			*ngIf="page - 3 + i <= countPages"
-			(click)="openThisPage(page - 3 + i)"
-		>
-			{{ page - 3 + i }}
-		</div>
-	</ng-container>
-</ng-template>

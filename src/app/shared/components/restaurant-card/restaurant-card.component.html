@@ -1,20 +1,55 @@
 <div class="restaurant-card">
 	<div class="restaurant-card__content">
 		<div class="restaurant-card__body">
-			<div class="restaurant-card__img">
-				<img [src]="restaurant?.urlToImg" alt="restaurant img" />
+			<div class="hover-card">
+				<div class="hover-card__top">
+					<div
+						class="hover-card__left left-hover hover-card__side"
+						(mouseenter)="hoveredLeft = true"
+						(mouseleave)="hoveredLeft = false"
+						(click)="editRestaurant()"
+					>
+						<p [ngClass]="hoveredLeft ? '_icon-filled-pen' : '_icon-pen'">
+							Edit
+						</p>
+					</div>
+					<div
+						class="hover-card__right right-hover hover-card__side"
+						(mouseenter)="hoveredRight = true"
+						(mouseleave)="hoveredRight = false"
+						(click)="deleteRestaurant()"
+					>
+						<p [ngClass]="hoveredRight ? '_icon-filled-trash' : '_icon-trash'">
+							Delete
+						</p>
+					</div>
+				</div>
+				<div class="hover-card__bottom bottom-card">
+					<div
+						class="hover-card__center hover-card__side"
+						(mouseenter)="hoveredRight = true"
+						(mouseleave)="hoveredRight = false"
+					>
+						<p>Check</p>
+					</div>
+				</div>
 			</div>
+
+			<div class="restaurant-card__img">
+				<img [src]="restaurant.urlToImg" alt="restaurant img" />
+			</div>
+
 			<div class="restaurant-card__block block-card">
 				<span
 					class="block-card__tag"
-					[ngClass]="setTagStyle(restaurant?.tag || '')"
-					>{{ restaurant?.tag }}</span
+					[ngClass]="setTagStyle(restaurant.tag || '')"
+					>{{ restaurant.tag }}</span
 				>
-				<h3 class="block-card__title">{{ restaurant?.title }}</h3>
+				<h3 class="block-card__title">{{ restaurant.title }}</h3>
 				<div class="block-card__info info-block-card">
-					<p class="info-block-card__time">{{ restaurant?.time }}</p>
+					<p class="info-block-card__time">{{ restaurant.time }}</p>
 					<p class="info-block-card__rating _icon-star">
-						{{ restaurant?.rating }}
+						{{ restaurant.rating }}
 					</p>
 					<div
 						(click)="changeBookmark()"

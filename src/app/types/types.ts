@@ -24,6 +24,17 @@ export interface IUser {
 	token: string;
 }
 
+export interface ICreateRestaurant {
+	title: string;
+	tag: RestaurantTags;
+	desc: string;
+	adress: string;
+	time: string;
+	urlToImg: string;
+}
+export interface IUpdateRestaurant extends ICreateRestaurant {
+	id: number;
+}
 export interface IRestaurant {
 	id: number;
 	title: string;
@@ -66,5 +77,7 @@ export enum DishGroups {
 }
 export enum ItemsWithPaginationTypes {
 	restaurants = 'restaurants',
+	bookmarkedRestaurants = 'bookmarkedRestaurants',
+	ownRestaurants = 'ownRestaurants',
 	dishes = 'dishes',
 }

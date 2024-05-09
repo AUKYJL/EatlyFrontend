@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="new__content">
 			<div class="new__body">
-				<h3 class="new__title title-h3">Creating new restaurant...</h3>
+				<h3 class="new__title title-h3">Editing restaurant...</h3>
 				<form class="form" [formGroup]="form" (submit)="onSubmit()">
 					<div class="form__field field-form">
 						<label for="title" class="field-form__title">Title</label>
@@ -56,9 +56,7 @@
 							placeholder="Enter ur URL to image"
 						/>
 						<div
-							*ngIf="
-								form.controls.urlToImg.value && form.controls.urlToImg.touched
-							"
+							*ngIf="form.controls.urlToImg.value"
 							class="field-form__img-preview"
 						>
 							<span>Image preview</span>
@@ -71,7 +69,7 @@
 						<angular-editor [config]="config" formControlName="desc" />
 					</div>
 					<button type="submit" class="form__btn btn" [disabled]="!form.valid">
-						Create
+						Edit
 					</button>
 					<small *ngIf="!form.valid">{{ errorMessage }}</small>
 				</form>

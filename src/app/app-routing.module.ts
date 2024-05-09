@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { authGuard } from './guards/auth.guard';
+import { AllItemsComponent } from './pages/all-items/all-items.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ItemsWithPaginationComponent } from './shared/components/items-with-pagination/items-with-pagination.component';
 
 const routes: Routes = [
 	{
@@ -15,7 +16,13 @@ const routes: Routes = [
 	},
 	{
 		path: 'items/:contentType',
-		component: ItemsWithPaginationComponent,
+		component: AllItemsComponent,
+	},
+	{
+		path: 'profile',
+		canActivate: [authGuard],
+		loadChildren: () =>
+			import('./pages/profile/profile.module').then((m) => m.ProfileModule),
 	},
 	{
 		path: '**',

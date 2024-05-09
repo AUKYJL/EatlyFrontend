@@ -1,9 +1,11 @@
 @use "src/scss/variables" as v;
 .user {
+	z-index: 100;
 	position: relative;
 	// .user-auth__name
 
 	&__name {
+		cursor: pointer;
 		display: flex;
 		align-items: center;
 		gap: 5px;

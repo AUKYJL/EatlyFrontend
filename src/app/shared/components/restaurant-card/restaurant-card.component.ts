@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastService } from 'angular-toastify';
 import { AuthService } from 'src/app/services/auth.service';
 import { RestaurantService } from 'src/app/services/restaurant.service';
@@ -13,12 +14,16 @@ export class RestaurantCardComponent implements OnInit {
 	constructor(
 		private authService: AuthService,
 		private restaurantService: RestaurantService,
-		private toastService: ToastService
+		private toastService: ToastService,
+		private router: Router
 	) {}
 
-	@Input({ required: true }) restaurant: IRestaurant | null = null;
+	@Input({ required: true }) restaurant!: IRestaurant;
+
 	public restaurantTags = RestaurantTags;
 	public bookmarked: boolean = false;
+	public hoveredLeft: boolean = false;
+	public hoveredRight: boolean = false;
 
 	ngOnInit(): void {
 		this.bookmarked = this.getBookmarked();
@@ -57,5 +62,15 @@ export class RestaurantCardComponent implements OnInit {
 			default:
 				return '';
 		}
+	}
+
+	public deleteRestaurant() {
+		this.restaurantService.delete(this.restaurant!.id).subscribe((r) => {
+			this.restaurantService.deletedRestaurant.emit();
+		});
+	}
+	public editRestaurant() {
+		this.restaurantService.editingRestaurant = this.restaurant;
+		this.router.navigate(['/profile/restaurants/edit']);
 	}
 }

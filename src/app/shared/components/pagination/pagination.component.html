@@ -1,0 +1,55 @@
+<div class="items__pagination pagination">
+	<div
+		class="pagination__prev pagination__btn _icon-arrow-right"
+		(click)="prevPage()"
+		[class.lock]="page <= 1"
+	>
+		Prev
+	</div>
+	<ng-container *ngIf="page < 3 || countPages < 6; else morePage">
+		<ng-container *ngFor="let i of [1, 2, 3, 4, 5]">
+			<div
+				class="pagination__item"
+				[class._active]="page == i"
+				*ngIf="i <= countPages"
+				(click)="openThisPage(i)"
+			>
+				{{ i }}
+			</div>
+		</ng-container>
+	</ng-container>
+	<div
+		class="pagination__next pagination__btn _icon-arrow-right"
+		(click)="nextPage()"
+		[class.lock]="page >= countPages"
+	>
+		Next
+	</div>
+</div>
+
+<ng-template #morePage>
+	<ng-container *ngIf="page + 3 < countPages; else moremorePage">
+		<ng-container *ngFor="let i of [1, 2, 3, 4, 5]">
+			<div
+				class="pagination__item"
+				[class._active]="i == 3"
+				*ngIf="page - 3 + i <= countPages"
+				(click)="openThisPage(page - 3 + i)"
+			>
+				{{ page - 3 + i }}
+			</div>
+		</ng-container>
+	</ng-container>
+</ng-template>
+
+<ng-template #moremorePage>
+	<ng-container *ngFor="let i of [4, 3, 2, 1, 0]">
+		<div
+			class="pagination__item"
+			[class._active]="page == countPages - i"
+			(click)="openThisPage(countPages - i)"
+		>
+			{{ countPages - i }}
+		</div>
+	</ng-container>
+</ng-template>

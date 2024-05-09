@@ -103,9 +103,21 @@
 	</div>
 </section>
 
-<app-restaraunt-cards-section />
+<app-cards-section
+	title="Our Top <span>Restaurants</span>"
+	[items]="restaurants$ | async"
+	[type]="types.restaurants"
+	viewAllRoute="/items/restaurants"
+/>
 
-<app-dish-card-section />
+<app-cards-section
+	title="Our Top <span>Dishes</span>"
+	[items]="dishes$ | async"
+	[type]="types.dishes"
+	cols="5"
+	viewAllRoute="/items/dishes"
+/>
+
 <section class="form">
 	<div class="container">
 		<div class="form__content">

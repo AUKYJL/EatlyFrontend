@@ -13,23 +13,23 @@ export class UserAuthFieldComponent {
 	public dropDownList: INavList[] = [
 		{
 			title: 'Profile',
-			route: '',
+			route: 'profile',
 		},
 		{
 			title: 'Cart',
-			route: '',
+			route: 'profile/cart',
 		},
 		{
 			title: 'Purchases',
-			route: '',
+			route: 'profile/purchases',
 		},
 		{
 			title: 'Restaurants',
-			route: '',
+			route: 'profile/restaurants',
 		},
 		{
 			title: 'Dishes',
-			route: '',
+			route: 'profile/dishes',
 		},
 	];
 	public isDropdownActive: boolean = false;
