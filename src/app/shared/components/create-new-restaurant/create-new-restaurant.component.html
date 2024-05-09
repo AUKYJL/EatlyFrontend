@@ -1,0 +1,81 @@
+<div class="new">
+	<div class="container">
+		<div class="new__content">
+			<div class="new__body">
+				<h3 class="new__title title-h3">Creating new restaurant...</h3>
+				<form class="form" [formGroup]="form" (submit)="onSubmit()">
+					<div class="form__field field-form">
+						<label for="title" class="field-form__title">Title</label>
+						<input
+							formControlName="title"
+							id="title"
+							type="text"
+							class="field-form__input"
+							placeholder="Enter ur title"
+						/>
+					</div>
+					<div class="form__field field-form">
+						<label for="tag" class="field-form__title">Tag</label>
+						<select
+							formControlName="tag"
+							class="field-form__select"
+							name="tag"
+							id="tag"
+						>
+							<option value="" selected disabled hidden>Choose here</option>
+							<option [value]="opt" *ngFor="let opt of tags">{{ opt }}</option>
+						</select>
+					</div>
+					<div class="form__field field-form">
+						<label for="time" class="field-form__title">Time</label>
+						<input
+							formControlName="time"
+							id="time"
+							type="text"
+							class="field-form__input"
+							placeholder="Enter ur time"
+						/>
+					</div>
+					<div class="form__field field-form">
+						<label for="adress" class="field-form__title">Adress</label>
+						<input
+							formControlName="adress"
+							id="adress"
+							type="text"
+							class="field-form__input"
+							placeholder="Enter ur adress"
+						/>
+					</div>
+					<div class="form__field field-form">
+						<label for="urlToImg" class="field-form__title">URL to image</label>
+						<input
+							formControlName="urlToImg"
+							id="urlToImg"
+							type="text"
+							class="field-form__input"
+							placeholder="Enter ur URL to image"
+						/>
+						<div
+							*ngIf="
+								form.controls.urlToImg.value && form.controls.urlToImg.touched
+							"
+							class="field-form__img-preview"
+						>
+							<span>Image preview</span>
+							<img [src]="form.controls.urlToImg.value" alt="preview image" />
+						</div>
+					</div>
+
+					<div class="form__field field-form">
+						<div class="field-form__title">Desc</div>
+						<angular-editor [config]="config" formControlName="desc" />
+					</div>
+					<button type="submit" class="form__btn btn" [disabled]="!form.valid">
+						Create
+					</button>
+					<small *ngIf="!form.valid">{{ errorMessage }}</small>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

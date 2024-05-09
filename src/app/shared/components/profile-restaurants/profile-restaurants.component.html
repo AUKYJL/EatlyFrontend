@@ -1,0 +1,29 @@
+<section class="profile-restaraunt">
+	<div class="container">
+		<p>если у ресторана кликнуть карандаш то ты его отредактируешь</p>
+		<p>
+			в этой менюшке при ховере на свой ресторан фон слева красится в
+			зеленый-прозрачный и появляется карандаш, справа - красный и ведро
+		</p>
+		<div class="profile-restaraunt__content">
+			<div class="profile-restaraunt__body">
+				<div class="profile-restaraunt__my-restaraunts my-restaraunts">
+					<app-items-with-pagination
+						[title]="'My Own <span>Restaurants</span>'"
+						[type]="types.ownRestaurants"
+					/>
+
+					<a (click)="goToCreateNew()" class="my-restaraunts__btn btn"
+						>Create New</a
+					>
+				</div>
+				<div class="profile-restaraunt__bookmarked bookmarked-restaurants">
+					<app-items-with-pagination
+						[title]="'My Bookmarked <span>Restaurants</span>'"
+						[type]="types.bookmarkedRestaurants"
+					/>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

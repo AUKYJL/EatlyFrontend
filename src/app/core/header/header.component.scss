@@ -1,6 +1,7 @@
 @use "src/scss/variables" as v;
 
 .header {
+	z-index: 100;
 	// .header__content
 
 	&__content {
@@ -111,21 +112,6 @@
 	gap: 20px;
 	// .auth__user
 	&__user {
-	}
-}
-.user-auth {
-	// .user-auth__name
-
-	&__name {
-		display: flex;
-		align-items: center;
-		gap: 5px;
-		color: v.$color-main;
-		font-size: 16px;
-		font-weight: 500;
-		&::before {
-			font-size: 25px;
-		}
 	}
 }
 

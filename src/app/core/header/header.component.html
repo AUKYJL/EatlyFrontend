@@ -36,17 +36,7 @@
 				<ng-template #auth>
 					<div class="auth">
 						<div class="auth__cart cart-auth">cart-auth</div>
-						<div class="auth__user user-auth">
-							<a href="#" class="user-auth__name _icon-filled-user">{{
-								authService.user?.name
-							}}</a>
-						</div>
-						<a
-							routerLink="/"
-							class="btns-header__item btn"
-							(click)="authService.logout()"
-							>Log out</a
-						>
+						<app-user-auth-field />
 					</div>
 				</ng-template>
 			</div>

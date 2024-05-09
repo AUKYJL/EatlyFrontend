@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { DishService } from 'src/app/services/dish.service';
+import { ItemsService } from 'src/app/services/items.service';
 import { RestaurantService } from 'src/app/services/restaurant.service';
-import { IRestaurant } from 'src/app/types/types';
+import { ItemsWithPaginationTypes } from 'src/app/types/types';
 
 @Component({
 	selector: 'app-items-with-pagination',
@@ -9,44 +11,87 @@ import { IRestaurant } from 'src/app/types/types';
 	styleUrls: ['./items-with-pagination.component.scss'],
 })
 export class ItemsWithPaginationComponent implements OnInit {
-	constructor(private restaurantService: RestaurantService) {}
+	constructor(
+		private restaurantService: RestaurantService,
+		private dishService: DishService,
+		public itemsService: ItemsService
+	) {}
+
+	@Input({ required: true }) type!: ItemsWithPaginationTypes;
+	@Input() title?: string;
+
+	cols: number = 3;
+
+	public types = ItemsWithPaginationTypes;
 	public page: number = 1;
 	public countPages = 1;
 	private limit: number = 6;
-	public restaurants$ = new Observable<IRestaurant[]>();
+	public items$ = new Observable();
 
 	ngOnInit(): void {
-		this.getRestaurants();
-		this.getCountPages();
-	}
-	private getRestaurants() {
-		this.restaurants$ = this.restaurantService.getRestaurantsWithPagination(
-			this.page,
-			this.limit
-		);
-	}
-	private getCountPages() {
-		this.restaurantService.getAllRestaurants().subscribe((r) => {
-			console.log(r.length);
-
-			this.countPages = Math.ceil(r.length / this.limit);
+		this.getItems();
+		this.restaurantService.deletedRestaurant.subscribe(() => {
+			this.getItems();
 		});
 	}
 
-	public nextPage() {
-		if (this.page < this.countPages) {
-			this.page++;
-			this.getRestaurants();
+	private getItems() {
+		switch (this.type) {
+			case ItemsWithPaginationTypes.dishes:
+				this.cols = 5;
+				this.limit = this.cols * 2;
+				this.items$ = this.dishService.getDishesWithPaginations(
+					this.page,
+					this.limit
+				);
+				this.dishService.getAllDishes().subscribe((r) => {
+					this.countPages = Math.ceil(r.length / this.limit);
+				});
+				break;
+			case ItemsWithPaginationTypes.restaurants:
+				this.cols = 3;
+				this.limit = this.cols * 2;
+				this.items$ = this.restaurantService.getRestaurantsWithPagination(
+					this.page,
+					this.limit
+				);
+				this.restaurantService.getAllRestaurants().subscribe((r) => {
+					this.countPages = Math.ceil(r.length / this.limit);
+				});
+				break;
+			case ItemsWithPaginationTypes.bookmarkedRestaurants:
+				this.cols = 3;
+				this.limit = this.cols * 2;
+				this.items$ =
+					this.restaurantService.getAllBookmarkedRestaurantsWithPagination(
+						this.page,
+						this.limit
+					);
+
+				this.restaurantService.getAllBookmarkedRestaurants().subscribe((r) => {
+					this.countPages = Math.ceil(r.length / this.limit);
+				});
+
+				break;
+			case ItemsWithPaginationTypes.ownRestaurants:
+				this.cols = 3;
+				this.limit = this.cols * 2;
+				this.items$ = this.restaurantService.getAllOwnRestaurantsWithPagination(
+					this.page,
+					this.limit
+				);
+				this.restaurantService.getAllOwnRestaurants().subscribe((r) => {
+					this.countPages = Math.ceil(r.length / this.limit);
+				});
+
+				break;
+			default:
+				break;
 		}
 	}
-	public prevPage() {
-		if (this.page > 1) {
-			this.page--;
-			this.getRestaurants();
-		}
-	}
-	public openThisPage(id: number) {
-		this.page = id;
-		this.getRestaurants();
+
+	public handleOnChangePage(page: number) {
+		this.page = page;
+		this.getItems();
 	}
 }
