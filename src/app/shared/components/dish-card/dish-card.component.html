@@ -1,22 +1,19 @@
 <div class="card">
 	<div class="card__content">
-		<div class="card__body">
+		<app-hover-card *ngIf="hasHover" [tabs]="tabs" />
+		<div class="card__body" (click)="goToDish()">
 			<div class="card__like">
-				<span
-					[ngClass]="!isLiked ? '_icon-heart' : '_icon-filled-heart'"
-					[class._active]="isLiked"
-					(click)="changeLiked()"
-				></span>
+				<app-liked [isLiked]="isLiked" [dishId]="dish!.id" />
 			</div>
 			<div class="card__img">
-				<img [src]="dish?.urlToImg" alt="dish image" />
+				<img [src]="dish.urlToImg" alt="dish image" />
 			</div>
 			<div class="card__block block-card">
-				<span class="block-card__tag _tag-yellow">{{ dish?.tag }}</span>
-				<h3 class="block-card__title">{{ dish?.title }}</h3>
+				<span class="block-card__tag _tag-yellow">{{ dish.tag }}</span>
+				<h3 class="block-card__title">{{ dish.title }}</h3>
 				<div class="block-card__info info-card">
-					<p class="info-card__time">{{ dish?.timeToCook }}</p>
-					<p class="info-card__rating _icon-star">{{ dish?.rating }}</p>
+					<p class="info-card__time">{{ dish.timeToCook }}</p>
+					<p class="info-card__rating _icon-star">{{ dish.rating }}</p>
 				</div>
 				<div class="card__footer footer-card">
 					<p class="footer-card__price" [innerHTML]="dish!.price | price"></p>

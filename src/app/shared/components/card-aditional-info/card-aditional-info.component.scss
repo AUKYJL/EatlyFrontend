@@ -1,0 +1,48 @@
+// .info-block-card__time
+@use "src/scss/variables" as v;
+.card {
+	&.row {
+		display: flex;
+		align-items: center;
+	}
+
+	&__time {
+		position: relative;
+		color: v.$color-text-tertiary;
+		font-family: Manrope;
+		font-size: 19px;
+		font-weight: 400;
+		line-height: 25.79px;
+		letter-spacing: 0px;
+		padding-right: 10px;
+		margin: 0 10px 0 0;
+		&::after {
+			content: "";
+			position: absolute;
+			width: 5px;
+			height: 5px;
+			top: 50%;
+			right: 0;
+			transform: translate(0, -50%);
+			background-color: v.$color-text-tertiary;
+			border-radius: 50%;
+		}
+	}
+
+	// .info-block-card__rating
+
+	&__rating {
+		display: flex;
+		align-items: center;
+		color: v.$color-text-tertiary;
+		font-family: Manrope;
+		font-size: 19px;
+		font-weight: 400;
+		line-height: 25.79px;
+		letter-spacing: 0px;
+
+		&::before {
+			color: v.$color-main;
+		}
+	}
+}

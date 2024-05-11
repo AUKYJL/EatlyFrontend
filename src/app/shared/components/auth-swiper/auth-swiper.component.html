@@ -1,0 +1,23 @@
+<div class="slider">
+	<swiper-container #slider init="false">
+		<swiper-slide *ngFor="let item of [1, 2, 3, 4, 5]">
+			<div class="slide">
+				<div class="slide__body">
+					<div class="slide__bg"></div>
+					<div class="slide__img">
+						<img src="assets/img/auth/01.png" alt="food image" />
+					</div>
+					<div class="slide__block block-slide">
+						<h3 class="block-slide__title">Find Foods With Love</h3>
+						<div class="block-slide__desc">
+							Eatly Is The Food Delivery Dashboard And Having More Than 2K+
+							Dishes Including Asian, Chinese, Italians And Many More. Our
+							Dashboard Helps You To Manage Orders And Money.
+						</div>
+					</div>
+				</div>
+			</div>
+		</swiper-slide>
+	</swiper-container>
+	<div class="pagination" #pagination></div>
+</div>

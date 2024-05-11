@@ -1,6 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { headers } from '../shared/consts/consts';
 import {
 	ICreateRestaurant,
 	IRestaurant,
@@ -14,12 +15,33 @@ export class RestaurantService {
 	public deletedRestaurant = new EventEmitter();
 	public editingRestaurant?: IUpdateRestaurant;
 
-	private headers = new HttpHeaders({
-		'Content-Type': 'application/json',
-	});
+	public getBookmarked(restaurant: IRestaurant) {
+		const userId = this.authService.user?.id;
+		if (userId) {
+			const users = restaurant.bookmarkedUsers;
+
+			if (!users) return false;
+			for (let i = 0; i < users.length; i++) {
+				const { id } = users[i];
+
+				if (id === userId) return true;
+			}
+		}
+		return false;
+	}
+
+	public isOwner(restaurant: IRestaurant) {}
 
 	public getAllRestaurants() {
 		return this.http.get<IRestaurant[]>(environment.apiUrl + 'restaurants');
+	}
+	public getRestaurantById(id: number) {
+		return this.http.get<IRestaurant>(
+			environment.apiUrl + `restaurants/${id}`,
+			{
+				headers: headers,
+			}
+		);
 	}
 	public getRestaurantsWithPagination(page: number, limit: number) {
 		return this.http.get<IRestaurant[]>(
@@ -31,7 +53,7 @@ export class RestaurantService {
 			this.http
 				.patch<number>(
 					environment.apiUrl + `restaurants/change-bookmark/${restaurantId}`,
-					{ headers: this.headers }
+					{ headers: headers }
 				)
 				.subscribe();
 		}
@@ -42,7 +64,7 @@ export class RestaurantService {
 			environment.apiUrl + 'restaurants',
 			restaurant,
 			{
-				headers: this.headers,
+				headers: headers,
 			}
 		);
 	}
@@ -59,7 +81,7 @@ export class RestaurantService {
 				time: restaurant.time,
 			},
 			{
-				headers: this.headers,
+				headers: headers,
 			}
 		);
 	}
@@ -71,31 +93,31 @@ export class RestaurantService {
 		return this.http.get<IRestaurant[]>(
 			environment.apiUrl +
 				`restaurants/bookmarked/pagination?page=${page}&limit=${limit}`,
-			{ headers: this.headers }
+			{ headers: headers }
 		);
 	}
 	public getAllBookmarkedRestaurants() {
 		return this.http.get<IRestaurant[]>(
 			environment.apiUrl + `restaurants/bookmarked`,
-			{ headers: this.headers }
+			{ headers: headers }
 		);
 	}
 	public getAllOwnRestaurantsWithPagination(page: number, limit: number) {
 		return this.http.get<IRestaurant[]>(
 			environment.apiUrl +
 				`restaurants/own/pagination?page=${page}&limit=${limit}`,
-			{ headers: this.headers }
+			{ headers: headers }
 		);
 	}
 	public getAllOwnRestaurants() {
 		return this.http.get<IRestaurant[]>(
 			environment.apiUrl + `restaurants/own`,
-			{ headers: this.headers }
+			{ headers: headers }
 		);
 	}
 	public delete(id: number) {
 		return this.http.delete(environment.apiUrl + `restaurants/${id}`, {
-			headers: this.headers,
+			headers: headers,
 		});
 	}
 }

@@ -1,17 +1,24 @@
-<div class="cards" [style.grid-template-columns]="'repeat(' + cols + ', 1fr)'">
+<div
+	class="cards"
+	[style.grid-template-columns]="'repeat(' + cols + ', 1fr)'"
+	#cards
+>
 	<ng-container *ngFor="let item of items">
 		<ng-container [ngSwitch]="type">
 			<ng-container *ngSwitchCase="types.restaurants">
-				<app-restaurant-card [restaurant]="item" />
+				<app-restaurant-card [restaurant]="item" [hasHover]="hasHover" />
 			</ng-container>
 			<ng-container *ngSwitchCase="types.bookmarkedRestaurants">
-				<app-restaurant-card [restaurant]="item" />
+				<app-restaurant-card [restaurant]="item" [hasHover]="hasHover" />
 			</ng-container>
 			<ng-container *ngSwitchCase="types.ownRestaurants">
-				<app-restaurant-card [restaurant]="item" />
+				<app-restaurant-card [restaurant]="item" [hasHover]="hasHover" />
 			</ng-container>
 			<ng-container *ngSwitchCase="types.dishes">
-				<app-dish-card [dish]="item" />
+				<app-dish-card [dish]="item" [hasHover]="hasHover" />
+			</ng-container>
+			<ng-container *ngSwitchCase="types.restaurantDishes">
+				<app-dish-card [dish]="item" [hasHover]="hasHover" />
 			</ng-container>
 		</ng-container>
 	</ng-container>

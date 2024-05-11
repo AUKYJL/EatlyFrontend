@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { authGuard } from 'src/app/guards/auth.guard';
+import { CreateNewFoodComponent } from 'src/app/shared/components/create-new-food/create-new-food.component';
 import { CreateNewRestaurantComponent } from 'src/app/shared/components/create-new-restaurant/create-new-restaurant.component';
 import { EditRestaurantComponent } from 'src/app/shared/components/edit-restaurant/edit-restaurant.component';
 import { ProfileRestaurantsComponent } from 'src/app/shared/components/profile-restaurants/profile-restaurants.component';
@@ -11,6 +13,10 @@ const routes: Routes = [
 		component: ProfileComponent,
 	},
 	{
+		path: 'restaurants/:id/add-new-food',
+		component: CreateNewFoodComponent,
+	},
+	{
 		path: 'restaurants',
 		component: ProfileRestaurantsComponent,
 	},
@@ -19,9 +25,11 @@ const routes: Routes = [
 		component: CreateNewRestaurantComponent,
 	},
 	{
-		path: 'restaurants/edit',
+		path: 'restaurants/:id/edit',
 		component: EditRestaurantComponent,
+		canActivate: [authGuard],
 	},
+
 	{
 		path: '**',
 		pathMatch: 'full',

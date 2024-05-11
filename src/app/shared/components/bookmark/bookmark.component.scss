@@ -1,0 +1,19 @@
+@use "src/scss/variables" as v;
+.bookmark {
+	cursor: pointer;
+	color: v.$color-main;
+	padding: 10px;
+	font-size: 20px;
+	background-color: v.$hilite-color-main;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.3s ease 0s;
+	&:hover {
+		background-color: v.$hilite-color-secondary;
+		color: v.$dim-color-main;
+	}
+}

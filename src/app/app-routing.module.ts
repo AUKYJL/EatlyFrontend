@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard';
 import { AllItemsComponent } from './pages/all-items/all-items.component';
 import { HomeComponent } from './pages/home/home.component';
+import { DishInfoComponent } from './shared/components/dish-info/dish-info.component';
+import { RestaurantInfoComponent } from './shared/components/restaurant-info/restaurant-info.component';
 
 const routes: Routes = [
 	{
@@ -15,6 +17,10 @@ const routes: Routes = [
 			import('./pages/auth/auth.module').then((m) => m.AuthModule),
 	},
 	{
+		path: 'restaurants/:id',
+		component: RestaurantInfoComponent,
+	},
+	{
 		path: 'items/:contentType',
 		component: AllItemsComponent,
 	},
@@ -23,6 +29,10 @@ const routes: Routes = [
 		canActivate: [authGuard],
 		loadChildren: () =>
 			import('./pages/profile/profile.module').then((m) => m.ProfileModule),
+	},
+	{
+		path: 'dishes/:id',
+		component: DishInfoComponent,
 	},
 	{
 		path: '**',

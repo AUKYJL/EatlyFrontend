@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ToastService } from 'angular-toastify';
-import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 import { DishService } from 'src/app/services/dish.service';
-import { IDish } from 'src/app/types/types';
+import { IDish, IHoverTab } from 'src/app/types/types';
 
 @Component({
 	selector: 'app-dish-card',
@@ -10,37 +9,60 @@ import { IDish } from 'src/app/types/types';
 	styleUrls: ['./dish-card.component.scss'],
 })
 export class DishCardComponent implements OnInit {
-	constructor(
-		private authService: AuthService,
-		private dishService: DishService,
-		private toastService: ToastService
-	) {}
-	ngOnInit(): void {
-		this.isLiked = this.getIsLiked();
-	}
-	@Input({ required: true }) dish: IDish | null = null;
+	constructor(private dishService: DishService, private router: Router) {}
+
+	@Input({ required: true }) dish!: IDish;
+	@Input() hasHover: boolean = false;
 	public isLiked = false;
+	public hoveredLeft: boolean = false;
+	public hoveredRight: boolean = false;
 
-	public getIsLiked() {
-		const userId = this.authService.user?.id;
-		if (userId) {
-			const users = this.dish?.usersLikedFood;
+	public tabs: IHoverTab[] = [
+		{
+			title: 'Edit',
+			callback: () => {
+				this.editDish();
+			},
+			colorRGBA: 'rgba(38, 201, 5, 0.5)',
+			hoverColorRGBA: 'rgba(38, 201, 5, 0.7)',
 
-			if (!users) return false;
-			for (let i = 0; i < users.length; i++) {
-				const { id } = users[i];
+			hovered: false,
+		},
+		{
+			title: 'Delete',
+			callback: () => {
+				this.deleteDish();
+			},
+			colorRGBA: 'rgba(201, 5, 5, 0.5)',
+			hoverColorRGBA: 'rgba(201, 5, 5, 0.7)',
 
-				if (id === userId) return true;
-			}
-		}
-		return false;
+			hovered: false,
+		},
+		{
+			title: 'Check',
+			callback: () => {
+				this.goToDish();
+			},
+			colorRGBA: 'rgba(201, 67, 5, 0.5)',
+			hoverColorRGBA: 'rgba(201, 67, 5, 0.7)',
+			hovered: false,
+		},
+	];
+
+	ngOnInit(): void {
+		this.isLiked = this.dishService.getIsLiked(this.dish);
 	}
-	public changeLiked() {
-		if (this.authService.checkAuth()?.token) {
-			this.dishService.changeLiked(this.dish!.id);
-			this.isLiked = !this.isLiked;
-		} else {
-			this.toastService.error('U must be authorized');
-		}
+
+	public editDish() {
+		this.router.navigate([`/dishes/${this.dish!.id}`]);
+		window.scrollTo(0, 0);
+	}
+	public deleteDish() {
+		this.router.navigate([`/dishes/${this.dish!.id}`]);
+		window.scrollTo(0, 0);
+	}
+	public goToDish() {
+		this.router.navigate([`/dishes/${this.dish!.id}`]);
+		window.scrollTo(0, 0);
 	}
 }

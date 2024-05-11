@@ -24,6 +24,8 @@ export class PaginationComponent {
 		}
 	}
 	public openThisPage(id: number) {
+		if (id === this.page) return;
+
 		this.page = id;
 		this.onChangePage.emit(this.page);
 	}

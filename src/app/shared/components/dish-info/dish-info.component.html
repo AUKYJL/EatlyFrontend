@@ -1,0 +1,32 @@
+<div class="dish">
+	<div class="container">
+		<div class="dish__content">
+			<div class="dish__body">
+				<div class="dish__info info-dish">
+					<div class="info-dish__card card-info">
+						<div class="card-info__body">
+							<div class="card-info__img">
+								<img [src]="dish?.urlToImg" alt="dish image" />
+							</div>
+							<div class="card-info__bottom bottom-card-info">
+								<h3 class="title-h3 bottom-card-info__title">
+									{{ dish?.title }}
+								</h3>
+								<div class="bottom-card-info__additional">
+									<app-card-aditional-info
+										[row]="true"
+										[time]="dish?.timeToCook"
+										[rating]="dish?.rating"
+									/>
+								</div>
+								<app-liked [isLiked]="isLiked" [dishId]="dish?.id" />
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<app-faq />
+			</div>
+		</div>
+	</div>
+</div>

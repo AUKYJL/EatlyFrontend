@@ -13,12 +13,12 @@
 		border-radius: 15px;
 		overflow: hidden;
 		box-shadow: 5px 20px 20px rgba(0, 0, 0, 0.1);
+		position: relative;
 	}
 
 	// .restaurant-card__body
 
 	&__body {
-		position: relative;
 	}
 
 	// .restaurant-card__img
@@ -79,141 +79,9 @@
 	display: flex;
 	align-items: center;
 
-	// .info-block-card__time
-
-	&__time {
-		position: relative;
-		color: v.$color-text-tertiary;
-		font-family: Manrope;
-		font-size: 19px;
-		font-weight: 400;
-		line-height: 25.79px;
-		letter-spacing: 0px;
-		padding-right: 10px;
-		margin: 0 10px 0 0;
-		&::after {
-			content: "";
-			position: absolute;
-			width: 5px;
-			height: 5px;
-			top: 50%;
-			right: 0;
-			transform: translate(0, -50%);
-			background-color: v.$color-text-tertiary;
-			border-radius: 50%;
-		}
-	}
-
-	// .info-block-card__rating
-
-	&__rating {
-		display: flex;
-		align-items: center;
-		color: v.$color-text-tertiary;
-		font-family: Manrope;
-		font-size: 19px;
-		font-weight: 400;
-		line-height: 25.79px;
-		letter-spacing: 0px;
-
-		&::before {
-			color: v.$color-main;
-		}
-	}
-
 	// .info-block-card__bookmark
 
 	&__bookmark {
-		color: v.$color-main;
-		padding: 10px;
-		font-size: 20px;
-		background-color: v.$hilite-color-main;
-		border-radius: 50%;
-		width: 40px;
-		height: 40px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
 		margin-left: auto;
-		transition: all 0.3s ease 0s;
-		&:hover {
-			background-color: v.$hilite-color-secondary;
-			color: v.$dim-color-main;
-		}
-	}
-}
-
-.hover-card {
-	z-index: 2;
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	display: flex;
-	flex-direction: column;
-
-	color: #fff;
-	font-size: 26px;
-	&__top {
-		display: flex;
-		flex: 1;
-	}
-	&__bottom {
-		flex: 1;
-		display: flex;
-	}
-	&__side {
-		display: flex;
-		flex: 1;
-		align-items: center;
-		justify-content: center;
-		opacity: 0;
-		font-weight: 500;
-		transition: all 0.3s ease 0s;
-		p {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 10px;
-		}
-	}
-	// .hover-card__left
-
-	&:hover {
-		.hover-card__side {
-			opacity: 1;
-		}
-
-		.hover-card__left {
-			background-color: rgba(38, 201, 5, 0.5);
-
-			&:hover {
-				background-color: rgba(38, 201, 5, 0.7);
-			}
-		}
-
-		// .hover-card__right
-
-		.hover-card__right {
-			background-color: rgba(201, 5, 5, 0.5);
-
-			&:hover {
-				background-color: rgba(201, 5, 5, 0.7);
-			}
-		}
-
-		.hover-card__center {
-			background-color: rgba(201, 67, 5, 0.5);
-			p {
-				transition: all 0.3s ease 0s;
-			}
-			&:hover {
-				background-color: rgba(201, 67, 5, 0.7);
-				p {
-					transform: scale(1.05);
-				}
-			}
-		}
 	}
 }

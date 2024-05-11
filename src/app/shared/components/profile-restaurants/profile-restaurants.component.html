@@ -1,14 +1,10 @@
 <section class="profile-restaraunt">
 	<div class="container">
-		<p>если у ресторана кликнуть карандаш то ты его отредактируешь</p>
-		<p>
-			в этой менюшке при ховере на свой ресторан фон слева красится в
-			зеленый-прозрачный и появляется карандаш, справа - красный и ведро
-		</p>
 		<div class="profile-restaraunt__content">
 			<div class="profile-restaraunt__body">
 				<div class="profile-restaraunt__my-restaraunts my-restaraunts">
 					<app-items-with-pagination
+						[hasHover]="true"
 						[title]="'My Own <span>Restaurants</span>'"
 						[type]="types.ownRestaurants"
 					/>

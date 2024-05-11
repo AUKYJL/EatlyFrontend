@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ToastService } from 'angular-toastify';
 import { AuthService } from 'src/app/services/auth.service';
 import { RestaurantService } from 'src/app/services/restaurant.service';
-import { IRestaurant, RestaurantTags } from 'src/app/types/types';
+import { IHoverTab, IRestaurant, RestaurantTags } from 'src/app/types/types';
 
 @Component({
 	selector: 'app-restaurant-card',
@@ -19,36 +19,56 @@ export class RestaurantCardComponent implements OnInit {
 	) {}
 
 	@Input({ required: true }) restaurant!: IRestaurant;
+	@Input() hasHover: boolean = false;
 
 	public restaurantTags = RestaurantTags;
 	public bookmarked: boolean = false;
 	public hoveredLeft: boolean = false;
 	public hoveredRight: boolean = false;
 
+	public tabs: IHoverTab[] = [
+		{
+			title: 'Edit',
+			callback: () => {
+				this.editRestaurant();
+			},
+			colorRGBA: 'rgba(38, 201, 5, 0.5)',
+			hoverColorRGBA: 'rgba(38, 201, 5, 0.7)',
+			icons: ['_icon-filled-pen', '_icon-pen'],
+			hovered: false,
+		},
+		{
+			title: 'Delete',
+			callback: () => {
+				this.deleteRestaurant();
+			},
+			colorRGBA: 'rgba(201, 5, 5, 0.5)',
+			hoverColorRGBA: 'rgba(201, 5, 5, 0.7)',
+			icons: ['_icon-filled-trash', '_icon-trash'],
+			hovered: false,
+		},
+		{
+			title: 'Add Food',
+			callback: () => {
+				this.addFood();
+			},
+			colorRGBA: 'rgba(4, 94, 136, 0.5)',
+			hoverColorRGBA: 'rgba(4, 94, 136, 0.7)',
+			hovered: false,
+		},
+		{
+			title: 'Check',
+			callback: () => {
+				this.goToRestaurant();
+			},
+			colorRGBA: 'rgba(201, 67, 5, 0.5)',
+			hoverColorRGBA: 'rgba(201, 67, 5, 0.7)',
+			hovered: false,
+		},
+	];
+
 	ngOnInit(): void {
-		this.bookmarked = this.getBookmarked();
-	}
-	private getBookmarked() {
-		const userId = this.authService.user?.id;
-		if (userId) {
-			const restaurants = this.restaurant?.bookmarkedUsers;
-			if (!restaurants) return false;
-			for (let i = 0; i < restaurants.length; i++) {
-				const { id } = restaurants[i];
-
-				if (id === userId) return true;
-			}
-		}
-		return false;
-	}
-
-	public changeBookmark() {
-		if (this.authService.checkAuth()?.token) {
-			this.bookmarked = !this.bookmarked;
-			this.restaurantService.changeBookmark(this.restaurant!.id);
-		} else {
-			this.toastService.error('U must be authorized');
-		}
+		this.bookmarked = this.restaurantService.getBookmarked(this.restaurant);
 	}
 
 	public setTagStyle(tag: string): string {
@@ -71,6 +91,16 @@ export class RestaurantCardComponent implements OnInit {
 	}
 	public editRestaurant() {
 		this.restaurantService.editingRestaurant = this.restaurant;
-		this.router.navigate(['/profile/restaurants/edit']);
+		this.router.navigate([`/profile/restaurants/${this.restaurant.id}/edit`]);
+	}
+	public addFood() {
+		this.router.navigate([
+			`/profile/restaurants/${this.restaurant.id}/add-new-food`,
+		]);
+	}
+
+	public goToRestaurant() {
+		this.router.navigate([`/restaurants/${this.restaurant.id}`]);
+		window.scrollTo(0, 0);
 	}
 }

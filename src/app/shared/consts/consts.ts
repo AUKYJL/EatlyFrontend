@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 export const editorConfig: AngularEditorConfig = {
@@ -32,3 +33,6 @@ export const editorConfig: AngularEditorConfig = {
 		],
 	],
 };
+export const headers = new HttpHeaders({
+	'Content-Type': 'application/json',
+});

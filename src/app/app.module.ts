@@ -11,14 +11,22 @@ import { HomeComponent } from './pages/home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { AngularToastifyModule, ToastService } from 'angular-toastify';
+
+import { register } from 'swiper/element/bundle';
+import { AllItemsComponent } from './pages/all-items/all-items.component';
 import { httpInterceptorProviders } from './pages/auth/auth.interceptor';
 import { AuthService } from './services/auth.service';
 import { DishService } from './services/dish.service';
 import { ItemsService } from './services/items.service';
 import { RestaurantService } from './services/restaurant.service';
+import { BookmarkComponent } from './shared/components/bookmark/bookmark.component';
+import { CardAditionalInfoComponent } from './shared/components/card-aditional-info/card-aditional-info.component';
 import { CardsSectionComponent } from './shared/components/cards-section/cards-section.component';
+import { CreateNewFoodComponent } from './shared/components/create-new-food/create-new-food.component';
 import { CreateNewRestaurantComponent } from './shared/components/create-new-restaurant/create-new-restaurant.component';
 import { DishCardComponent } from './shared/components/dish-card/dish-card.component';
+import { EditRestaurantComponent } from './shared/components/edit-restaurant/edit-restaurant.component';
+import { FaqComponent } from './shared/components/faq/faq.component';
 import { ForgetPasswordComponent } from './shared/components/forget-password/forget-password.component';
 import { ItemsWithPaginationComponent } from './shared/components/items-with-pagination/items-with-pagination.component';
 import { ItemsComponent } from './shared/components/items/items.component';
@@ -29,11 +37,15 @@ import { PopupComponent } from './shared/components/popup/popup.component';
 import { ProfileRestaurantsComponent } from './shared/components/profile-restaurants/profile-restaurants.component';
 import { RegisterComponent } from './shared/components/register/register.component';
 import { RestaurantCardComponent } from './shared/components/restaurant-card/restaurant-card.component';
+import { RestaurantInfoComponent } from './shared/components/restaurant-info/restaurant-info.component';
 import { UserAuthFieldComponent } from './shared/components/user-auth-field/user-auth-field.component';
 import { PricePipe } from './shared/pipes/price.pipe';
-import { AllItemsComponent } from './pages/all-items/all-items.component';
-import { EditRestaurantComponent } from './shared/components/edit-restaurant/edit-restaurant.component';
+import { DishInfoComponent } from './shared/components/dish-info/dish-info.component';
+import { LikedComponent } from './shared/components/liked/liked.component';
+import { HoverCardComponent } from './shared/components/hover-card/hover-card.component';
+import { HoverCardDirective } from './shared/directives/hover-card.directive';
 
+register();
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -54,8 +66,18 @@ import { EditRestaurantComponent } from './shared/components/edit-restaurant/edi
 		PaginationComponent,
 		ItemsComponent,
 		CardsSectionComponent,
-  AllItemsComponent,
-  EditRestaurantComponent,
+		AllItemsComponent,
+		EditRestaurantComponent,
+		RestaurantInfoComponent,
+		BookmarkComponent,
+		CardAditionalInfoComponent,
+		FaqComponent,
+
+		CreateNewFoodComponent,
+    DishInfoComponent,
+    LikedComponent,
+    HoverCardComponent,
+    HoverCardDirective,
 	],
 	imports: [
 		BrowserModule,
@@ -65,7 +87,6 @@ import { EditRestaurantComponent } from './shared/components/edit-restaurant/edi
 		LogoModule,
 		ReactiveFormsModule,
 		AngularToastifyModule,
-		CommonModule,
 		AngularEditorModule,
 	],
 	providers: [
