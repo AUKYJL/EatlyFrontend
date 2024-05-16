@@ -1,12 +1,14 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { EventEmitter, Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { headers } from '../shared/consts/consts';
-import { ICreateDish, IDish } from '../types/types';
+import { ICreateDish, IDish, IUpdateDish } from '../types/types';
 import { AuthService } from './auth.service';
 @Injectable()
 export class DishService {
 	constructor(private http: HttpClient, private authService: AuthService) {}
+
+	public deletedDish = new EventEmitter();
 
 	public getAllDishes() {
 		return this.http.get<IDish[]>(environment.apiUrl + 'dishes');
@@ -33,12 +35,8 @@ export class DishService {
 	}
 	public changeLiked(dishId: number) {
 		if (this.authService.user) {
-			const headers = new HttpHeaders({
-				'Content-Type': 'application/json',
-			});
-
 			this.http
-				.patch<IDish>(environment.apiUrl + `dishes/${dishId}`, {
+				.patch<IDish>(environment.apiUrl + `dishes/change-liked/${dishId}`, {
 					headers: headers,
 				})
 				.subscribe();
@@ -73,5 +71,25 @@ export class DishService {
 			}
 		}
 		return false;
+	}
+
+	public deleteDish(dishId: number) {
+		return this.http.delete(environment.apiUrl + `dishes/${dishId}`);
+	}
+
+	public editDish(dish: IUpdateDish) {
+		return this.http.patch<IUpdateDish>(
+			environment.apiUrl + `dishes/${dish.id}`,
+			{
+				title: dish.title,
+				price: dish.price,
+				timeToCook: dish.timeToCook,
+				tag: dish.tag,
+				urlToImg: dish.urlToImg,
+				dishGroup: dish.dishGroup,
+				dishCategory: dish.dishCategory,
+			},
+			{ headers: headers }
+		);
 	}
 }

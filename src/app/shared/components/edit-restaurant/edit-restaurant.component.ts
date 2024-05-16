@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { ToastService } from 'angular-toastify';
 import { AuthService } from 'src/app/services/auth.service';
+import { FormService } from 'src/app/services/form.service';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 import {
 	IRestaurant,
@@ -23,7 +24,8 @@ export class EditRestaurantComponent implements OnInit {
 		private toastService: ToastService,
 		private authService: AuthService,
 		private route: ActivatedRoute,
-		private router: Router
+		private router: Router,
+		private formService: FormService
 	) {}
 
 	public config: AngularEditorConfig = editorConfig;
@@ -54,8 +56,16 @@ export class EditRestaurantComponent implements OnInit {
 				this.form.controls.adress.setValue(r.adress);
 				this.form.controls.urlToImg.setValue(r.urlToImg);
 				this.form.controls.desc.setValue(r.desc);
+
+				this.formService.form = this.form;
 			});
 		});
+	}
+	public goToCreateDish() {
+		this.router.navigate([
+			`profile/restaurants/${this.restaurant!.id}/add-new-food`,
+		]);
+		window.scrollTo(0, 0);
 	}
 	public onSubmit() {
 		// if (this.form!.valid) {

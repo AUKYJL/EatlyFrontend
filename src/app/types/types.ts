@@ -79,6 +79,16 @@ export interface ICreateDish {
 	dishGroup: DishGroups;
 	dishCategory: DishCategories;
 }
+export interface IUpdateDish {
+	id: string;
+	title: string;
+	price: string;
+	timeToCook: string;
+	tag: DishTags;
+	urlToImg: string;
+	dishGroup: DishGroups;
+	dishCategory: DishCategories;
+}
 export enum DishCategories {
 	pizza = 'pizza',
 	asian = 'asian',

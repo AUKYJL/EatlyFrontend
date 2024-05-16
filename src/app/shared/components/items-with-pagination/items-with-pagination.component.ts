@@ -32,7 +32,7 @@ export class ItemsWithPaginationComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.getItems();
-		this.restaurantService.deletedRestaurant.subscribe(() => {
+		this.itemsService.deletedItem.subscribe(() => {
 			this.getItems();
 		});
 	}

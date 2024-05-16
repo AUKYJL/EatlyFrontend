@@ -10,7 +10,9 @@
 						[restaurantId]="restaurant.id"
 						[hasHover]="true"
 					/>
-					<div class="dishes-new-btn btn">Add more</div>
+					<div class="dishes-new-btn btn" (click)="goToCreateDish()">
+						Add more
+					</div>
 				</div>
 				<div class="new__restaurant restaurant-new">
 					<h3 class="restaurant-new__title title-h3">Editing restaurant...</h3>
@@ -88,7 +90,7 @@
 							class="form__btn btn"
 							[disabled]="!form.valid"
 						>
-							Edit
+							Save
 						</button>
 						<small *ngIf="!form.valid">{{ errorMessage }}</small>
 					</form>

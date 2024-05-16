@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DishService } from 'src/app/services/dish.service';
+import { ItemsService } from 'src/app/services/items.service';
 import { IDish, IHoverTab } from 'src/app/types/types';
 
 @Component({
@@ -9,7 +10,11 @@ import { IDish, IHoverTab } from 'src/app/types/types';
 	styleUrls: ['./dish-card.component.scss'],
 })
 export class DishCardComponent implements OnInit {
-	constructor(private dishService: DishService, private router: Router) {}
+	constructor(
+		private dishService: DishService,
+		private router: Router,
+		private itemsService: ItemsService
+	) {}
 
 	@Input({ required: true }) dish!: IDish;
 	@Input() hasHover: boolean = false;
@@ -54,12 +59,13 @@ export class DishCardComponent implements OnInit {
 	}
 
 	public editDish() {
-		this.router.navigate([`/dishes/${this.dish!.id}`]);
+		this.router.navigate([`/profile/dishes/edit-food/${this.dish.id}`]);
 		window.scrollTo(0, 0);
 	}
 	public deleteDish() {
-		this.router.navigate([`/dishes/${this.dish!.id}`]);
-		window.scrollTo(0, 0);
+		this.dishService.deleteDish(this.dish.id).subscribe(() => {
+			this.itemsService.deletedItem.emit();
+		});
 	}
 	public goToDish() {
 		this.router.navigate([`/dishes/${this.dish!.id}`]);

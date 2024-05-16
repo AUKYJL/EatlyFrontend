@@ -1,0 +1,73 @@
+@use "src/scss/variables" as v;
+.new {
+	padding-top: 50px;
+	padding-bottom: 50px;
+	// .new__content
+
+	&__content {
+	}
+
+	// .new__body
+
+	&__body {
+	}
+	&__title {
+		margin-bottom: 20px;
+	}
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+.field-form {
+	display: flex;
+	flex-direction: column;
+	// .field-form__title
+
+	&__title {
+		font-size: 28px;
+		font-weight: 500;
+		color: v.$color-text-dark-main;
+		margin-bottom: 5px;
+	}
+
+	// .field-form__input
+
+	&__input {
+		font-size: 20px;
+		border: 1px solid v.$color-text-secondary;
+		padding: 10px;
+		color: v.$color-text-dark-main;
+		font-weight: 500;
+		&::placeholder {
+			color: v.$color-text-main;
+		}
+	}
+	&__select {
+		border: 1px solid v.$color-text-secondary;
+		padding: 10px;
+		font-size: 20px;
+		color: v.$color-text-dark-main;
+		font-weight: 500;
+	}
+	&__img-preview {
+		display: flex;
+		flex-direction: column;
+		margin-top: 10px;
+
+		span {
+			color: v.$color-text-dark-main;
+			font-size: 18px;
+			font-weight: 500;
+			margin-bottom: 10px;
+		}
+		img {
+			max-width: 320px;
+			max-height: 180px;
+			object-fit: cover;
+			object-position: center;
+		}
+	}
+}

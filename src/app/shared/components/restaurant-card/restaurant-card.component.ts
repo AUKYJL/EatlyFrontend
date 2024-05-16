@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastService } from 'angular-toastify';
 import { AuthService } from 'src/app/services/auth.service';
+import { ItemsService } from 'src/app/services/items.service';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 import { IHoverTab, IRestaurant, RestaurantTags } from 'src/app/types/types';
 
@@ -15,7 +16,8 @@ export class RestaurantCardComponent implements OnInit {
 		private authService: AuthService,
 		private restaurantService: RestaurantService,
 		private toastService: ToastService,
-		private router: Router
+		private router: Router,
+		private itemsService: ItemsService
 	) {}
 
 	@Input({ required: true }) restaurant!: IRestaurant;
@@ -86,7 +88,7 @@ export class RestaurantCardComponent implements OnInit {
 
 	public deleteRestaurant() {
 		this.restaurantService.delete(this.restaurant!.id).subscribe((r) => {
-			this.restaurantService.deletedRestaurant.emit();
+			this.itemsService.deletedItem.emit();
 		});
 	}
 	public editRestaurant() {
