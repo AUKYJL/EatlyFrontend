@@ -17,7 +17,19 @@
 				</div>
 				<div class="card__footer footer-card">
 					<p class="footer-card__price" [innerHTML]="dish!.price | price"></p>
-					<a href="#" class="footer-card__btn">+</a>
+					<ng-container
+						*ngIf="!product || product.count <= 0; else purchaseCounter"
+					>
+						<a
+							(click)="stopPropagation($event)"
+							(click)="changeProductCountBy(1)"
+							class="footer-card__btn"
+							>+</a
+						>
+					</ng-container>
+					<ng-template #purchaseCounter>
+						<app-purchase-counter [product]="product!" />
+					</ng-template>
 				</div>
 			</div>
 		</div>

@@ -1,0 +1,40 @@
+@use "src/scss/variables" as v;
+.counter {
+	width: 115px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 5px;
+	// .counter__btn
+
+	&__btn {
+		cursor: pointer;
+		user-select: none;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		height: 40px;
+		font-size: 16px;
+		color: #fff;
+
+		background-color: v.$color-text-dark-main;
+		border-radius: 9px;
+		transition: all 0.3s ease 0s;
+		&:hover {
+			background-color: v.$bg-color-secondary;
+			font-size: 25px;
+		}
+	}
+
+	// .counter__count
+
+	&__count {
+		max-width: 25px;
+		width: 100%;
+		text-align: center;
+		font-size: 20px;
+		font-weight: 500;
+		color: v.$color-text-dark-main;
+	}
+}

@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header" #header>
 	<div class="container">
 		<div class="header__content line">
 			<div class="header__body">
@@ -35,7 +35,14 @@
 
 				<ng-template #auth>
 					<div class="auth">
-						<div class="auth__cart cart-auth">cart-auth</div>
+						<div
+							class="auth__cart cart-auth _icon-shopping-cart"
+							(click)="sideCartService.isActive = true"
+						>
+							<span *ngIf="sideCartService.productsCount > 0">{{
+								sideCartService.productsCount
+							}}</span>
+						</div>
 						<app-user-auth-field />
 					</div>
 				</ng-template>

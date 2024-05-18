@@ -2,7 +2,7 @@
 <div class="wrapper">
 	<app-header />
 
-	<main class="page">
+	<main class="page" #main>
 		<router-outlet />
 	</main>
 
@@ -10,4 +10,5 @@
 
 	<lib-toastify-toast-container />
 	<app-confirm-leave [form]="formService.form" [active]="formService.active" />
+	<app-side-cart-menu />
 </div>

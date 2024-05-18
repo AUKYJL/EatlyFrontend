@@ -1,0 +1,5 @@
+<div class="counter" (click)="stopPropagation($event)">
+	<div class="counter__btn" (click)="changeProductCountBy(-1)">-</div>
+	<input type="text" class="counter__count" [(ngModel)]="product!.count" />
+	<div class="counter__btn" (click)="changeProductCountBy(1)">+</div>
+</div>

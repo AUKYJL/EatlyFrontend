@@ -125,3 +125,10 @@ export interface IHoverTab {
 	icons?: [string, string];
 	hovered: boolean;
 }
+
+export interface ICartProduct {
+	id: number;
+	count: number;
+	dish: IDish;
+	customer: IUser;
+}

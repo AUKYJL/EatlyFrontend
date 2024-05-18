@@ -1,0 +1,42 @@
+<div
+	class="side-cart-menu__bg"
+	[class._active]="sideCartService.isActive"
+	(click)="sideCartService.isActive = false"
+></div>
+<div class="side-cart-menu">
+	<div class="side-cart-menu__container">
+		<div
+			class="side-cart-menu__content"
+			[class._active]="sideCartService.isActive"
+		>
+			<div class="side-cart-menu__body">
+				<div class="side-cart-menu__top top-cart-menu">
+					<h4 class="top-cart-menu__title">
+						Your shopping cart({{ sideCartService.productsCount }})
+					</h4>
+					<app-close (click)="sideCartService.isActive = false" />
+				</div>
+				<ul class="side-cart-menu__products products-cart-menu line">
+					<li
+						class="products-cart-menu__item"
+						*ngFor="let product of sideCartService.products$ | async"
+					>
+						<app-side-cart-card [product]="product" />
+					</li>
+				</ul>
+				<div class="side-cart-menu__bottom bottom-cart-menu">
+					<div class="bottom-cart-menu__left left-bottom-menu">
+						<h4 class="left-bottom-menu__title">Subtotal</h4>
+						<p
+							class="left-bottom-menu__price"
+							[innerHTML]="sideCartService.subtotalPrice | price"
+						></p>
+					</div>
+					<div class="bottom-cart-menu__right right-bottom-menu">
+						<div class="right-bottom-menu__btn btn">Purchase</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
