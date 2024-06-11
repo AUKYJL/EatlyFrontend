@@ -8,7 +8,7 @@
 				<h4 class="top-content__title">{{ product.dish.title }}</h4>
 				<p
 					class="top-content__price"
-					[innerHTML]="product.dish.price | price"
+					[innerHTML]="product.dish.price * product.count | price"
 				></p>
 			</div>
 			<div class="content-products-item__bottom bottom-content">

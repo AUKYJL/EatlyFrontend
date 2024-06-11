@@ -20,6 +20,7 @@ import { DishService } from './services/dish.service';
 import { FormService } from './services/form.service';
 import { ItemsService } from './services/items.service';
 import { RestaurantService } from './services/restaurant.service';
+import { SideCartMenuService } from './services/side-cart-menu.service';
 import { BookmarkComponent } from './shared/components/bookmark/bookmark.component';
 import { CardAditionalInfoComponent } from './shared/components/card-aditional-info/card-aditional-info.component';
 import { CardsSectionComponent } from './shared/components/cards-section/cards-section.component';
@@ -33,6 +34,7 @@ import { EditDishComponent } from './shared/components/edit-dish/edit-dish.compo
 import { EditRestaurantComponent } from './shared/components/edit-restaurant/edit-restaurant.component';
 import { FaqComponent } from './shared/components/faq/faq.component';
 import { ForgetPasswordComponent } from './shared/components/forget-password/forget-password.component';
+import { GetDiscountModule } from './shared/components/get-discount/get-discount.module';
 import { HoverCardComponent } from './shared/components/hover-card/hover-card.component';
 import { ItemsWithPaginationComponent } from './shared/components/items-with-pagination/items-with-pagination.component';
 import { ItemsComponent } from './shared/components/items/items.component';
@@ -43,6 +45,7 @@ import { PaginationComponent } from './shared/components/pagination/pagination.c
 import { PopupComponent } from './shared/components/popup/popup.component';
 import { ProfileRestaurantsComponent } from './shared/components/profile-restaurants/profile-restaurants.component';
 import { PurchaseCounterComponent } from './shared/components/purchase-counter/purchase-counter.component';
+import { PurchasesComponent } from './shared/components/purchases/purchases.component';
 import { RegisterComponent } from './shared/components/register/register.component';
 import { RestaurantCardComponent } from './shared/components/restaurant-card/restaurant-card.component';
 import { RestaurantInfoComponent } from './shared/components/restaurant-info/restaurant-info.component';
@@ -51,6 +54,7 @@ import { SideCartMenuComponent } from './shared/components/side-cart-menu/side-c
 import { UserAuthFieldComponent } from './shared/components/user-auth-field/user-auth-field.component';
 import { HoverCardDirective } from './shared/directives/hover-card.directive';
 import { PricePipe } from './shared/pipes/price.pipe';
+import { PricingComponent } from './pages/pricing/pricing.component';
 
 register();
 @NgModule({
@@ -91,6 +95,8 @@ register();
 		SideCartCardComponent,
 		CloseComponent,
 		PurchaseCounterComponent,
+		PurchasesComponent,
+  PricingComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -102,6 +108,7 @@ register();
 		AngularToastifyModule,
 		AngularEditorModule,
 		FormsModule,
+		GetDiscountModule,
 	],
 	providers: [
 		AuthService,
@@ -111,6 +118,7 @@ register();
 		DishService,
 		ItemsService,
 		FormService,
+		SideCartMenuService,
 	],
 	bootstrap: [AppComponent],
 })

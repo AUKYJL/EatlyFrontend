@@ -27,8 +27,6 @@ export class AppComponent implements AfterViewInit {
 	ngAfterViewInit(): void {
 		this.cdr.detectChanges();
 		const headerElement = this.header.getHeaderElement();
-		console.log(headerElement.nativeElement.offsetHeight);
-		console.log(this.main.nativeElement);
 
 		this.renderer.setStyle(
 			this.main.nativeElement,

@@ -7,20 +7,20 @@ import { AuthService } from './auth.service';
 @Injectable()
 export class DishService {
 	constructor(private http: HttpClient, private authService: AuthService) {}
-
+	private BASE_URL = `${environment.apiUrl}/dishes`;
 	public deletedDish = new EventEmitter();
 
 	public getAllDishes() {
-		return this.http.get<IDish[]>(environment.apiUrl + 'dishes');
+		return this.http.get<IDish[]>(this.BASE_URL);
 	}
 	public getDishesWithPaginations(page: number, limit: number) {
 		return this.http.get<IDish[]>(
-			environment.apiUrl + `dishes/pagination?page=${page}&limit=${limit}`
+			`${this.BASE_URL}/pagination?page=${page}&limit=${limit}`
 		);
 	}
 	public getRestaurantDishes(restarauntId: number) {
 		return this.http.get<IDish[]>(
-			environment.apiUrl + `dishes/restaurant/${restarauntId}`
+			`${this.BASE_URL}/restaurant/${restarauntId}`
 		);
 	}
 	public getRestaurantDishesWithPagination(
@@ -29,14 +29,13 @@ export class DishService {
 		limit: number
 	) {
 		return this.http.get<IDish[]>(
-			environment.apiUrl +
-				`dishes/restaurant/${restarauntId}/pagination?page=${page}&limit=${limit}`
+			`${this.BASE_URL}/restaurant/${restarauntId}/pagination?page=${page}&limit=${limit}`
 		);
 	}
 	public changeLiked(dishId: number) {
 		if (this.authService.user) {
 			this.http
-				.patch<IDish>(environment.apiUrl + `dishes/change-liked/${dishId}`, {
+				.patch<IDish>(`${this.BASE_URL}/change-liked/${dishId}`, {
 					headers: headers,
 				})
 				.subscribe();
@@ -45,18 +44,18 @@ export class DishService {
 
 	public getPopular(restaurantId: number) {
 		return this.http.get<IDish[]>(
-			environment.apiUrl + `dishes/restaurant/${restaurantId}/popular`
+			`${this.BASE_URL}/restaurant/${restaurantId}/popular`
 		);
 	}
 
 	public createDish(dish: ICreateDish) {
-		return this.http.post<ICreateDish>(environment.apiUrl + 'dishes', dish, {
+		return this.http.post<ICreateDish>(this.BASE_URL, dish, {
 			headers: headers,
 		});
 	}
 
 	public getDishById(dishId: number) {
-		return this.http.get<IDish>(environment.apiUrl + `dishes/${dishId}`);
+		return this.http.get<IDish>(`${this.BASE_URL}/${dishId}`);
 	}
 
 	public getIsLiked(dish: IDish) {
@@ -74,12 +73,12 @@ export class DishService {
 	}
 
 	public deleteDish(dishId: number) {
-		return this.http.delete(environment.apiUrl + `dishes/${dishId}`);
+		return this.http.delete(`${this.BASE_URL}/${dishId}`);
 	}
 
 	public editDish(dish: IUpdateDish) {
 		return this.http.patch<IUpdateDish>(
-			environment.apiUrl + `dishes/${dish.id}`,
+			`${this.BASE_URL}/${dish.id}`,
 			{
 				title: dish.title,
 				price: dish.price,

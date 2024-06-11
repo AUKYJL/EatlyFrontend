@@ -7,7 +7,8 @@
 			"projectType": "application",
 			"schematics": {
 				"@schematics/angular:component": {
-					"style": "scss"
+					"style": "scss",
+					"changeDetection": "OnPush"
 				}
 			},
 			"root": "",
@@ -75,7 +76,8 @@
 							"browserTarget": "client:build:production"
 						},
 						"development": {
-							"browserTarget": "client:build:development"
+							"browserTarget": "client:build:development",
+							"proxyConfig": "proxy.conf.json"
 						}
 					},
 					"defaultConfiguration": "development"

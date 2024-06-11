@@ -1,14 +1,23 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { IUser, IUserLog, IUserReg } from '../types/types';
+import { SideCartMenuService } from './side-cart-menu.service';
 
 @Injectable()
 export class AuthService {
 	public user?: IUser;
-	private API_URL = environment.apiUrl;
+	private BASE_URL = `${environment.apiUrl}`;
+	private sideCart!: SideCartMenuService;
 
-	constructor(private http: HttpClient) {}
+	constructor(private http: HttpClient) {
+		this.sideCart = inject(SideCartMenuService);
+		if (this.checkAuth()) this.init();
+	}
+
+	public init() {
+		setTimeout(() => this.sideCart.init());
+	}
 
 	public checkAuth() {
 		let data = localStorage.getItem(environment.loggedInUser);
@@ -19,11 +28,11 @@ export class AuthService {
 	}
 
 	public registration(user: IUserReg) {
-		return this.http.post<IUserReg>(this.API_URL + 'user', user);
+		return this.http.post<IUserReg>(this.BASE_URL + '/user', user);
 	}
 
 	public login(user: IUserLog) {
-		return this.http.post<IUserReg>(this.API_URL + 'auth/login', user);
+		return this.http.post<IUserReg>(this.BASE_URL + '/auth/login', user);
 	}
 
 	public logout() {

@@ -12,6 +12,7 @@
 							<li class="menu__item" *ngFor="let nav of navList">
 								<a
 									[routerLink]="nav.route"
+									(click)="scrollTop()"
 									routerLinkActive="_active"
 									[routerLinkActiveOptions]="{ exact: true }"
 									class="menu__link"
@@ -24,10 +25,16 @@
 
 				<ng-container *ngIf="!authService.checkAuth(); else auth">
 					<div class="header__btns btns-header">
-						<a routerLink="auth/login" class="btns-header__item btn btn_trans"
+						<a
+							routerLink="auth/login"
+							(click)="scrollTop()"
+							class="btns-header__item btn btn_trans"
 							>Login</a
 						>
-						<a routerLink="auth/register" class="btns-header__item btn"
+						<a
+							routerLink="auth/register"
+							(click)="scrollTop()"
+							class="btns-header__item btn"
 							>Sign up</a
 						>
 					</div>

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard';
 import { AllItemsComponent } from './pages/all-items/all-items.component';
 import { HomeComponent } from './pages/home/home.component';
+import { PricingComponent } from './pages/pricing/pricing.component';
 import { DishInfoComponent } from './shared/components/dish-info/dish-info.component';
 import { RestaurantInfoComponent } from './shared/components/restaurant-info/restaurant-info.component';
 
@@ -33,6 +34,10 @@ const routes: Routes = [
 	{
 		path: 'dishes/:id',
 		component: DishInfoComponent,
+	},
+	{
+		path: 'pricing',
+		component: PricingComponent,
 	},
 	{
 		path: '**',

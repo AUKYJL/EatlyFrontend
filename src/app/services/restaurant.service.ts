@@ -13,6 +13,7 @@ import { AuthService } from './auth.service';
 export class RestaurantService {
 	constructor(private http: HttpClient, private authService: AuthService) {}
 	public deletedRestaurant = new EventEmitter();
+	private BASE_URL = `${environment.apiUrl}/restaurants`;
 	public editingRestaurant?: IUpdateRestaurant;
 
 	public getBookmarked(restaurant: IRestaurant) {
@@ -33,45 +34,37 @@ export class RestaurantService {
 	public isOwner(restaurant: IRestaurant) {}
 
 	public getAllRestaurants() {
-		return this.http.get<IRestaurant[]>(environment.apiUrl + 'restaurants');
+		return this.http.get<IRestaurant[]>(this.BASE_URL);
 	}
 	public getRestaurantById(id: number) {
-		return this.http.get<IRestaurant>(
-			environment.apiUrl + `restaurants/${id}`,
-			{
-				headers: headers,
-			}
-		);
+		return this.http.get<IRestaurant>(`${this.BASE_URL}/${id}`, {
+			headers: headers,
+		});
 	}
 	public getRestaurantsWithPagination(page: number, limit: number) {
 		return this.http.get<IRestaurant[]>(
-			environment.apiUrl + `restaurants/pagination?page=${page}&limit=${limit}`
+			`${this.BASE_URL}/pagination?page=${page}&limit=${limit}`
 		);
 	}
 	public changeBookmark(restaurantId: number) {
 		if (this.authService.user) {
 			this.http
-				.patch<number>(
-					environment.apiUrl + `restaurants/change-bookmark/${restaurantId}`,
-					{ headers: headers }
-				)
+				.patch<number>(`${this.BASE_URL}/change-bookmark/${restaurantId}`, {
+					headers: headers,
+				})
 				.subscribe();
 		}
 	}
 
 	public createNewRestaurant(restaurant: ICreateRestaurant) {
-		return this.http.post<ICreateRestaurant>(
-			environment.apiUrl + 'restaurants',
-			restaurant,
-			{
-				headers: headers,
-			}
-		);
+		return this.http.post<ICreateRestaurant>(this.BASE_URL, restaurant, {
+			headers: headers,
+		});
 	}
 
 	public editRestaurant(restaurant: IUpdateRestaurant) {
 		return this.http.patch<IUpdateRestaurant>(
-			environment.apiUrl + `restaurants/${restaurant.id}`,
+			`${this.BASE_URL}/${restaurant.id}`,
 			{
 				title: restaurant.title,
 				desc: restaurant.desc,
@@ -91,32 +84,28 @@ export class RestaurantService {
 		limit: number
 	) {
 		return this.http.get<IRestaurant[]>(
-			environment.apiUrl +
-				`restaurants/bookmarked/pagination?page=${page}&limit=${limit}`,
+			`${this.BASE_URL}/bookmarked/pagination?page=${page}&limit=${limit}`,
 			{ headers: headers }
 		);
 	}
 	public getAllBookmarkedRestaurants() {
-		return this.http.get<IRestaurant[]>(
-			environment.apiUrl + `restaurants/bookmarked`,
-			{ headers: headers }
-		);
+		return this.http.get<IRestaurant[]>(`${this.BASE_URL}/bookmarked`, {
+			headers: headers,
+		});
 	}
 	public getAllOwnRestaurantsWithPagination(page: number, limit: number) {
 		return this.http.get<IRestaurant[]>(
-			environment.apiUrl +
-				`restaurants/own/pagination?page=${page}&limit=${limit}`,
+			`${this.BASE_URL}/own/pagination?page=${page}&limit=${limit}`,
 			{ headers: headers }
 		);
 	}
 	public getAllOwnRestaurants() {
-		return this.http.get<IRestaurant[]>(
-			environment.apiUrl + `restaurants/own`,
-			{ headers: headers }
-		);
+		return this.http.get<IRestaurant[]>(`${this.BASE_URL}/own`, {
+			headers: headers,
+		});
 	}
 	public delete(id: number) {
-		return this.http.delete(environment.apiUrl + `restaurants/${id}`, {
+		return this.http.delete(`${this.BASE_URL}/${id}`, {
 			headers: headers,
 		});
 	}

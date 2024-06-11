@@ -41,17 +41,15 @@ export class RegisterComponent {
 	}
 
 	public onSubmit() {
-		// console.log(this.myForm.value);
 		this.authService.registration(this.myForm.value as IUserReg).subscribe({
 			next: (data) => {
 				this.route.navigate(['../../']);
 				window.scrollTo(0, 0);
 				localStorage.setItem(environment.loggedInUser, JSON.stringify(data));
-				console.log('data ' + JSON.stringify(data));
+				this.authService.init();
 			},
 			error: (err) => {
 				this.errorMessage = err.error.message;
-				console.log('err ' + err.error.message);
 			},
 		});
 	}

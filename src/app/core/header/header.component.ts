@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { SideCartMenuService } from 'src/app/services/side-cart-menu.service';
 import { INavList } from 'src/app/types/types';
@@ -8,11 +8,12 @@ import { INavList } from 'src/app/types/types';
 	templateUrl: './header.component.html',
 	styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 	constructor(
 		public authService: AuthService,
 		public sideCartService: SideCartMenuService
 	) {}
+	ngOnInit(): void {}
 	@ViewChild('header') header!: ElementRef<HTMLDivElement>;
 	public navList: INavList[] = [
 		{
@@ -36,6 +37,9 @@ export class HeaderComponent {
 			route: 'contact',
 		},
 	];
+	public scrollTop() {
+		window.scrollTo(0, 0);
+	}
 
 	public getHeaderElement(): ElementRef<HTMLDivElement> {
 		return this.header;

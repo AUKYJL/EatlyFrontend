@@ -5,14 +5,11 @@ import { environment } from 'src/environments/environment';
 import { headers } from '../shared/consts/consts';
 import { ICartProduct } from '../types/types';
 
-@Injectable({
-	providedIn: 'root',
-})
+@Injectable()
 export class SideCartMenuService {
-	constructor(private http: HttpClient) {
-		this.updateProducts();
-	}
+	constructor(private http: HttpClient) {}
 
+	private BASE_URL = `${environment.apiUrl}/cart-product`;
 	public isActive: boolean = false;
 	private productsSubject = new BehaviorSubject<ICartProduct[]>([]);
 	public products$: Observable<ICartProduct[]> =
@@ -20,9 +17,13 @@ export class SideCartMenuService {
 	public productsCount: number = 0;
 	public subtotalPrice: number = 0;
 
+	public init() {
+		this.updateProducts();
+	}
+
 	public updateProducts() {
 		this.http
-			.get<ICartProduct[]>(environment.apiUrl + 'cart-product', {
+			.get<ICartProduct[]>(this.BASE_URL, {
 				headers: headers,
 			})
 			.subscribe((p) => {
@@ -38,7 +39,7 @@ export class SideCartMenuService {
 	public changeCount(newCount: number, dishId: number) {
 		this.http
 			.patch<ICartProduct>(
-				environment.apiUrl + `cart-product?dishId=${dishId}`,
+				`${this.BASE_URL}?dishId=${dishId}`,
 				{ count: newCount },
 				{ headers: headers }
 			)

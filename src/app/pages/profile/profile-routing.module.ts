@@ -7,6 +7,7 @@ import { CreateNewRestaurantComponent } from 'src/app/shared/components/create-n
 import { EditDishComponent } from 'src/app/shared/components/edit-dish/edit-dish.component';
 import { EditRestaurantComponent } from 'src/app/shared/components/edit-restaurant/edit-restaurant.component';
 import { ProfileRestaurantsComponent } from 'src/app/shared/components/profile-restaurants/profile-restaurants.component';
+import { PurchasesComponent } from 'src/app/shared/components/purchases/purchases.component';
 import { ProfileComponent } from './profile.component';
 
 const routes: Routes = [
@@ -38,7 +39,10 @@ const routes: Routes = [
 		canActivate: [authGuard],
 		canDeactivate: [unsavedChangesGuard],
 	},
-
+	{
+		path: 'purchases',
+		component: PurchasesComponent,
+	},
 	{
 		path: '**',
 		pathMatch: 'full',
