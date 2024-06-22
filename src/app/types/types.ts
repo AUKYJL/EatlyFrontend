@@ -132,3 +132,41 @@ export interface ICartProduct {
 	dish: IDish;
 	customer: IUser;
 }
+
+export enum CommentType {
+	dish = 'dish',
+	restaurant = 'restaurant',
+}
+
+export interface IRate {
+	id: number;
+	rate: number;
+	comment: IComment;
+	user: IUser;
+}
+
+export interface IComment {
+	id: number;
+	author: IUser;
+	title: string;
+	message: string;
+	type: CommentType;
+	rate: number;
+	updatedDate: Date;
+	dish: IDish;
+	restaurant: IRestaurant;
+}
+
+export interface ICreateComment {
+	title: string;
+	message: string;
+	rate: number;
+	type: CommentType;
+	dishId: number | null;
+	restaurantId: number | null;
+}
+export interface IUpdateComment {
+	title?: string;
+	message?: string;
+	rate?: number;
+}

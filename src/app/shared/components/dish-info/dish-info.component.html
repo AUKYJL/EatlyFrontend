@@ -25,6 +25,13 @@
 					</div>
 				</div>
 
+				<ng-container *ngIf="dish">
+					<app-comments-section
+						[type]="commentTypes.dish"
+						[entityId]="dish.id"
+					/>
+				</ng-container>
+
 				<app-faq />
 			</div>
 		</div>

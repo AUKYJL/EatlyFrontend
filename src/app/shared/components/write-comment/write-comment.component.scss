@@ -1,0 +1,103 @@
+@use "src/scss/variables" as v;
+.write-comment {
+	box-shadow: 5px 20px 20px 10px rgba(0, 0, 0, 0.1);
+	margin-bottom: 20px;
+	// .write-comment__body
+
+	&__body {
+		background-color: #fff;
+		padding: 44px 50px;
+	}
+
+	// .write-comment__form
+
+	&__form {
+	}
+
+	small {
+		margin-top: 5px;
+		color: red;
+	}
+}
+.form-comment {
+	// .form-comment__item
+
+	&__item {
+		display: flex;
+		flex-direction: column;
+
+		label {
+			font-weight: 500;
+			font-size: 20px;
+			color: v.$color-text-dark-main;
+			margin-bottom: 5px;
+		}
+		input {
+			font-size: 16px;
+			border: 1px solid v.$bg-color-secondary;
+			border-radius: 5px;
+			padding: 5px;
+		}
+		textarea {
+			font-size: 16px;
+			min-height: 100px;
+			resize: none;
+			border: 1px solid v.$bg-color-secondary;
+			padding: 5px;
+			border-radius: 5px;
+			overflow: hidden;
+		}
+		&:not(:last-child) {
+			margin-bottom: 15px;
+		}
+	}
+
+	// .form-comment__bottom
+
+	&__bottom {
+	}
+}
+.bottom-form-comment {
+	display: flex;
+	justify-content: space-between;
+	// .bottom-form-comment__stars
+
+	&__stars {
+	}
+
+	// .bottom-form-comment__btn
+
+	&__btn {
+	}
+}
+.body-bottom-form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+}
+.stars-form-comment {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	// .stars-form-comment__text
+
+	&__text {
+	}
+
+	// .stars-form-comment__star
+
+	&__star {
+		cursor: pointer;
+		&.star {
+			color: #f59e0b;
+			font-size: 23px;
+			&.gray {
+				color: v.$color-text-main;
+			}
+			&.hovered {
+				color: #ff4c05;
+			}
+		}
+	}
+}

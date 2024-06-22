@@ -70,7 +70,11 @@
 						<div class="field-form__title">Desc</div>
 						<angular-editor [config]="config" formControlName="desc" />
 					</div>
-					<button type="submit" class="form__btn btn" [disabled]="!form.valid">
+					<button
+						type="submit"
+						class="form__btn btn btn_filled"
+						[disabled]="!form.valid"
+					>
 						Create
 					</button>
 					<small *ngIf="!form.valid">{{ errorMessage }}</small>

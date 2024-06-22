@@ -6,8 +6,8 @@ import {
 	Renderer2,
 	ViewChild,
 } from '@angular/core';
-import { HeaderComponent } from './core/header/header.component';
-import { FormService } from './services/form.service';
+import { PopupService } from './services/popup.service';
+import { SharedService } from './services/shared.service';
 
 @Component({
 	selector: 'app-root',
@@ -16,22 +16,21 @@ import { FormService } from './services/form.service';
 })
 export class AppComponent implements AfterViewInit {
 	constructor(
-		public formService: FormService,
+		public popupService: PopupService,
 		private renderer: Renderer2,
-		private cdr: ChangeDetectorRef
+		private cdr: ChangeDetectorRef,
+		private sharedService: SharedService
 	) {}
 
 	@ViewChild('main') main!: ElementRef<HTMLDivElement>;
-	@ViewChild(HeaderComponent) header!: HeaderComponent;
 
 	ngAfterViewInit(): void {
 		this.cdr.detectChanges();
-		const headerElement = this.header.getHeaderElement();
 
 		this.renderer.setStyle(
 			this.main.nativeElement,
 			'margin-top',
-			`${headerElement.nativeElement.offsetHeight}px`
+			`${this.sharedService.header.nativeElement.offsetHeight}px`
 		);
 	}
 }

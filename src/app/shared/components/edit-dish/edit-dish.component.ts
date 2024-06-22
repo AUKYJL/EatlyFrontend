@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ToastService } from 'angular-toastify';
 import { DishService } from 'src/app/services/dish.service';
-import { FormService } from 'src/app/services/form.service';
+import { PopupService } from 'src/app/services/popup.service';
 import {
 	DishCategories,
 	DishGroups,
@@ -21,7 +21,7 @@ export class EditDishComponent {
 		private dishService: DishService,
 		private toastService: ToastService,
 		private route: ActivatedRoute,
-		private formService: FormService
+		private popupService: PopupService
 	) {}
 
 	public tags = Object.values(DishTags);
@@ -52,7 +52,8 @@ export class EditDishComponent {
 				this.form.controls.dishGroup.setValue(d.dishGroup);
 				this.form.controls.dishCategory.setValue(d.dishCategory);
 
-				this.formService.form = this.form;
+				this.popupService.form = this.form;
+				this.popupService.message = 'You have unsaved changes';
 			});
 		});
 	}

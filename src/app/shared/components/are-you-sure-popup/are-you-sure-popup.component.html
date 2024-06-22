@@ -1,0 +1,26 @@
+<div
+	class="modal__bg"
+	(click)="action(false)"
+	[class._active]="popupService.isAreYouSurePopupActive"
+></div>
+<div class="modal">
+	<div class="modal__container">
+		<div
+			class="modal__content"
+			[class._active]="popupService.isAreYouSurePopupActive"
+		>
+			<div class="modal__body">
+				<h3 class="modal__title title-h3">Are you sure?</h3>
+				<p class="modal__desc">{{ popupService.message }}</p>
+				<div class="modal__btns">
+					<button class="modal__btn btn btn_border" (click)="action(false)">
+						No
+					</button>
+					<button class="modal__btn btn btn_filled" (click)="action(true)">
+						Yes
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

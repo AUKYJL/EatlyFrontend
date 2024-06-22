@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard';
+import { unsavedChangesGuard } from './guards/unsaved-changes.guard';
 import { AllItemsComponent } from './pages/all-items/all-items.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PricingComponent } from './pages/pricing/pricing.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
 	},
 	{
 		path: 'restaurants/:id',
+		canDeactivate: [unsavedChangesGuard],
 		component: RestaurantInfoComponent,
 	},
 	{
@@ -33,6 +35,7 @@ const routes: Routes = [
 	},
 	{
 		path: 'dishes/:id',
+		canDeactivate: [unsavedChangesGuard],
 		component: DishInfoComponent,
 	},
 	{

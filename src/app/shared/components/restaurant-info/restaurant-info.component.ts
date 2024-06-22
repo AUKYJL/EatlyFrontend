@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { DishService } from 'src/app/services/dish.service';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 import {
+	CommentType,
 	IDish,
 	IRestaurant,
 	ItemsWithPaginationTypes,
@@ -20,9 +21,11 @@ export class RestaurantInfoComponent implements OnInit {
 		private restaurantService: RestaurantService,
 		private dishService: DishService
 	) {}
+
 	public restaurant?: IRestaurant;
 	public bookmarked?: boolean;
 	public types = ItemsWithPaginationTypes;
+	public commentTypes = CommentType;
 
 	public popularDishes$ = new Observable<IDish[]>();
 

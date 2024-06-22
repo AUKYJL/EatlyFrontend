@@ -1,0 +1,104 @@
+<div class="write-comment">
+	<div class="write-comment__body">
+		<form
+			action="#"
+			class="write-comment__form form-comment"
+			[formGroup]="commentsService.commentForm"
+			(ngSubmit)="submit()"
+		>
+			<div class="form-comment__item">
+				<label for="title">Title</label>
+				<input
+					id="title"
+					type="text"
+					placeholder="Enter your title of comment"
+					formControlName="title"
+				/>
+				<small
+					*ngIf="
+						commentsService.commentForm.controls.title.touched &&
+						commentsService.commentForm.controls.title.value?.length == 0
+					"
+					>This field must be filled</small
+				>
+			</div>
+
+			<div class="form-comment__item">
+				<label for="message">Message</label>
+				<textarea
+					#textarea
+					id="message"
+					type="text"
+					placeholder="Enter your message"
+					formControlName="message"
+					(input)="autoResize()"
+				></textarea>
+				<small
+					*ngIf="
+						commentsService.commentForm.controls.message.touched &&
+						commentsService.commentForm.controls.message.value?.length == 0
+					"
+					>This field must be filled</small
+				>
+			</div>
+			<div class="form-comment__bottom bottom-form-comment">
+				<div class="bottom-form-comment__stars stars-form-comment">
+					<p class="stars-form-comment__text">Your rate is</p>
+					<ng-container *ngFor="let i of [1, 2, 3, 4, 5]"
+						><span
+							class="stars-form-comment__star _icon-star star"
+							(click)="setNewRate(i)"
+							HoverStar
+							(newStarNumber)="handleNewStarNumber($event)"
+							[starNumber]="i"
+							[class.hovered]="i <= hoverRate"
+							*ngIf="
+								i <= commentsService.commentForm.controls.rate.value! ||
+									i <= hoverRate;
+								else grayStar
+							"
+						></span>
+						<ng-template #grayStar>
+							<span
+								class="stars-form-comment__star _icon-regular-star star gray"
+								(click)="setNewRate(i)"
+								(newStarNumber)="handleNewStarNumber($event)"
+								[starNumber]="i"
+								HoverStar
+							></span>
+						</ng-template>
+					</ng-container>
+				</div>
+				<div class="bottom-form-comment__body body-bottom-form">
+					<ng-container *ngIf="!commentsService.isEditing; else editBtns">
+						<button
+							type="submit"
+							class="body-bottom-form__btn btn btn_filled"
+							[disabled]="!commentsService.commentForm.valid"
+						>
+							Send
+						</button>
+					</ng-container>
+
+					<ng-template #editBtns
+						><button
+							type="button"
+							class="body-bottom-form__btn btn btn_border"
+							(click)="cancel()"
+						>
+							Cancel
+						</button>
+						<button
+							type="button"
+							class="body-bottom-form__btn btn btn_filled"
+							(click)="edit()"
+							[disabled]="!commentsService.commentForm.valid"
+						>
+							Edit
+						</button>
+					</ng-template>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

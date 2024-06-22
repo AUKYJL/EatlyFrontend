@@ -15,17 +15,23 @@ import { AngularToastifyModule, ToastService } from 'angular-toastify';
 import { register } from 'swiper/element/bundle';
 import { AllItemsComponent } from './pages/all-items/all-items.component';
 import { httpInterceptorProviders } from './pages/auth/auth.interceptor';
+import { PricingComponent } from './pages/pricing/pricing.component';
 import { AuthService } from './services/auth.service';
+import { CommentsService } from './services/comments.service';
 import { DishService } from './services/dish.service';
-import { FormService } from './services/form.service';
 import { ItemsService } from './services/items.service';
+import { PopupService } from './services/popup.service';
 import { RestaurantService } from './services/restaurant.service';
+import { SharedService } from './services/shared.service';
 import { SideCartMenuService } from './services/side-cart-menu.service';
+import { AreYouSurePopupComponent } from './shared/components/are-you-sure-popup/are-you-sure-popup.component';
 import { BookmarkComponent } from './shared/components/bookmark/bookmark.component';
 import { CardAditionalInfoComponent } from './shared/components/card-aditional-info/card-aditional-info.component';
 import { CardsSectionComponent } from './shared/components/cards-section/cards-section.component';
 import { CloseComponent } from './shared/components/close/close.component';
-import { ConfirmLeaveComponent } from './shared/components/confirm-leave/confirm-leave.component';
+import { CommentComponent } from './shared/components/comment/comment.component';
+import { CommentsSectionComponent } from './shared/components/comments-section/comments-section.component';
+import { CommentsWithPaginationComponent } from './shared/components/comments-with-pagination/comments-with-pagination.component';
 import { CreateNewFoodComponent } from './shared/components/create-new-food/create-new-food.component';
 import { CreateNewRestaurantComponent } from './shared/components/create-new-restaurant/create-new-restaurant.component';
 import { DishCardComponent } from './shared/components/dish-card/dish-card.component';
@@ -47,14 +53,16 @@ import { ProfileRestaurantsComponent } from './shared/components/profile-restaur
 import { PurchaseCounterComponent } from './shared/components/purchase-counter/purchase-counter.component';
 import { PurchasesComponent } from './shared/components/purchases/purchases.component';
 import { RegisterComponent } from './shared/components/register/register.component';
+import { ReportPopupComponent } from './shared/components/report-popup/report-popup.component';
 import { RestaurantCardComponent } from './shared/components/restaurant-card/restaurant-card.component';
 import { RestaurantInfoComponent } from './shared/components/restaurant-info/restaurant-info.component';
 import { SideCartCardComponent } from './shared/components/side-cart-card/side-cart-card.component';
 import { SideCartMenuComponent } from './shared/components/side-cart-menu/side-cart-menu.component';
 import { UserAuthFieldComponent } from './shared/components/user-auth-field/user-auth-field.component';
+import { WriteCommentComponent } from './shared/components/write-comment/write-comment.component';
 import { HoverCardDirective } from './shared/directives/hover-card.directive';
+import { HoverStarDirective } from './shared/directives/hover-star.directive';
 import { PricePipe } from './shared/pipes/price.pipe';
-import { PricingComponent } from './pages/pricing/pricing.component';
 
 register();
 @NgModule({
@@ -83,20 +91,25 @@ register();
 		BookmarkComponent,
 		CardAditionalInfoComponent,
 		FaqComponent,
-
 		CreateNewFoodComponent,
 		DishInfoComponent,
 		LikedComponent,
 		HoverCardComponent,
 		HoverCardDirective,
-		ConfirmLeaveComponent,
 		EditDishComponent,
 		SideCartMenuComponent,
 		SideCartCardComponent,
 		CloseComponent,
 		PurchaseCounterComponent,
 		PurchasesComponent,
-  PricingComponent,
+		PricingComponent,
+		CommentComponent,
+		CommentsSectionComponent,
+		CommentsWithPaginationComponent,
+		HoverStarDirective,
+		WriteCommentComponent,
+		ReportPopupComponent,
+		AreYouSurePopupComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -117,8 +130,10 @@ register();
 		ToastService,
 		DishService,
 		ItemsService,
-		FormService,
 		SideCartMenuService,
+		CommentsService,
+		SharedService,
+		PopupService,
 	],
 	bootstrap: [AppComponent],
 })

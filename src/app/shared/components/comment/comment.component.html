@@ -1,0 +1,66 @@
+<div class="comment">
+	<div class="comment__container">
+		<div class="comment__content">
+			<div class="comment__body">
+				<div class="comment__top top-comment _icon-quotes" *ngIf="!short">
+					<div class="top-comment__user-img">
+						<img src="assets/img/user.png" alt="user avatar" />
+					</div>
+					<div class="top-comment__info info-top-comment">
+						<p class="info-top-comment__username">{{ comment.author.name }}</p>
+						<h5 class="info-top-comment__title">{{ comment.title }}</h5>
+					</div>
+					<div
+						class="info-top-comment__more more-info-top _icon-more"
+						(click)="toggleMore()"
+					>
+						<div
+							class="more-info-top__content content-more-info"
+							[class._active]="moreIsActive"
+						>
+							<ul class="content-more-info__list list-content-more-info">
+								<li
+									class="list-content-more-info__item _icon _icon-flag"
+									*ngIf="comment.author.id != userId"
+									(click)="reportComment()"
+								>
+									Report
+								</li>
+								<li
+									class="list-content-more-info__item _icon-pen"
+									*ngIf="userId && comment.author.id == userId"
+									(click)="editComment()"
+								>
+									Edit
+								</li>
+								<li
+									class="list-content-more-info__item _icon-trash"
+									*ngIf="userId && comment.author.id == userId"
+									(click)="deleteComment()"
+								>
+									Delete
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="comment__mid mid-comment">
+					<p class="mid-comment__desc">"{{ comment.message }}"</p>
+				</div>
+				<div class="comment__rating rating-comment">
+					<ng-container *ngFor="let i of [1, 2, 3, 4, 5]"
+						><span
+							class="rating-comment__star _icon-star star"
+							*ngIf="i <= comment.rate; else grayStar"
+						></span>
+						<ng-template #grayStar>
+							<span
+								class="rating-comment__star _icon-regular-star star gray"
+							></span>
+						</ng-template>
+					</ng-container>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,15 @@
+<div class="comments">
+	<div class="comments__row">
+		<app-comment
+			*ngFor="let comment of commentsService.comments$ | async"
+			[comment]="comment"
+			(newRate)="handleNewRate()"
+		/>
+	</div>
+
+	<app-pagination
+		[page]="page"
+		[countPages]="commentsService.countPagesSubject.value"
+		(onChangePage)="handleOnChangePage($event)"
+	/>
+</div>

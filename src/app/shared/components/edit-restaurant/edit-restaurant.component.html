@@ -10,7 +10,7 @@
 						[restaurantId]="restaurant.id"
 						[hasHover]="true"
 					/>
-					<div class="dishes-new-btn btn" (click)="goToCreateDish()">
+					<div class="dishes-new-btn btn btn_filled" (click)="goToCreateDish()">
 						Add more
 					</div>
 				</div>
@@ -87,7 +87,7 @@
 						</div>
 						<button
 							type="submit"
-							class="form__btn btn"
+							class="form__btn btn btn_filled"
 							[disabled]="!form.valid"
 						>
 							Save

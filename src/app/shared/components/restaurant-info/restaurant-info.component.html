@@ -44,6 +44,13 @@
 					[title]="'Popular 🔥'"
 				/>
 
+				<ng-container *ngIf="restaurant">
+					<app-comments-section
+						[type]="commentTypes.restaurant"
+						[entityId]="restaurant.id"
+					/>
+				</ng-container>
+
 				<app-faq />
 			</div>
 		</div>

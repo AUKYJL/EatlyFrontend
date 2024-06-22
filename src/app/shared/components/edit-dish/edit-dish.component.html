@@ -97,7 +97,11 @@
 							<img [src]="form.controls.urlToImg.value" alt="preview image" />
 						</div>
 					</div>
-					<button type="submit" class="form__btn btn" [disabled]="!form.valid">
+					<button
+						type="submit"
+						class="form__btn btn btn_filled"
+						[disabled]="!form.valid"
+					>
 						Save
 					</button>
 					<small *ngIf="!form.valid">{{ errorMessage }}</small>

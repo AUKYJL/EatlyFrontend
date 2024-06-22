@@ -1,5 +1,12 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+	AfterViewInit,
+	Component,
+	ElementRef,
+	OnInit,
+	ViewChild,
+} from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { SharedService } from 'src/app/services/shared.service';
 import { SideCartMenuService } from 'src/app/services/side-cart-menu.service';
 import { INavList } from 'src/app/types/types';
 
@@ -8,13 +15,19 @@ import { INavList } from 'src/app/types/types';
 	templateUrl: './header.component.html',
 	styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterViewInit {
 	constructor(
 		public authService: AuthService,
-		public sideCartService: SideCartMenuService
+		public sideCartService: SideCartMenuService,
+		private sharedService: SharedService
 	) {}
-	ngOnInit(): void {}
+
 	@ViewChild('header') header!: ElementRef<HTMLDivElement>;
+
+	ngAfterViewInit(): void {
+		this.sharedService.header = this.header;
+	}
+	ngOnInit(): void {}
 	public navList: INavList[] = [
 		{
 			title: 'Home',
@@ -39,9 +52,5 @@ export class HeaderComponent implements OnInit {
 	];
 	public scrollTop() {
 		window.scrollTo(0, 0);
-	}
-
-	public getHeaderElement(): ElementRef<HTMLDivElement> {
-		return this.header;
 	}
 }

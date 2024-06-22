@@ -1,7 +1,7 @@
 import { inject } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { CanDeactivateFn } from '@angular/router';
-import { FormService } from '../services/form.service';
+import { PopupService } from '../services/popup.service';
 
 export interface ICanDeactiveComponent {
 	form?: FormGroup;
@@ -13,10 +13,13 @@ export const unsavedChangesGuard: CanDeactivateFn<ICanDeactiveComponent> = (
 	currentState,
 	nextState
 ) => {
-	if (component.form?.dirty) {
-		const form = inject(FormService);
-		form.active = true;
-		return form.canLeave$.asObservable();
+	const popupService = inject(PopupService);
+
+	if (popupService.form?.dirty) {
+		popupService.isAreYouSurePopupActive = true;
+		return popupService.canLeave$.asObservable();
 	}
+	popupService.message = '';
+	popupService.form = null;
 	return true;
 };

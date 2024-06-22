@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { ToastService } from 'angular-toastify';
 import { AuthService } from 'src/app/services/auth.service';
-import { FormService } from 'src/app/services/form.service';
+import { PopupService } from 'src/app/services/popup.service';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 import {
 	IRestaurant,
@@ -25,7 +25,7 @@ export class EditRestaurantComponent implements OnInit {
 		private authService: AuthService,
 		private route: ActivatedRoute,
 		private router: Router,
-		private formService: FormService
+		private popupService: PopupService
 	) {}
 
 	public config: AngularEditorConfig = editorConfig;
@@ -57,7 +57,8 @@ export class EditRestaurantComponent implements OnInit {
 				this.form.controls.urlToImg.setValue(r.urlToImg);
 				this.form.controls.desc.setValue(r.desc);
 
-				this.formService.form = this.form;
+				this.popupService.form = this.form;
+				this.popupService.message = 'You have unsaved changes';
 			});
 		});
 	}

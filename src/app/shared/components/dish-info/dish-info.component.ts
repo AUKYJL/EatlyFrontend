@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DishService } from 'src/app/services/dish.service';
-import { IDish, ItemsWithPaginationTypes } from 'src/app/types/types';
+import {
+	CommentType,
+	IDish,
+	ItemsWithPaginationTypes,
+} from 'src/app/types/types';
 
 @Component({
 	selector: 'app-dish-info',
@@ -16,6 +20,7 @@ export class DishInfoComponent {
 	public dish?: IDish;
 	public isLiked: boolean = false;
 	public types = ItemsWithPaginationTypes;
+	public commentTypes = CommentType;
 
 	ngOnInit(): void {
 		this.route.paramMap.subscribe((params) => {
