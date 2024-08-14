@@ -9,47 +9,47 @@ import { DishInfoComponent } from './shared/components/dish-info/dish-info.compo
 import { RestaurantInfoComponent } from './shared/components/restaurant-info/restaurant-info.component';
 
 const routes: Routes = [
-	{
-		path: '',
-		component: HomeComponent,
-	},
-	{
-		path: 'auth',
-		loadChildren: () =>
-			import('./pages/auth/auth.module').then((m) => m.AuthModule),
-	},
-	{
-		path: 'restaurants/:id',
-		canDeactivate: [unsavedChangesGuard],
-		component: RestaurantInfoComponent,
-	},
-	{
-		path: 'items/:contentType',
-		component: AllItemsComponent,
-	},
-	{
-		path: 'profile',
-		canActivate: [authGuard],
-		loadChildren: () =>
-			import('./pages/profile/profile.module').then((m) => m.ProfileModule),
-	},
-	{
-		path: 'dishes/:id',
-		canDeactivate: [unsavedChangesGuard],
-		component: DishInfoComponent,
-	},
-	{
-		path: 'pricing',
-		component: PricingComponent,
-	},
-	{
-		path: '**',
-		redirectTo: '',
-	},
+  {
+    path: '',
+    component: HomeComponent,
+  },
+  {
+    path: 'auth',
+    loadChildren: () =>
+      import('./pages/auth/auth.module').then(m => m.AuthModule),
+  },
+  {
+    path: 'restaurants/:id',
+    canDeactivate: [unsavedChangesGuard],
+    component: RestaurantInfoComponent,
+  },
+  {
+    path: 'items/:contentType',
+    component: AllItemsComponent,
+  },
+  {
+    path: 'profile',
+    canActivate: [authGuard],
+    loadChildren: () =>
+      import('./pages/profile/profile.module').then(m => m.ProfileModule),
+  },
+  {
+    path: 'dishes/:id',
+    canDeactivate: [unsavedChangesGuard],
+    component: DishInfoComponent,
+  },
+  {
+    path: 'pricing',
+    component: PricingComponent,
+  },
+  {
+    path: '**',
+    redirectTo: '',
+  },
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes)],
-	exports: [RouterModule],
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

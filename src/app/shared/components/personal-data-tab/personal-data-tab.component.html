@@ -1,0 +1,200 @@
+<form [formGroup]="auth.authForm">
+  <ul class="item-blocks__list list-item-blocks">
+    <li class="list-item-blocks__item field-item-blocks">
+      <div class="field-item-blocks__top top-field-item-blocks">
+        <h4 class="top-field-item-blocks__title">Profile image</h4>
+        <div class="top-field-item-blocks__btns">
+          <button
+            type="button"
+            class="top-field-item-blocks__btn"
+            *ngIf="!editingFields.image; else image"
+            (click)="onEdit(); editingFields.image = true">
+            Edit
+          </button>
+          <ng-template #image>
+            <button
+              type="button"
+              class="top-field-item-blocks__btn"
+              (click)="editingFields.image = false; onCancel()">
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="top-field-item-blocks__btn"
+              (click)="editingFields.image = false; onSave()">
+              Save
+            </button>
+          </ng-template>
+        </div>
+      </div>
+      <div class="field-item-blocks__img">
+        <img [src]="auth.authForm.controls.urlToImg.value" alt="" userImg />
+      </div>
+      <ng-container *ngIf="editingFields.image">
+        <div class="field-item-blocks__label">URL to image</div>
+
+        <input
+          type="text"
+          class="field-item-blocks__input"
+          formControlName="urlToImg" />
+      </ng-container>
+    </li>
+
+    <li class="list-item-blocks__item field-item-blocks">
+      <div class="field-item-blocks__top top-field-item-blocks">
+        <h4 class="top-field-item-blocks__title">Nickname</h4>
+        <div class="top-field-item-blocks__btns">
+          <button
+            type="button"
+            class="top-field-item-blocks__btn"
+            *ngIf="!editingFields.name; else name"
+            (click)="onEdit(); editingFields.name = true">
+            Edit
+          </button>
+          <ng-template #name
+            ><button
+              type="button"
+              class="top-field-item-blocks__btn"
+              (click)="editingFields.name = false; onCancel()">
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="top-field-item-blocks__btn"
+              (click)="editingFields.name = false; onSave()">
+              Save
+            </button></ng-template
+          >
+        </div>
+      </div>
+      <input
+        type="text"
+        class="field-item-blocks__input"
+        [readOnly]="!editingFields.name"
+        formControlName="name" />
+    </li>
+
+    <li class="list-item-blocks__item field-item-blocks">
+      <div class="field-item-blocks__top top-field-item-blocks">
+        <h4 class="top-field-item-blocks__title">Email</h4>
+        <div class="top-field-item-blocks__btns">
+          <button
+            type="button"
+            class="top-field-item-blocks__btn"
+            *ngIf="!editingFields.email; else email"
+            (click)="onEdit(); editingFields.email = true">
+            Edit
+          </button>
+          <ng-template #email>
+            <button
+              type="button"
+              class="top-field-item-blocks__btn"
+              (click)="editingFields.email = false; onCancel()">
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="top-field-item-blocks__btn"
+              (click)="editingFields.email = false; onSave()">
+              Save
+            </button>
+          </ng-template>
+        </div>
+      </div>
+      <input
+        type="text"
+        class="field-item-blocks__input"
+        [readOnly]="!editingFields.email"
+        formControlName="email" />
+    </li>
+
+    <li class="list-item-blocks__item field-item-blocks">
+      <div class="field-item-blocks__top top-field-item-blocks">
+        <h4 class="top-field-item-blocks__title">Phone</h4>
+        <div class="top-field-item-blocks__btns">
+          <button
+            type="button"
+            class="top-field-item-blocks__btn"
+            *ngIf="!editingFields.phone; else phone"
+            (click)="onEdit(); editingFields.phone = true">
+            Edit
+          </button>
+          <ng-template #phone>
+            <button
+              type="button"
+              class="top-field-item-blocks__btn"
+              (click)="editingFields.phone = false; onCancel()">
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="top-field-item-blocks__btn"
+              (click)="editingFields.phone = false; onSave()">
+              Save
+            </button>
+          </ng-template>
+        </div>
+      </div>
+      <input
+        type="text"
+        class="field-item-blocks__input"
+        [readOnly]="!editingFields.phone"
+        formControlName="phone" />
+    </li>
+
+    <li class="list-item-blocks__item field-item-blocks">
+      <div class="field-item-blocks__top top-field-item-blocks">
+        <h4 class="top-field-item-blocks__title">Password</h4>
+        <div class="top-field-item-blocks__btns">
+          <button
+            type="button"
+            class="top-field-item-blocks__btn"
+            *ngIf="!editingFields.password; else password"
+            (click)="onEdit(); editingFields.password = true">
+            Edit
+          </button>
+          <ng-template #password>
+            <button
+              type="button"
+              class="top-field-item-blocks__btn"
+              (click)="editingFields.password = false; onCancel()">
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="top-field-item-blocks__btn"
+              (click)="editingFields.password = false; onSave()">
+              Save
+            </button>
+          </ng-template>
+        </div>
+      </div>
+      <div
+        class="field-item-blocks__password password"
+        [formGroup]="passwordForm"
+        *ngIf="editingFields.password">
+        <label for="oldPassword" class="password__label">Old password</label>
+        <input
+          type="text"
+          class="field-item-blocks__input password__input"
+          id="oldPassword"
+          formControlName="oldPassword" />
+        <label for="newPassword" class="password__label">New password</label>
+        <input
+          type="text"
+          class="field-item-blocks__input password__input"
+          id="newPassword"
+          formControlName="newPassword" />
+        <label for="repeatedNewPassword" class="password__label"
+          >Repeated new password</label
+        >
+        <input
+          type="text"
+          class="field-item-blocks__input password__input"
+          id="repeatedNewPassword"
+          formControlName="repeatedNewPassword" />
+      </div>
+    </li>
+  </ul>
+  Delete profile
+</form>

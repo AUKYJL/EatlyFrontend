@@ -11,47 +11,47 @@ import { PurchasesComponent } from 'src/app/shared/components/purchases/purchase
 import { ProfileComponent } from './profile.component';
 
 const routes: Routes = [
-	{
-		path: '',
-		component: ProfileComponent,
-	},
-	{
-		path: 'restaurants/:id/add-new-food',
-		component: CreateNewFoodComponent,
-	},
-	{
-		path: 'dishes/edit-food/:id',
-		component: EditDishComponent,
-		canActivate: [authGuard],
-		canDeactivate: [unsavedChangesGuard],
-	},
-	{
-		path: 'restaurants',
-		component: ProfileRestaurantsComponent,
-	},
-	{
-		path: 'restaurants/create-new',
-		component: CreateNewRestaurantComponent,
-	},
-	{
-		path: 'restaurants/:id/edit',
-		component: EditRestaurantComponent,
-		canActivate: [authGuard],
-		canDeactivate: [unsavedChangesGuard],
-	},
-	{
-		path: 'purchases',
-		component: PurchasesComponent,
-	},
-	{
-		path: '**',
-		pathMatch: 'full',
-		redirectTo: '',
-	},
+  {
+    path: '',
+    component: ProfileComponent,
+  },
+  {
+    path: 'restaurants/:id/add-new-food',
+    component: CreateNewFoodComponent,
+  },
+  {
+    path: 'dishes/edit-food/:id',
+    component: EditDishComponent,
+    canActivate: [authGuard],
+    canDeactivate: [unsavedChangesGuard],
+  },
+  {
+    path: 'restaurants',
+    component: ProfileRestaurantsComponent,
+  },
+  {
+    path: 'restaurants/create-new',
+    component: CreateNewRestaurantComponent,
+  },
+  {
+    path: 'restaurants/:id/edit',
+    component: EditRestaurantComponent,
+    canActivate: [authGuard],
+    canDeactivate: [unsavedChangesGuard],
+  },
+  {
+    path: 'purchases',
+    component: PurchasesComponent,
+  },
+  {
+    path: '**',
+    pathMatch: 'full',
+    redirectTo: '',
+  },
 ];
 
 @NgModule({
-	imports: [RouterModule.forChild(routes)],
-	exports: [RouterModule],
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
 export class ProfileRoutingModule {}

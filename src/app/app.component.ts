@@ -30,7 +30,7 @@ export class AppComponent implements AfterViewInit {
 		this.renderer.setStyle(
 			this.main.nativeElement,
 			'margin-top',
-			`${this.sharedService.header.nativeElement.offsetHeight}px`
+			`${this.sharedService.header.nativeElement.offsetHeight + 20}px`
 		);
 	}
 }

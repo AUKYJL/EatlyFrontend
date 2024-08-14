@@ -1,1 +1,31 @@
-<p>profile works!</p>
+<section class="profile">
+  <div class="container">
+    <div class="profile__content">
+      <div class="profile__body">
+        <div class="profile__tabs tabs-profile">
+          <ul class="tabs-profile__list list-tabs-profile">
+            <li
+              class="list-tabs-profile__item"
+              *ngFor="let tab of tabs; let i = index"
+              [class._active]="currentTab === i + 1"
+              (click)="currentTab = i + 1">
+              {{ tab.title }}
+            </li>
+          </ul>
+          <ul class="tabs-profile__blocks blocks-tabs-profile">
+            <li
+              class="blocks-tabs-profile__item item-blocks"
+              [style.display]="currentTab === 1 ? 'block' : 'none'">
+              <app-personal-data-tab />
+            </li>
+            <li
+              class="blocks-tabs-profile__item item-blocks"
+              [style.display]="currentTab === 2 ? 'block' : 'none'">
+              asdasd
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
