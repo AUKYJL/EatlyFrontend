@@ -1,0 +1,92 @@
+@use "src/scss/variables" as v;
+//form
+.form {
+	padding-top: 182px;
+	padding-bottom: 216px;
+	// .form__content
+
+	&__content {
+		background: url("../../../../assets/img/form/bg.png") repeat center/50%;
+		background-color: v.$color-main;
+		border-radius: 30px;
+		padding: 37px 66px;
+	}
+
+	// .form__body
+
+	&__body {
+		display: flex;
+		justify-content: space-between;
+		position: relative;
+	}
+
+	// .form__left
+
+	&__left {
+	}
+
+	// .form__form
+
+	&__form {
+	}
+
+	// .form__inp-box
+
+	&__inp-box {
+		padding: 7px;
+		background-color: rgba(255, 255, 255, 0.9);
+		border-radius: 15px;
+		display: flex;
+		gap: 62px;
+	}
+
+	// .form__inp
+
+	&__inp {
+		background-color: transparent;
+		color: v.$color-text-dark-main;
+		font-size: 17px;
+		font-weight: 400;
+		line-height: 24px;
+		letter-spacing: 3%;
+
+		&::placeholder {
+			text-transform: capitalize;
+			color: v.$color-text-main;
+		}
+	}
+
+	// .form__btn
+
+	&__btn {
+	}
+
+	// .form__right
+
+	&__right {
+	}
+}
+
+.left-form {
+	// .left-form__title
+
+	&__title {
+		color: rgba(255, 255, 255, 0.9);
+		font-size: 70px;
+		font-weight: 800;
+		line-height: 105px;
+		letter-spacing: 0%;
+		margin-bottom: 20px;
+	}
+}
+
+.right-form {
+	// .right-form__img
+
+	&__img {
+		position: absolute;
+
+		top: 10%;
+		right: 0;
+	}
+}

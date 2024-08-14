@@ -1,0 +1,155 @@
+@use "src/scss/variables" as v;
+.side-cart-menu {
+	// .side-cart-menu__bg
+	&__bg {
+		z-index: 200;
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		background-color: rgba(0, 0, 0, 0.6);
+		pointer-events: none;
+		opacity: 0;
+		transition: all 0.3s ease 0s;
+		&._active {
+			opacity: 1;
+			pointer-events: all;
+		}
+	}
+
+	// .side-cart-menu__container
+
+	&__container {
+	}
+
+	// .side-cart-menu__content
+
+	&__content {
+		position: fixed;
+		width: 30vw;
+		height: 100%;
+		top: 0;
+		right: -100%;
+		z-index: 200;
+		background-color: #fff;
+		transition: all 0.5s ease 0s;
+		&._active {
+			right: 0;
+		}
+	}
+
+	// .side-cart-menu__body
+
+	&__body {
+		padding: 20px;
+		display: flex;
+		flex-direction: column;
+		min-height: 100%;
+		max-height: 100vh;
+	}
+
+	// .side-cart-menu__top
+
+	&__top {
+	}
+
+	// .side-cart-menu__products
+
+	&__products {
+	}
+
+	// .side-cart-menu__bottom
+
+	&__bottom {
+	}
+}
+.top-cart-menu {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	// .top-cart-menu__title
+
+	&__title {
+		font-size: 20px;
+		font-weight: 600;
+		color: v.$color-text-dark-main;
+	}
+}
+
+.products-cart-menu {
+	overflow: auto;
+	flex: 1 1 auto;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+.content-products-item {
+	// .content-products-item__top
+
+	&__top {
+	}
+
+	// .content-products-item__bottom
+
+	&__bottom {
+	}
+}
+.top-content {
+	// .top-content__title
+
+	&__title {
+	}
+
+	// .top-content__price
+
+	&__price {
+	}
+}
+.bottom-content {
+	// .bottom-content__remove
+
+	&__remove {
+	}
+}
+.bottom-cart-menu {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	// .bottom-cart-menu__left
+
+	&__left {
+	}
+
+	// .bottom-cart-menu__right
+
+	&__right {
+	}
+}
+.left-bottom-menu {
+	// .left-bottom-menu__title
+
+	&__title {
+		font-size: 20px;
+		font-weight: 500;
+		color: v.$color-text-dark-main;
+		margin-bottom: 20px;
+	}
+
+	// .left-bottom-menu__price
+
+	&__price {
+		font-size: 18px;
+		color: v.$color-text-dark-main;
+		font-weight: 500;
+	}
+}
+.right-bottom-menu {
+	// .right-bottom-menu__btn
+
+	&__btn {
+	}
+}

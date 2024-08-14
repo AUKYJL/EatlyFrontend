@@ -18,7 +18,9 @@ export class ItemsWithPaginationComponent implements OnInit {
 	) {}
 
 	@Input({ required: true }) type!: ItemsWithPaginationTypes;
+	@Input() restaurantId?: number;
 	@Input() title?: string;
+	@Input() hasHover: boolean = false;
 
 	cols: number = 3;
 
@@ -30,7 +32,7 @@ export class ItemsWithPaginationComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.getItems();
-		this.restaurantService.deletedRestaurant.subscribe(() => {
+		this.itemsService.deletedItem.subscribe(() => {
 			this.getItems();
 		});
 	}
@@ -44,9 +46,23 @@ export class ItemsWithPaginationComponent implements OnInit {
 					this.page,
 					this.limit
 				);
-				this.dishService.getAllDishes().subscribe((r) => {
-					this.countPages = Math.ceil(r.length / this.limit);
+				this.dishService.getAllDishes().subscribe((d) => {
+					this.countPages = Math.ceil(d.length / this.limit);
 				});
+				break;
+			case ItemsWithPaginationTypes.restaurantDishes:
+				this.cols = 5;
+				this.limit = this.cols * 2;
+				this.items$ = this.dishService.getRestaurantDishesWithPagination(
+					this.restaurantId!,
+					this.page,
+					this.limit
+				);
+				this.dishService
+					.getRestaurantDishes(this.restaurantId!)
+					.subscribe((d) => {
+						this.countPages = Math.ceil(d.length / this.limit);
+					});
 				break;
 			case ItemsWithPaginationTypes.restaurants:
 				this.cols = 3;

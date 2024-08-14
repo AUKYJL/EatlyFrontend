@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { IDish, IRestaurant } from '../types/types';
 import { RestaurantService } from './restaurant.service';
@@ -6,6 +6,8 @@ import { RestaurantService } from './restaurant.service';
 @Injectable()
 export class ItemsService {
 	constructor(private restaurantService: RestaurantService) {}
+
+	public deletedItem = new EventEmitter();
 
 	public items$: Observable<IRestaurant[] | IDish[]> = of([]);
 

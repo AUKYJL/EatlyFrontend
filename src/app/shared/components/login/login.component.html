@@ -1,86 +1,80 @@
 <div class="auth__container">
-	<h2 class="auth__title">Sign In To eatly</h2>
-	<div class="auth__services services-auth">
-		<div class="services-auth__item _icon-google"></div>
-		<div class="services-auth__item _icon-apple"></div>
-	</div>
-	<p class="auth__or">OR</p>
-	<form
-		class="auth__form form-auth"
-		[formGroup]="myForm"
-		(ngSubmit)="onSubmit()"
-	>
-		<div
-			class="form-auth__control control-form-auth"
-			[class.error]="
-				myForm.controls.email.touched && !myForm.controls.email.valid
-			"
-			(click)="activeInput(0)"
-		>
-			<div class="control-form-auth__body" #control>
-				<div
-					class="form-auth__icon"
-					[ngClass]="iconsStates[0] ? '_icon-filled-email' : '_icon-email'"
-				></div>
-				<input
-					(blur)="onBlur(0)"
-					formControlName="email"
-					type="email"
-					class="form-auth__input"
-					placeholder="email"
-					#input
-				/>
-			</div>
-			<small
-				*ngIf="myForm.controls.email.touched && !myForm.controls.email.valid"
-				>This should be a valid email</small
-			>
-		</div>
-		<div
-			class="form-auth__control control-form-auth"
-			[class.error]="
-				myForm.controls.password.touched && !myForm.controls.password.valid
-			"
-			(click)="activeInput(1)"
-		>
-			<div class="control-form-auth__body" #control>
-				<div
-					class="form-auth__icon"
-					[ngClass]="iconsStates[1] ? '_icon-filled-lock' : '_icon-lock'"
-				></div>
-				<input
-					(blur)="onBlur(1)"
-					formControlName="password"
-					[type]="showPassword ? 'text' : 'password'"
-					class="form-auth__input"
-					placeholder="password"
-					#input
-				/>
-				<div
-					class="form-auth__icon _icon-eye form-auth-icon-password"
-					[class.show-password]="showPassword"
-					(click)="showPassword = !showPassword"
-				></div>
-			</div>
+  <h2 class="auth__title">Sign In To eatly</h2>
+  <div class="auth__services services-auth">
+    <div class="services-auth__item _icon-google"></div>
+    <div class="services-auth__item _icon-apple"></div>
+  </div>
+  <p class="auth__or">OR</p>
+  <form
+    class="auth__form form-auth"
+    [formGroup]="myForm"
+    (ngSubmit)="onSubmit()">
+    <div
+      class="form-auth__control control-form-auth"
+      [class.error]="
+        myForm.controls.email.touched && !myForm.controls.email.valid
+      "
+      (click)="activeInput(0)">
+      <div class="control-form-auth__body" #control>
+        <div
+          class="form-auth__icon"
+          [ngClass]="
+            iconsStates[0] ? '_icon-filled-email' : '_icon-email'
+          "></div>
+        <input
+          (blur)="onBlur(0)"
+          formControlName="email"
+          type="email"
+          class="form-auth__input"
+          placeholder="email"
+          #input />
+      </div>
+      <small
+        *ngIf="myForm.controls.email.touched && !myForm.controls.email.valid"
+        >This should be a valid email</small
+      >
+    </div>
+    <div
+      class="form-auth__control control-form-auth"
+      [class.error]="
+        myForm.controls.password.touched && !myForm.controls.password.valid
+      "
+      (click)="activeInput(1)">
+      <div class="control-form-auth__body" #control>
+        <div
+          class="form-auth__icon"
+          [ngClass]="iconsStates[1] ? '_icon-filled-lock' : '_icon-lock'"></div>
+        <input
+          (blur)="onBlur(1)"
+          formControlName="password"
+          [type]="showPassword ? 'text' : 'password'"
+          class="form-auth__input"
+          placeholder="password"
+          #input />
+        <div
+          class="form-auth__icon _icon-eye form-auth-icon-password"
+          [class.show-password]="showPassword"
+          (click)="showPassword = !showPassword"></div>
+      </div>
 
-			<small
-				*ngIf="
-					myForm.controls.password.touched && !myForm.controls.password.valid
-				"
-				>Password should be more than 5 symbols</small
-			>
-			<a
-				routerLink="../forget-password"
-				class="control-form-auth__forget-password"
-				>Forget Password ?</a
-			>
-		</div>
-		<button type="submit" class="btn" [disabled]="!myForm.valid">
-			Sign in
-		</button>
-		<small class="form-auth__error">{{ errorMessage }}</small>
-	</form>
-	<p class="auth__text">
-		Create A New Account? <a routerLink="../register">Sign Up</a>
-	</p>
+      <small
+        *ngIf="
+          myForm.controls.password.touched && !myForm.controls.password.valid
+        "
+        >Password should be more than 5 symbols</small
+      >
+      <a
+        routerLink="../forget-password"
+        class="control-form-auth__forget-password"
+        >Forget Password ?</a
+      >
+    </div>
+    <button type="submit" class="btn btn_filled" [disabled]="!myForm.valid">
+      Sign in
+    </button>
+    <small class="form-auth__error">{{ errorMessage }}</small>
+  </form>
+  <p class="auth__text">
+    Create A New Account? <a routerLink="../register">Sign Up</a>
+  </p>
 </div>

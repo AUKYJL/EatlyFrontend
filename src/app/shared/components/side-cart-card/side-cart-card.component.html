@@ -1,0 +1,20 @@
+<div class="products-item">
+	<div class="products-item__body">
+		<div class="products-item__img">
+			<img [src]="product.dish.urlToImg" alt="dish image" />
+		</div>
+		<div class="products-item__content content-products-item">
+			<div class="content-products-item__top top-content">
+				<h4 class="top-content__title">{{ product.dish.title }}</h4>
+				<p
+					class="top-content__price"
+					[innerHTML]="product.dish.price * product.count | price"
+				></p>
+			</div>
+			<div class="content-products-item__bottom bottom-content">
+				<app-purchase-counter [product]="product" />
+				<app-close (click)="removeProduct()" />
+			</div>
+		</div>
+	</div>
+</div>

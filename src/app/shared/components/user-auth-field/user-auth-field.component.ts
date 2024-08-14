@@ -37,4 +37,9 @@ export class UserAuthFieldComponent {
 	public toggleDropdown() {
 		this.isDropdownActive = !this.isDropdownActive;
 	}
+
+	public scrollTop() {
+		window.scrollTo(0, 0);
+		this.toggleDropdown();
+	}
 }

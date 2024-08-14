@@ -1,0 +1,14 @@
+@use "src/scss/variables" as v;
+span {
+	cursor: pointer;
+	font-size: 20px;
+	color: v.$bg-color-secondary;
+	transition: all 0.3s ease 0s;
+	&:hover {
+		transform: scale(1.1);
+		color: v.$color-main;
+	}
+	&._active {
+		color: v.$color-main;
+	}
+}

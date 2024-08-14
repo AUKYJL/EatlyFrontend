@@ -1,0 +1,6 @@
+<span
+	class="like"
+	[ngClass]="!isLiked ? '_icon-heart' : '_icon-filled-heart'"
+	[class._active]="isLiked"
+	(click)="changeLiked($event)"
+></span>

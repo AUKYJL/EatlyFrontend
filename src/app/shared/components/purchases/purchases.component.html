@@ -1,0 +1,144 @@
+<section class="purchases">
+	<div class="container">
+		<div class="purchases__content">
+			<div class="purchases__body">
+				<div class="purchases__map map-purchases">
+					<div class="map-purchases__map"></div>
+					<div class="map-purchases__info info-map-purchases">
+						<div class="info-map-purchases__body">
+							<div class="info-map-purchases__top top-info-map">
+								<div class="top-info-map__user-image">
+									<img
+										src="assets/img/purchases/delivers/01.png"
+										alt="deliver photo"
+									/>
+								</div>
+								<div class="top-info-map__deliver-info deliver-info-top-map">
+									<p class="deliver-info-top-map__name">David Smith</p>
+									<p class="deliver-info-top-map__job">Food Rider</p>
+								</div>
+							</div>
+							<div class="info-map-purchases__route route-info-map">
+								<ul class="route-info-map__list list-route-info-map">
+									<li class="list-route-info-map__item item-route-info-map">
+										<div class="item-route-info-map__icon">
+											<span class="_icon-location"></span>
+											<span class="dash"></span>
+										</div>
+										<div
+											class="item-route-info-map__adress adress-item-route-info-map"
+										>
+											<h5 class="adress-item-route-info-map__title">
+												Your Address
+											</h5>
+											<p class="adress-item-route-info-map__text">
+												Horizenal Road Stree 1178 California, USA Horizenal Road
+												Stree 1178 California, USA Horizenal Road Stree 1178
+												California, USA Horizenal Road Stree 1178 California,
+												USA Horizenal Road Stree 1178 California, USA
+											</p>
+										</div>
+									</li>
+									<li class="list-route-info-map__item item-route-info-map">
+										<div class="item-route-info-map__icon">
+											<span class="_icon-clock"></span>
+											<span class="dash"></span>
+										</div>
+										<div
+											class="item-route-info-map__adress adress-item-route-info-map"
+										>
+											<h5 class="adress-item-route-info-map__title">
+												Delivery Time
+											</h5>
+											<p class="adress-item-route-info-map__text">15 Minutes</p>
+										</div>
+									</li>
+									<li class="list-route-info-map__item item-route-info-map">
+										<div class="item-route-info-map__icon">
+											<span class="_icon-clock"></span>
+											<span class="dash"></span>
+										</div>
+										<div
+											class="item-route-info-map__adress adress-item-route-info-map"
+										>
+											<h5 class="adress-item-route-info-map__title">
+												Delivery Time
+											</h5>
+											<p class="adress-item-route-info-map__text">15 Minutes</p>
+										</div>
+									</li>
+								</ul>
+								<button class="route-info-map__btn btn btn_filled">
+									Pending
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="purchases__products products-purchases">
+					<ul
+						class="products-purchases__list list-products-purchases _icon-waves2"
+					>
+						<li
+							class="list-products-purchases__item"
+							*ngFor="let product of sideCartService.products$ | async"
+						>
+							<app-side-cart-card [product]="product" />
+						</li>
+					</ul>
+					<div class="products-purchases__coupon coupon-purchases">
+						<div class="coupon-purchases__left left-coupon-purchases">
+							<span class="_icon-coupon"></span>
+							<input
+								type="text"
+								class="left-coupon-purchases__inp"
+								placeholder="Apply Coupon"
+							/>
+						</div>
+						<div class="coupon-purchases__right right-coupon-purchases">
+							<button class="right-coupon-purchases__btn btn btn_filled">
+								Apply
+							</button>
+						</div>
+					</div>
+					<div class="products-purchases__info info-products-purchases">
+						<ul class="info-products-purchases__list list-info-products">
+							<li class="list-info-products__item item-list-info-products">
+								<p class="item-list-info-products__text">Subtotal</p>
+								<p
+									class="item-list-info-products__price"
+									[innerHTML]="sideCartService.subtotalPrice | price"
+								></p>
+							</li>
+							<li class="list-info-products__item item-list-info-products">
+								<p class="item-list-info-products__text">Delivery</p>
+								<p
+									class="item-list-info-products__price"
+									[innerHTML]="deliveryPrice | price"
+								></p>
+							</li>
+						</ul>
+						<div
+							class="info-products-purchases__total total-info-products-purchases"
+						>
+							<p class="total-info-products-purchases__text">Total</p>
+							<p
+								class="total-info-products-purchases__price"
+								[innerHTML]="
+									sideCartService.subtotalPrice + deliveryPrice | price
+								"
+							></p>
+						</div>
+					</div>
+					<button class="products-purchases__btn btn btn_filled">
+						Review Payment
+						<span class="_icon-spiral-arrow _icon-spiral-arrow_1"></span>
+						<span class="_icon-spiral-arrow _icon-spiral-arrow_2"></span>
+					</button>
+				</div>
+
+				<app-get-discount />
+			</div>
+		</div>
+	</div>
+</section>

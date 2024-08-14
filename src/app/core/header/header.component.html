@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header" #header>
 	<div class="container">
 		<div class="header__content line">
 			<div class="header__body">
@@ -12,6 +12,7 @@
 							<li class="menu__item" *ngFor="let nav of navList">
 								<a
 									[routerLink]="nav.route"
+									(click)="scrollTop()"
 									routerLinkActive="_active"
 									[routerLinkActiveOptions]="{ exact: true }"
 									class="menu__link"
@@ -24,10 +25,16 @@
 
 				<ng-container *ngIf="!authService.checkAuth(); else auth">
 					<div class="header__btns btns-header">
-						<a routerLink="auth/login" class="btns-header__item btn btn_trans"
+						<a
+							routerLink="auth/login"
+							(click)="scrollTop()"
+							class="btns-header__item btn btn_trans"
 							>Login</a
 						>
-						<a routerLink="auth/register" class="btns-header__item btn"
+						<a
+							routerLink="auth/register"
+							(click)="scrollTop()"
+							class="btns-header__item btn btn_filled"
 							>Sign up</a
 						>
 					</div>
@@ -35,7 +42,14 @@
 
 				<ng-template #auth>
 					<div class="auth">
-						<div class="auth__cart cart-auth">cart-auth</div>
+						<div
+							class="auth__cart cart-auth _icon-shopping-cart"
+							(click)="sideCartService.isActive = true"
+						>
+							<span *ngIf="sideCartService.productsCount > 0">{{
+								sideCartService.productsCount
+							}}</span>
+						</div>
 						<app-user-auth-field />
 					</div>
 				</ng-template>

@@ -1,0 +1,147 @@
+@use "src/scss/variables" as v;
+.modal {
+	&__bg {
+		z-index: 200;
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		background-color: rgba(0, 0, 0, 0.6);
+		pointer-events: none;
+		opacity: 0;
+		transition: all 0.3s ease 0s;
+		&._active {
+			opacity: 1;
+			pointer-events: all;
+		}
+	}
+	// .modal__container
+
+	&__container {
+	}
+
+	// .modal__content
+
+	&__content {
+		z-index: 200;
+		position: fixed;
+		width: 600px;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background-color: #fff;
+		border-radius: 20px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0;
+		transition: all 0.3s ease 0s;
+		pointer-events: none;
+		&._active {
+			opacity: 1;
+			pointer-events: all;
+		}
+	}
+
+	// .modal__body
+
+	&__body {
+		padding: 20px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	// .modal__title
+
+	&__title {
+		margin-bottom: 15px;
+	}
+	// .modal__textarea
+
+	&__textarea {
+		resize: none;
+		width: 100%;
+		height: 75px;
+		border: 1px solid v.$color-text-dark-main;
+		padding: 5px;
+		margin-bottom: 10px;
+		font-size: 16px;
+		border-radius: 10px;
+	}
+
+	// .modal__warns
+
+	&__warns {
+	}
+
+	&__btn {
+		align-self: flex-start;
+	}
+}
+.warns {
+	align-self: flex-start;
+	margin-bottom: 10px;
+
+	// .warns__item
+
+	&__item {
+	}
+}
+.item-warns {
+	&:not(:last-child) {
+		margin-bottom: 5px;
+	}
+}
+.checkbox-item-warns {
+	position: relative;
+	display: flex;
+	gap: 5px;
+	align-items: center;
+	cursor: pointer;
+	// .checkbox-item-warns__input
+
+	&__input {
+		height: 1px;
+		width: 1px;
+		position: absolute;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+	}
+
+	// .checkbox-item-warns__check
+
+	&__check {
+		width: 20px;
+		height: 20px;
+		border-radius: 5px;
+		border: 2px solid v.$color-text-dark-main;
+		transition: all 0.3s ease 0s;
+		position: relative;
+		&.checked {
+			border: 2px solid v.$dim-color-main;
+			&::before {
+				transform: translate(-50%, -50%) scale(1);
+			}
+		}
+		&::before {
+			content: "";
+			position: absolute;
+			width: 95%;
+			height: 95%;
+			top: 50%;
+			left: 50%;
+			border-radius: 5px;
+			background-color: v.$color-main;
+			transition: all 0.3s ease 0s;
+			transform: translate(-50%, -50%) scale(0);
+		}
+	}
+
+	// .checkbox-item-warns__text
+
+	&__text {
+	}
+}

@@ -1,0 +1,79 @@
+@use 'src/scss/variables' as v;
+.profile {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  // .profile__content
+
+  &__content {
+  }
+
+  // .profile__body
+
+  &__body {
+  }
+
+  // .profile__tabs
+
+  &__tabs {
+  }
+}
+.tabs-profile {
+  // .tabs-profile__list
+
+  &__list {
+  }
+
+  // .tabs-profile__blocks
+
+  &__blocks {
+  }
+}
+.list-tabs-profile {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 30px;
+
+  // .list-tabs-profile__item
+
+  &__item {
+    cursor: pointer;
+    font-weight: 500;
+    color: v.$color-text-dark-main;
+    font-size: 20px;
+    transition: all 0.3s ease 0s;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background-color: v.$color-main;
+      bottom: -4px;
+      left: 0;
+      transition: all 0.3s ease 0s;
+    }
+    &:hover {
+      color: v.$color-main;
+      position: relative;
+      &::before {
+        width: 100%;
+      }
+    }
+    &._active {
+      color: v.$color-main;
+      position: relative;
+      &::before {
+        width: 100%;
+      }
+    }
+  }
+}
+.blocks-tabs-profile {
+  margin-top: 20px;
+  max-width: 50%;
+  // .blocks-tabs-profile__item
+
+  &__item {
+  }
+}

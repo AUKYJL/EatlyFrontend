@@ -1,0 +1,124 @@
+@use 'src/scss/variables' as v;
+.list-item-blocks {
+  // .list-item-blocks__item
+
+  &__item {
+  }
+}
+.field-item-blocks {
+  &:not(:last-child) {
+    margin-bottom: 40px;
+  }
+  // .field-item-blocks__top
+
+  &__top {
+  }
+
+  // .field-item-blocks__img
+
+  &__img {
+    width: 150px;
+    padding-bottom: 150px;
+    background-color: v.$color-text-secondary;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px;
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      object-fit: contain;
+      object-position: center;
+    }
+  }
+
+  // .field-item-blocks__label
+
+  &__label {
+    display: block;
+    font-weight: 500;
+    font-size: 20px;
+    color: v.$color-text-dark-main;
+    margin-bottom: 10px;
+  }
+  // .field-item-blocks__input
+
+  &__input {
+    color: v.$bg-color-secondary;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 25px;
+    letter-spacing: 7%;
+    width: 100%;
+    background-color: v.$bg-color-tertiary;
+    border: 1px solid transparent;
+    padding: 25px 30px;
+    border-radius: 14px;
+    transition: all 0.3s ease 0s;
+    &::placeholder {
+      color: v.$color-text-secondary;
+      text-transform: uppercase;
+    }
+    &:focus {
+      border: 1px solid v.$color-main;
+      color: v.$color-main;
+    }
+    &:read-only {
+      border: 1px solid transparent;
+      color: v.$bg-color-secondary;
+      cursor: default;
+    }
+  }
+}
+.top-field-item-blocks {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 10px;
+
+  // .top-field-item-blocks__title
+
+  &__title {
+    font-weight: 500;
+    font-size: 20px;
+    color: v.$color-text-dark-main;
+  }
+
+  &__btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  // .top-field-item-blocks__btn
+
+  &__btn {
+    color: v.$color-main;
+    font-size: 20px;
+    background-color: transparent;
+    transition: all 0.3s ease 0s;
+    &:hover {
+      color: v.$dim-color-main;
+      transform: scale(1.05);
+    }
+  }
+}
+.password {
+  &__label {
+    display: block;
+    font-weight: 500;
+    font-size: 18px;
+    color: v.$color-text-dark-main;
+    margin-bottom: 10px;
+  }
+  &__input {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+}

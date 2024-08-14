@@ -1,40 +1,7 @@
 <div class="restaurant-card">
 	<div class="restaurant-card__content">
-		<div class="restaurant-card__body">
-			<div class="hover-card">
-				<div class="hover-card__top">
-					<div
-						class="hover-card__left left-hover hover-card__side"
-						(mouseenter)="hoveredLeft = true"
-						(mouseleave)="hoveredLeft = false"
-						(click)="editRestaurant()"
-					>
-						<p [ngClass]="hoveredLeft ? '_icon-filled-pen' : '_icon-pen'">
-							Edit
-						</p>
-					</div>
-					<div
-						class="hover-card__right right-hover hover-card__side"
-						(mouseenter)="hoveredRight = true"
-						(mouseleave)="hoveredRight = false"
-						(click)="deleteRestaurant()"
-					>
-						<p [ngClass]="hoveredRight ? '_icon-filled-trash' : '_icon-trash'">
-							Delete
-						</p>
-					</div>
-				</div>
-				<div class="hover-card__bottom bottom-card">
-					<div
-						class="hover-card__center hover-card__side"
-						(mouseenter)="hoveredRight = true"
-						(mouseleave)="hoveredRight = false"
-					>
-						<p>Check</p>
-					</div>
-				</div>
-			</div>
-
+		<app-hover-card *ngIf="hasHover" [tabs]="tabs" />
+		<div class="restaurant-card__body" (click)="goToRestaurant()">
 			<div class="restaurant-card__img">
 				<img [src]="restaurant.urlToImg" alt="restaurant img" />
 			</div>
@@ -47,15 +14,17 @@
 				>
 				<h3 class="block-card__title">{{ restaurant.title }}</h3>
 				<div class="block-card__info info-block-card">
-					<p class="info-block-card__time">{{ restaurant.time }}</p>
-					<p class="info-block-card__rating _icon-star">
-						{{ restaurant.rating }}
-					</p>
-					<div
-						(click)="changeBookmark()"
-						class="info-block-card__bookmark"
-						[ngClass]="bookmarked ? '_icon-filled-bookmark' : '_icon-bookmark'"
-					></div>
+					<app-card-aditional-info
+						[time]="restaurant.time"
+						[rating]="restaurant.rating"
+					/>
+
+					<div class="info-block-card__bookmark" #bookmark>
+						<app-bookmark
+							[bookmarked]="bookmarked"
+							[restaurantId]="restaurant.id"
+						/>
+					</div>
 				</div>
 			</div>
 		</div>

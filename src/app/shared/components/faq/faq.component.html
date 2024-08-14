@@ -1,0 +1,40 @@
+<section class="faq">
+	<div class="container faq__container">
+		<div class="faq__content">
+			<div class="faq__body">
+				<h2 class="title-h2 faq__title _icon-waves2">
+					Frequently Asked <span>Questions</span>
+				</h2>
+				<div class="faq__questions questions">
+					<ul class="questions__list">
+						<li
+							class="questions__item item-questions"
+							*ngFor="let question of faqList"
+						>
+							<div class="item-questions__top">
+								<h3 class="item-questions__title">
+									{{ question.question }}
+								</h3>
+								<div
+									class="item-questions__spoller"
+									[class._active]="question.active"
+									(click)="toggleSpoller(body, par, question)"
+								></div>
+							</div>
+							<div
+								class="item-questions__body"
+								[class._acitve]="question.active"
+								#body
+							>
+								<p #par>
+									{{ question.answer }}
+								</p>
+							</div>
+							<div class="line"></div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

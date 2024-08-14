@@ -1,0 +1,50 @@
+<div
+	class="modal__bg"
+	[class._active]="popupService.isReportPopupActive"
+	(click)="closePopup()"
+></div>
+<div class="modal">
+	<div class="modal__container">
+		<div
+			class="modal__content"
+			[class._active]="popupService.isReportPopupActive"
+		>
+			<div class="modal__body">
+				<form [formGroup]="popupService.reportForm">
+					<h3 class="modal__title title-h3">Report this comment</h3>
+					<textarea
+						class="modal__textarea"
+						placeholder="Message..."
+						formControlName="message"
+					></textarea>
+					<ul class="modal__warns warns" formArrayName="warns">
+						<li
+							class="warns__item item-warns"
+							*ngFor="let warn of popupService.warns.controls; let i = index"
+							[formGroupName]="i"
+						>
+							<div
+								class="item-warns__checkbox checkbox-item-warns"
+								(click)="
+									warn.get('checked')?.setValue(!warn.get('checked')?.value)
+								"
+							>
+								<input type="checkbox" class="checkbox-item-warns__input" />
+								<div
+									class="checkbox-item-warns__check"
+									[class.checked]="warn.get('checked')?.value"
+								></div>
+								<p class="checkbox-item-warns__text">
+									{{ warn.get("title")?.value }}
+								</p>
+							</div>
+						</li>
+					</ul>
+					<button class="modal__btn btn btn_filled" (click)="closePopup()">
+						Send
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

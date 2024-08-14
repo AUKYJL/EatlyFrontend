@@ -1,146 +1,117 @@
-<lib-toastify-toast-container />
-
 <section class="main">
-	<div class="container">
-		<div class="main__content">
-			<div class="main__body">
-				<div class="main__left left-main">
-					<p class="left-main__subtitle">OVER 1000 USERS</p>
-					<h1 class="left-main__title title">
-						Enjoy Foods All Over The <span>World</span>
-					</h1>
-					<p class="left-main__desc">
-						EatLy help you set saving goals, earn cash back offers, Go to
-						disclaimer for more details and get paychecks up to two days early.
-						Get a <span>$20 bonus.</span>
-					</p>
-					<div class="left-main__btns">
-						<a href="#" class="left-main__btn btn">Get Started</a>
-						<a href="#" class="left-main__btn btn btn_border">Go Pro</a>
-					</div>
-					<div class="left-main__rating rating-main">
-						<a href="#"
-							><img
-								src="assets/img/main/trustpilot.png"
-								alt=""
-								class="rating-main__img"
-						/></a>
-						<div class="rating-main__stars">
-							<div class="rating-main__star _icon-star"></div>
-							<div class="rating-main__star _icon-star"></div>
-							<div class="rating-main__star _icon-star"></div>
-							<div class="rating-main__star _icon-star"></div>
-							<div class="rating-main__star _icon-regular-star"></div>
-						</div>
-						<p class="rating-main__users">4900+</p>
-					</div>
-				</div>
+  <div class="container">
+    <div class="main__content">
+      <div class="main__body">
+        <div class="main__left left-main">
+          <p class="left-main__subtitle">OVER 1000 USERS</p>
+          <h1 class="left-main__title title">
+            Enjoy Foods All Over The <span>World</span>
+          </h1>
+          <p class="left-main__desc">
+            EatLy help you set saving goals, earn cash back offers, Go to
+            disclaimer for more details and get paychecks up to two days early.
+            Get a <span>$20 bonus.</span>
+          </p>
+          <div class="left-main__btns">
+            <a href="#" class="left-main__btn btn btn_filled">Get Started</a>
+            <a href="#" class="left-main__btn btn btn_border">Go Pro</a>
+          </div>
+          <div class="left-main__rating rating-main">
+            <a href="#"
+              ><img
+                src="assets/img/main/trustpilot.png"
+                alt=""
+                class="rating-main__img"
+            /></a>
+            <div class="rating-main__stars">
+              <div class="rating-main__star _icon-star"></div>
+              <div class="rating-main__star _icon-star"></div>
+              <div class="rating-main__star _icon-star"></div>
+              <div class="rating-main__star _icon-star"></div>
+              <div class="rating-main__star _icon-regular-star"></div>
+            </div>
+            <p class="rating-main__users">4900+</p>
+          </div>
+        </div>
 
-				<div class="main__right right-main"></div>
-			</div>
-		</div>
-	</div>
+        <div class="main__right right-main"></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="advatages">
-	<div class="container">
-		<div class="advatages__content">
-			<div class="advatages__body">
-				<div class="advatages__cols cols-advatages">
-					<div
-						class="cols-advatages__item item-cols-advatages"
-						[ngClass]="i % 3 == 1 ? 'middle' : ''"
-						*ngFor="let advantage of advantagesList; let i = index"
-					>
-						<h3 class="item-cols-advatages__title">{{ advantage.title }}</h3>
-						<p class="item-cols-advatages__desc">
-							{{ advantage.desc }}
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="container">
+    <div class="advatages__content">
+      <div class="advatages__body">
+        <div class="advatages__cols cols-advatages">
+          <div
+            class="cols-advatages__item item-cols-advatages"
+            [ngClass]="i % 3 === 1 ? 'middle' : ''"
+            *ngFor="let advantage of advantagesList; let i = index">
+            <h3 class="item-cols-advatages__title">{{ advantage.title }}</h3>
+            <p class="item-cols-advatages__desc">
+              {{ advantage.desc }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="quality">
-	<div class="container">
-		<div class="quality__content line">
-			<div class="quality__body">
-				<div class="quality__left left-quality">
-					<div class="left-quality__img _icon-waves2">
-						<img
-							src="assets/img/quality/01.png"
-							alt="mobile phone with eatly app"
-							class=""
-						/>
-					</div>
-				</div>
+  <div class="container">
+    <div class="quality__content line">
+      <div class="quality__body">
+        <div class="quality__left left-quality">
+          <div class="left-quality__img _icon-waves2">
+            <img
+              src="assets/img/quality/01.png"
+              alt="mobile phone with eatly app"
+              class="" />
+          </div>
+        </div>
 
-				<div class="quality__right right-quality">
-					<h2 class="right-quality__title title-h2">
-						Premium <span>Quality</span> For Your Health
-					</h2>
-					<ul class="right-quality__list list-right-quality">
-						<li class="list-right-quality__item">
-							Premium quality food is made with ingredients that are packed with
-							essential vitamins, minerals.
-						</li>
-						<li class="list-right-quality__item">
-							These foods promote overall wellness by support healthy digestion
-							and boosting immunity
-						</li>
-					</ul>
-					<div class="right-quality__btns">
-						<a href="#" class="right-quality__btn btn _icon-arrow-right"
-							>Download</a
-						>
-						<div class="right-quality__spiral-arrow _icon-spiral-arrow"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+        <div class="quality__right right-quality">
+          <h2 class="right-quality__title title-h2">
+            Premium <span>Quality</span> For Your Health
+          </h2>
+          <ul class="right-quality__list list-right-quality">
+            <li class="list-right-quality__item">
+              Premium quality food is made with ingredients that are packed with
+              essential vitamins, minerals.
+            </li>
+            <li class="list-right-quality__item">
+              These foods promote overall wellness by support healthy digestion
+              and boosting immunity
+            </li>
+          </ul>
+          <div class="right-quality__btns">
+            <a
+              href="#"
+              class="right-quality__btn btn btn_filled _icon-arrow-right"
+              >Download</a
+            >
+            <div class="right-quality__spiral-arrow _icon-spiral-arrow"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <app-cards-section
-	title="Our Top <span>Restaurants</span>"
-	[items]="restaurants$ | async"
-	[type]="types.restaurants"
-	viewAllRoute="/items/restaurants"
-/>
+  title="Our Top <span>Restaurants</span>"
+  [items]="restaurants$ | async"
+  [type]="types.restaurants"
+  viewAllRoute="/items/restaurants" />
 
 <app-cards-section
-	title="Our Top <span>Dishes</span>"
-	[items]="dishes$ | async"
-	[type]="types.dishes"
-	cols="5"
-	viewAllRoute="/items/dishes"
-/>
+  title="Our Top <span>Dishes</span>"
+  [items]="dishes$ | async"
+  [type]="types.dishes"
+  cols="5"
+  viewAllRoute="/items/dishes" />
 
-<section class="form">
-	<div class="container">
-		<div class="form__content">
-			<div class="form__body">
-				<div class="form__left left-form">
-					<h2 class="left-form__title">GET 50%</h2>
-					<form class="form__form">
-						<div class="form__inp-box">
-							<input
-								type="text"
-								class="form__inp"
-								placeholder="Enter Your Email Address"
-							/>
-							<button class="form__btn btn">subscribe</button>
-						</div>
-					</form>
-				</div>
-				<div class="form__right right-form">
-					<div class="right-form__img">
-						<img src="assets/img/form/01.png" alt="food image" />
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+<app-get-discount />

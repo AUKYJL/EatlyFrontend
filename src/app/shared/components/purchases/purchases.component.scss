@@ -1,0 +1,387 @@
+@use "src/scss/variables" as v;
+.purchases {
+	padding-top: 100px;
+	padding-bottom: 100px;
+	// .purchases__content
+
+	&__content {
+	}
+
+	// .purchases__body
+
+	&__body {
+	}
+
+	// .purchases__map
+
+	&__map {
+	}
+
+	// .purchases__products
+
+	&__products {
+	}
+}
+.map-purchases {
+	padding-bottom: 185px;
+	// .map-purchases__map
+
+	&__map {
+	}
+
+	// .map-purchases__info
+
+	&__info {
+	}
+}
+.info-map-purchases {
+	width: 500px;
+	border-radius: 25px;
+	overflow: hidden;
+	background-color: #fff;
+	box-shadow: 5px 20px 20px rgba(0, 0, 0, 0.1);
+	margin: 0 auto;
+	// .info-map-purchases__body
+
+	&__body {
+	}
+
+	// .info-map-purchases__top
+
+	&__top {
+	}
+
+	// .info-map-purchases__route
+
+	&__route {
+	}
+}
+.top-info-map {
+	background: #323142;
+	padding: 20px;
+	display: flex;
+	gap: 20px;
+	// .top-info-map__user-image
+
+	&__user-image {
+		position: relative;
+		padding-bottom: 60px;
+		aspect-ratio: 1;
+		img {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			background-position: center;
+			object-fit: cover;
+		}
+	}
+
+	// .top-info-map__deliver-info
+
+	&__deliver-info {
+	}
+}
+.deliver-info-top-map {
+	// .deliver-info-top-map__name
+
+	&__name {
+		font-weight: 500;
+		font-size: 22px;
+		line-height: 140%;
+		color: v.$bg-color-tertiary;
+	}
+
+	// .deliver-info-top-map__job
+
+	&__job {
+		font-weight: 400;
+		font-size: 15px;
+		line-height: 140%;
+		color: v.$color-text-secondary;
+	}
+}
+.route-info-map {
+	padding: 20px;
+	// .route-info-map__list
+
+	&__list {
+	}
+
+	// .route-info-map__btn
+
+	&__btn {
+		display: flex;
+		margin-left: auto;
+		padding: 10px 34px;
+		border-radius: 4px;
+	}
+}
+.list-route-info-map {
+	// .list-route-info-map__item
+
+	&__item {
+	}
+}
+.item-route-info-map {
+	display: flex;
+	gap: 30px;
+	&:not(:last-child) {
+		.adress-item-route-info-map__text {
+			padding-bottom: 30px;
+		}
+	}
+	// &:first-child {
+	// 	.item-route-info-map__icon {
+	// 		&::after {
+	// 			width: 100%;
+	// 			top: 100%;
+	// 		}
+	// 	}
+	// }
+	// &:last-child {
+	// 	.item-route-info-map__icon {
+	// 		&::after {
+	// 			width: 100%;
+	// 			top: 0;
+	// 		}
+	// 	}
+	// }
+	// .item-route-info-map__icon
+
+	&__icon {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		& > .dash {
+			border-left: 2px dashed v.$hilite-color-main;
+			position: absolute;
+			width: 2px;
+			height: 100%;
+			top: 0%;
+			left: 50%;
+			transform: translate(-50%, 0px);
+		}
+		& > [class^="_icon"] {
+			position: relative;
+			width: 40px;
+			height: 40px;
+			color: v.$color-main;
+			font-size: 18px;
+			padding: 10px;
+			border-radius: 50%;
+			background-color: v.$hilite-color-main;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			z-index: 2;
+		}
+	}
+
+	// .item-route-info-map__adress
+
+	&__adress {
+	}
+}
+.adress-item-route-info-map {
+	max-width: 50%;
+	// .adress-item-route-info-map__title
+
+	&__title {
+		font-weight: 500;
+		font-size: 11px;
+		line-height: 140%;
+		color: v.$color-text-secondary;
+	}
+
+	// .adress-item-route-info-map__text
+
+	&__text {
+		font-weight: 400;
+		font-size: 13px;
+		line-height: 140%;
+		color: v.$bg-color-secondary;
+	}
+}
+
+.products-purchases {
+	width: 681px;
+	margin: 0 auto;
+	// .products-purchases__list
+
+	&__list {
+	}
+
+	// .products-purchases__coupon
+
+	&__coupon {
+	}
+
+	// .products-purchases__info
+
+	&__info {
+	}
+
+	// .products-purchases__btn
+
+	&__btn {
+		width: 100%;
+		position: relative;
+		& > ._icon-spiral-arrow {
+			&::before {
+				color: v.$color-main;
+				font-size: 50px;
+				position: absolute;
+			}
+			&_1 {
+				&::before {
+					top: -100%;
+					left: -23%;
+					transform: rotate(-130deg) scaleY(-1);
+				}
+			}
+			&_2 {
+				&::before {
+					top: -100%;
+					right: -23%;
+					transform: rotate(-50deg);
+				}
+			}
+		}
+	}
+}
+.list-products-purchases {
+	position: relative;
+	padding-bottom: 90px;
+
+	&::before {
+		color: v.$color-main;
+		font-size: 35px;
+		transform: rotate(-180deg);
+		position: absolute;
+
+		top: -40px;
+		right: -5%;
+	}
+	// .list-products-purchases__item
+
+	&__item {
+		&:not(:last-child) {
+			padding-bottom: 20px;
+		}
+	}
+}
+.coupon-purchases {
+	display: flex;
+	gap: 8px;
+	padding-bottom: 50px;
+	// .coupon-purchases__left
+
+	&__left {
+	}
+
+	// .coupon-purchases__right
+
+	&__right {
+	}
+}
+.left-coupon-purchases {
+	border-radius: 9px;
+	background-color: v.$bg-color-tertiary;
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	padding: 20px;
+	width: 100%;
+	span {
+		font-size: 18px;
+		color: v.$color-text-main;
+	}
+
+	// .left-coupon-purchases__inp
+
+	&__inp {
+		background-color: transparent;
+		font-weight: 500;
+		font-size: 18px;
+		line-height: 117%;
+		letter-spacing: -0.02em;
+
+		&::placeholder {
+			color: v.$color-text-main;
+		}
+		color: v.$color-text-dark-main;
+	}
+}
+.right-coupon-purchases {
+	// .right-coupon-purchases__btn
+
+	&__btn {
+	}
+}
+.info-products-purchases {
+	// .info-products-purchases__list
+
+	&__list {
+	}
+
+	// .info-products-purchases__total
+
+	&__total {
+	}
+}
+.list-info-products {
+	// .list-info-products__item
+
+	&__item {
+	}
+}
+.item-list-info-products {
+	padding: 13px 0px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 2px dashed v.$color-text-secondary;
+
+	// .item-list-info-products__text
+
+	&__text {
+		font-weight: 400;
+		font-size: 20px;
+		line-height: 117%;
+		letter-spacing: -0.02em;
+		color: v.$color-text-main;
+	}
+
+	// .item-list-info-products__price
+
+	&__price {
+		font-weight: 400;
+		font-size: 20px;
+		line-height: 117%;
+		letter-spacing: -0.02em;
+		color: v.$color-text-main;
+	}
+}
+.total-info-products-purchases {
+	padding: 28px 0px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-weight: 600;
+	font-size: 25px;
+	line-height: 117%;
+	letter-spacing: -0.02em;
+	color: v.$color-text-dark-main;
+
+	// .total-info-products-purchases__text
+
+	&__text {
+	}
+
+	// .total-info-products-purchases__price
+
+	&__price {
+	}
+}

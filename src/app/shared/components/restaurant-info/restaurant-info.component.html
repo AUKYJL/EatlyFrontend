@@ -1,0 +1,58 @@
+<div class="restaurant">
+	<div class="container">
+		<div class="restaurant__content">
+			<div class="restaurant__body">
+				<div class="restaurant__info info-restaurant">
+					<div class="info-restaurant__card card-info">
+						<div class="card-info__body">
+							<div class="card-info__img">
+								<img [src]="restaurant?.urlToImg" alt="restaurant image" />
+							</div>
+							<div class="card-info__bottom bottom-card-info">
+								<h3 class="title-h3 bottom-card-info__title">
+									{{ restaurant?.title }}
+								</h3>
+								<div class="bottom-card-info__additional">
+									<app-card-aditional-info
+										[row]="true"
+										[time]="restaurant?.time"
+										[rating]="restaurant?.rating"
+									/>
+								</div>
+								<app-bookmark
+									[bookmarked]="bookmarked"
+									[restaurantId]="restaurant?.id"
+								/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="restaurant__desc desc-restaurant">
+					<h3 class="title-h3">Restaurant Description</h3>
+					<div
+						class="desc-restaurant__body"
+						[innerHTML]="restaurant?.desc"
+					></div>
+				</div>
+
+				<app-cards-section
+					[items]="popularDishes$ | async"
+					[type]="types.dishes"
+					[viewAllRoute]="'/'"
+					cols="5"
+					[left]="true"
+					[title]="'Popular 🔥'"
+				/>
+
+				<ng-container *ngIf="restaurant">
+					<app-comments-section
+						[type]="commentTypes.restaurant"
+						[entityId]="restaurant.id"
+					/>
+				</ng-container>
+
+				<app-faq />
+			</div>
+		</div>
+	</div>
+</div>

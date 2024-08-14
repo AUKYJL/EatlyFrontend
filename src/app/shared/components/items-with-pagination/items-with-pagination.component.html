@@ -11,7 +11,12 @@
 					/>
 				</div>
 
-				<app-items [cols]="cols" [items]="items$ | async" [type]="type" />
+				<app-items
+					[cols]="cols"
+					[items]="items$ | async"
+					[type]="type"
+					[hasHover]="hasHover"
+				/>
 			</div>
 		</div>
 	</div>

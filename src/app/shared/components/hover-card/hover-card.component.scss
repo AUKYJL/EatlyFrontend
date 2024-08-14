@@ -1,0 +1,128 @@
+@use "src/scss/variables" as v;
+.hover-card {
+	z-index: 2;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+
+	color: #fff;
+	font-size: 26px;
+	opacity: 0;
+	transition: all 0.3s ease 0s;
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.item-hover-card {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	// .item-hover-card__body
+
+	&__body {
+		p {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			transition: all 0.15s ease 0s;
+		}
+	}
+	&:hover {
+		p {
+			transform: translate(0px, -5px);
+		}
+	}
+}
+
+// .hover-card {
+// 	z-index: 2;
+// 	position: absolute;
+// 	width: 100%;
+// 	height: 100%;
+// 	top: 0;
+// 	left: 0;
+// 	display: flex;
+// 	flex-direction: column;
+
+// 	color: #fff;
+// 	font-size: 26px;
+// 	&__top {
+// 		display: flex;
+// 		flex: 1;
+// 	}
+// 	&__bottom {
+// 		flex: 1;
+// 		display: flex;
+// 	}
+// 	&__side {
+// 		display: flex;
+// 		flex: 1;
+// 		align-items: center;
+// 		justify-content: center;
+// 		opacity: 0;
+// 		font-weight: 500;
+// 		transition: all 0.3s ease 0s;
+// 		p {
+// 			display: flex;
+// 			align-items: center;
+// 			justify-content: center;
+// 			gap: 10px;
+// 		}
+// 	}
+// 	// .hover-card__left
+
+// 	&:hover {
+// 		.hover-card__side {
+// 			opacity: 1;
+// 		}
+
+// 		.hover-card__left {
+// 			background-color: rgba(38, 201, 5, 0.5);
+
+// 			&:hover {
+// 				background-color: rgba(38, 201, 5, 0.7);
+// 			}
+// 		}
+
+// 		// .hover-card__right
+
+// 		.hover-card__right {
+// 			background-color: rgba(201, 5, 5, 0.5);
+
+// 			&:hover {
+// 				background-color: rgba(201, 5, 5, 0.7);
+// 			}
+// 		}
+// 	}
+// }
+// .bottom-card {
+// 	&__left {
+// 		background-color: rgba(4, 94, 136, 0.5);
+// 		p {
+// 			transition: all 0.3s ease 0s;
+// 		}
+// 		&:hover {
+// 			background-color: rgba(4, 94, 136, 0.7);
+// 			p {
+// 				transform: scale(1.05);
+// 			}
+// 		}
+// 	}
+// 	&__right {
+// 		background-color: rgba(201, 67, 5, 0.5);
+// 		p {
+// 			transition: all 0.3s ease 0s;
+// 		}
+// 		&:hover {
+// 			background-color: rgba(201, 67, 5, 0.7);
+// 			p {
+// 				transform: scale(1.05);
+// 			}
+// 		}
+// 	}
+// }

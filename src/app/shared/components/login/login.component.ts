@@ -6,50 +6,50 @@ import { IUserReg } from 'src/app/types/types';
 import { environment } from 'src/environments/environment';
 
 @Component({
-	selector: 'app-login',
-	templateUrl: './login.component.html',
-	styleUrls: ['./login.component.scss'],
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-	constructor(private authService: AuthService, private route: Router) {}
+  constructor(
+    private authService: AuthService,
+    private route: Router
+  ) {}
 
-	@ViewChildren('control') controls!: QueryList<ElementRef<HTMLDivElement>>;
-	@ViewChildren('input') inputs!: QueryList<ElementRef<HTMLInputElement>>;
-	public errorMessage: string = '';
-	public iconsStates: boolean[] = [false, false, false, false];
-	public showPassword: boolean = false;
-	public myForm = new FormGroup({
-		email: new FormControl('', [Validators.required, Validators.email]),
-		password: new FormControl('', [
-			Validators.required,
-			Validators.minLength(6),
-		]),
-	});
-	public onBlur(id: number) {
-		if (!this.inputs.toArray()[id].nativeElement.value) {
-			this.controls.toArray()[id].nativeElement.classList.remove('_active');
-			this.iconsStates[id] = false;
-		}
-	}
-	public activeInput(id: number) {
-		this.inputs.toArray()[id].nativeElement.focus();
-		this.controls.toArray()[id].nativeElement.classList.add('_active');
-		this.iconsStates[id] = true;
-	}
+  @ViewChildren('control') controls!: QueryList<ElementRef<HTMLDivElement>>;
+  @ViewChildren('input') inputs!: QueryList<ElementRef<HTMLInputElement>>;
+  public errorMessage = '';
+  public iconsStates: boolean[] = [false, false, false, false];
+  public showPassword = false;
+  public myForm = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+    ]),
+  });
+  public onBlur(id: number) {
+    if (!this.inputs.toArray()[id].nativeElement.value) {
+      this.controls.toArray()[id].nativeElement.classList.remove('_active');
+      this.iconsStates[id] = false;
+    }
+  }
+  public activeInput(id: number) {
+    this.inputs.toArray()[id].nativeElement.focus();
+    this.controls.toArray()[id].nativeElement.classList.add('_active');
+    this.iconsStates[id] = true;
+  }
 
-	public onSubmit() {
-		// console.log(this.myForm.value);
-		this.authService.login(this.myForm.value as IUserReg).subscribe({
-			next: (data) => {
-				this.route.navigate(['../../']);
-				window.scrollTo(0, 0);
-				localStorage.setItem(environment.loggedInUser, JSON.stringify(data));
-				console.log('data ' + JSON.stringify(data));
-			},
-			error: (err) => {
-				this.errorMessage = err.error.message;
-				console.log('err ' + err.error.message);
-			},
-		});
-	}
+  public onSubmit() {
+    this.authService.login(this.myForm.value as IUserReg).subscribe({
+      next: data => {
+        this.route.navigate(['../../']);
+        window.scrollTo(0, 0);
+        this.authService.saveDataInLocalStorage(data);
+      },
+      error: err => {
+        this.errorMessage = err.error.message;
+      },
+    });
+  }
 }

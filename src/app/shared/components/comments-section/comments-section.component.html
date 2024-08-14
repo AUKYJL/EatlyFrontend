@@ -1,0 +1,10 @@
+<section class="comments">
+	<div class="container">
+		<div class="comments__content">
+			<div class="comments__body">
+				<app-write-comment #writeComment [type]="type" [entityId]="entityId" />
+				<app-comments-with-pagination [type]="type" [entityId]="entityId" />
+			</div>
+		</div>
+	</div>
+</section>

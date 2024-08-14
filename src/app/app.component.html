@@ -1,10 +1,16 @@
 <lib-toastify-toast-container />
 <div class="wrapper">
 	<app-header />
-
-	<main class="page">
+	<main class="page" #main>
 		<router-outlet />
 	</main>
 
 	<app-footer />
+
+	<lib-toastify-toast-container />
+
+	<app-are-you-sure-popup />
+	<app-report-popup />
+
+	<app-side-cart-menu />
 </div>
